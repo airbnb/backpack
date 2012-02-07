@@ -1,0 +1,19 @@
+{
+    'name': 'backpack'
+  , 'description': 'An unopinionated pack of utilities for backbone.js'
+  , 'version': '0.0.1'
+  , 'homepage': 'https://github.com/airbnb/backpack.js'
+  , 'authors': ["Harrison Shoff <harry@airbnb.com> (https://github.com/h4rry)", "Dave Augustine <dave@airbnb.com> (https://github.com/daveaugustine)"]
+  , 'lib/backpack.js'
+  , 'repository': {
+        'type': 'git'
+      , 'url': 'https://github.com/airbnb/backpack.js.git'
+    }
+  , 'dependencies': {
+      ''
+  }
+  , 'devDependencies': {
+      'coffee-script': '1.2.x'
+    }
+  , 'engine': { 'node': '0.6.x' }
+}
