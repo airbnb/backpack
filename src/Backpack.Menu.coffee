@@ -1,4 +1,3 @@
-
 # **Backpack.Menu** 
 
 class Backpack.Menu extends Backbone.View

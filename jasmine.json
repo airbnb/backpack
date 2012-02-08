@@ -1,0 +1,16 @@
+{
+ "COMMENT":"Folders must end with a /",
+ "src_dir"  : "/src/",
+ "spec_dir" : "/spec/",
+
+ "server":{
+   "port":8124
+ },
+ "externals":[
+  "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js",
+  "https://github.com/velesin/jasmine-jquery/raw/master/lib/jasmine-jquery.js",
+  "https://raw.github.com/documentcloud/underscore/master/underscore-min.js",
+  "https://github.com/documentcloud/backbone/raw/master/backbone-min.js",
+  "https://github.com/pivotal/jasmine-ajax/raw/master/lib/mock-ajax.js"
+ ]
+}
