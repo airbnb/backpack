@@ -31,7 +31,7 @@ The Cakefile defines the following tasks:
 
 ### Testing
 
-Backpack tests are written using Jasmine. We use the lovely [jasmine-node](https://github.com/mhevery/jasmine-node). 
+Backpack.js tests are written using [Jasmine](https://github.com/pivotal/jasmine). We use the lovely [jasmine-node](https://github.com/mhevery/jasmine-node). 
 
 Setting up testing is easy. Clone the repo and `cd` into /backpack.js and run `npm install` to install all the dependencies. You can find the list of dependencies in the _package.json_ file.
 
