@@ -19,15 +19,16 @@
       , "url":  "https://github.com/airbnb/backpack.js.git"
     }
   , "engine": { 
-      "node": ">=0.6"
+      "node": "0.6.x"
     }
   , "scripts": { 
-        "test":   "jasmine mon"
+        "test":   "jasmine-node --color --coffee ./spec"
     }
   , "dependencies": {}
   , "devDependencies": {
-        "smoosh": "*"
-      , "coffee-script": "1.2.x"
+        "smoosh":         "0.3.x"
+      , "coffee-script":  "1.2.x"
+      , "jasmine-node":   "1.0.x"
     }
   , "ender": "./ender.js"
 }

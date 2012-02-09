@@ -32,4 +32,8 @@ Cakefile defines the following tasks:
 
 ### Testing
 
-We're using [Jasmine-Runner](https://github.com/jamescarr/jasmine-tool). You can run `npm test` or `jasmine mon` if you're feeling adventurous.
+Backpack tests are written using Jasmine. We use the lovely [jasmine-node](https://github.com/mhevery/jasmine-node). 
+
+Setting up testing is easy. Clone the repo and `cd` into /backpack.js and run `npm install` to install all the dependencies. You can find the list of dependencies in the _package.json_ file.
+
+You can run `npm test` which will run `jasmine-node --color --coffee ./spec` for you. If you're into the verbose thing you can run `jasmine-node --color --verbose --coffee ./spec` in the command line.
