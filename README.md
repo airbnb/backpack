@@ -15,7 +15,7 @@ By [@hshoff](http://www.twitter.com/hshoff) & [@daveaugustine](http://www.twitte
 1. Infinite Scroll
 1. Responsive
 
-## Usage
+## Development
 
 ### Cake Build Tools
 
@@ -34,5 +34,7 @@ Cakefile defines the following tasks:
 Backpack tests are written using Jasmine. We use the lovely [jasmine-node](https://github.com/mhevery/jasmine-node). 
 
 Setting up testing is easy. Clone the repo and `cd` into /backpack.js and run `npm install` to install all the dependencies. You can find the list of dependencies in the _package.json_ file.
+
+There are 
 
 You can run `npm test` which will run `jasmine-node --color --coffee ./spec` for you. If you're into the verbose thing you can run `jasmine-node --color --verbose --coffee ./spec` in the command line.
