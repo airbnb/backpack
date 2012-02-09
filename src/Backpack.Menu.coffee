@@ -3,7 +3,7 @@
 class Backpack.Menu extends Backbone.View
 
   # fill in a ul
-  tagName: 'ul'
+  tagName: 'div'
 
   # let's you know what's up
   initialize: ->

@@ -15,16 +15,12 @@ compile = (watch, callback) ->
   coffee.stderr.on 'data', (data) -> print data.toString()
   coffee.on 'exit', (status) -> callback?() if status is 0
 
-smoosh = (verbose) ->
-  cmd = exec 'smoosh ./smoosh.json'
-
-  if verbose
-    cmd.stdout.on 'data', (data) -> print data
-    cmd.stderr.on 'data', (data) -> print data
-  cmd
-
+run = (command, callback) ->
+  cmd = exec command
+  cmd.stdout.on 'data', (data) -> print data
+  cmd.stderr.on 'data', (data) -> print data
+  cmd.on 'exit', (status) -> callback?() if status is 0
   
-
 
 task 'docs', 'Generate annotated source code with Docco', ->
   fs.readdir 'src', (err, contents) ->
@@ -38,19 +34,17 @@ task 'compile', 'Compile CoffeeScript source files', ->
   compile()
 
 task 'smoosh', "Smoosh all the compiled CoffeeScripts", ->
-  smoosh()
+  run 'smoosh ./smoosh.json'
 
-task 'smoosh:verbose', "Smoosh all the compiled CoffeeScript source files & print out Smoosh output", ->
-  smoosh true
-
-task 'build', 'Compiles and smooshes CoffeeScript source files', ->
-  compile smoosh
-
-task 'build:verbose', 'Compiles and smooshes CoffeScript source files with smoosh analyses', ->
-  compile(smoosh(true))
+task 'build', 'Build /lib from /src, then smoosh /src', ->
+  cb = -> run 'smoosh ./smoosh.json' 
+  compile cb
 
 task 'watch', "Recompile CoffeeScript source files when modified", ->
-  compile(true)
+  compile true
 
-task 'ci', "Recompile CoffeeScript source files when modified", ->
-  compile(true, smoosh(true))
+task 'test', "Run tests", ->
+  run 'jasmine-node --color --coffee ./spec'
+
+task 'test:verbose', "Run tests", ->
+  run 'jasmine-node --color --verbose --coffee ./spec'

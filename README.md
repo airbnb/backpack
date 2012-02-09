@@ -23,12 +23,11 @@ Cakefile defines the following tasks:
 
     cake docs                 # Generate annotated source code with Docco
     cake compile              # Compile CoffeeScript source files
-    cake smoosh               # Smoosh all the compiled CoffeeScripts. Creates Backpack-bundle.js & Backpack-bundle.min.js.
-    cake smoosh:verbose       # Smoosh all the compiled CoffeeScript source files & print out Smoosh output. 
-    cake build                # Compiles and smooshes CoffeeScript source files. Creates Backpack-bundle.js & Backpack-bundle.min.js.
-    cake build:verbose        # Compiles and smooshes CoffeScript source files with smoosh analyses.
-    cake watch                # Recompile CoffeeScript source files when modified.
-    cake ci                   # Recompile CoffeeScript source files when modified. Creates Backpack-bundle.js & Backpack-bundle.min.js.
+    cake smoosh               # Smoosh all the compiled CoffeeScripts
+    cake build                # Build /lib from /src. Then creates Backpack-bundle.js & Backpack-bundle.min.js.
+    cake watch                # Recompile CoffeeScript source files when modified
+    cake test                 # Run tests
+    cake test:verbose         # Run tests with verbose flag
 
 ### Testing
 

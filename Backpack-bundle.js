@@ -21,7 +21,7 @@
       Menu.__super__.constructor.apply(this, arguments);
     }
 
-    Menu.prototype.tagName = 'ul';
+    Menu.prototype.tagName = 'div';
 
     Menu.prototype.initialize = function() {
       return console.log('new Backpack.Menu');
