@@ -17,14 +17,18 @@ By [@hshoff](http://www.twitter.com/hshoff) & [@daveaugustine](http://www.twitte
 
 ## Usage
 
-### Cakefile
+### Cake Build Tools
 
-Based on Sam Stephenson's *Node-Coffee-Project* [Cakefile](https://github.com/sstephenson/node-coffee-project/blob/master/Cakefile)
+Cakefile defines the following tasks:
 
-- `cake build` will compile the source files from /src into JavaScript files in /lib 
-- `cake watch` will recompile the source files when they are modified
-- `cake docs` will generate documentation into /docs using [Docco](https://github.com/jashkenas/docco)
-
+    cake docs                 # Generate annotated source code with [Docco](https://github.com/jashkenas/docco)
+    cake compile              # Compile CoffeeScript source files
+    cake smoosh               # Smoosh all the compiled CoffeeScripts. Creates Backpack-bundle.js & Backpack-bundle.min.js.
+    cake smoosh:verbose       # Smoosh all the compiled CoffeeScript source files & print out Smoosh output. Creates Backpack-bundle.js & Backpack-bundle.min.js.
+    cake build                # Compiles and smooshes CoffeeScript source files. Creates Backpack-bundle.js & Backpack-bundle.min.js.
+    cake build:verbose        # Compiles and smooshes CoffeScript source files with smoosh analyses Creates Backpack-bundle.js & Backpack-bundle.min.js.
+    cake watch                # Recompile CoffeeScript source files when modified
+    cake ci                   # Recompile CoffeeScript source files when modified. Creates Backpack-bundle.js & Backpack-bundle.min.js.
 
 ### Testing
 
