@@ -41,19 +41,19 @@ There are few ways you can run the specs:
   - `cake test` - runs `jasmine-node --color --coffee ./spec`
   - `cake test:verbose` - runs `jasmine-node --color --verbose --coffee ./spec
   - `jasmine-node`
-  
+
       USAGE: jasmine-node [--color|--noColor] [--verbose] [--coffee] directory
 
       Options:
-        --autotest         - rerun automatically the specs when a file changes
-        --color            - use color coding for output
-        --noColor          - do not use color coding for output
-        -m, --match REGEXP - load only specs containing "REGEXPspec"
-        --verbose          - print extra information per each test run
-        --coffee           - load coffee-script which allows execution .coffee files
-        --junitreport      - export tests results as junitreport xml format
-        --teamcity         - converts all console output to teamcity custom test runner commands. (Normally auto detected.)
-        --runWithRequireJs - loads all specs using requirejs instead of node's native require method
-        --test-dir         - the absolute root directory path where tests are located
-        --nohelpers        - does not load helpers.
-        -h, --help         - display this help and exit
+        - --autotest         - rerun automatically the specs when a file changes
+        - --color            - use color coding for output
+        - --noColor          - do not use color coding for output
+        - -m, --match REGEXP - load only specs containing "REGEXPspec"
+        - --verbose          - print extra information per each test run
+        - --coffee           - load coffee-script which allows execution .coffee files
+        - --junitreport      - export tests results as junitreport xml format
+        - --teamcity         - converts all console output to teamcity custom test runner commands. (Normally auto detected.)
+        - --runWithRequireJs - loads all specs using requirejs instead of node's native require method
+        - --test-dir         - the absolute root directory path where tests are located
+        - --nohelpers        - does not load helpers.
+        - -h, --help         - display this help and exit
