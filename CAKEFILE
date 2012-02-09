@@ -1,8 +1,9 @@
 fs            = require 'fs'
-{print}       = require 'sys'
+{print}       = require 'util'
 {spawn, exec} = require 'child_process'
 
-build = (watch, callback) ->
+
+compile = (watch, callback) ->
   if typeof watch is 'function'
     callback = watch
     watch = false
@@ -14,6 +15,17 @@ build = (watch, callback) ->
   coffee.stderr.on 'data', (data) -> print data.toString()
   coffee.on 'exit', (status) -> callback?() if status is 0
 
+smoosh = (verbose) ->
+  cmd = exec 'smoosh ./smoosh.json'
+
+  if verbose
+    cmd.stdout.on 'data', (data) -> print data
+    cmd.stderr.on 'data', (data) -> print data
+  cmd
+
+  
+
+
 task 'docs', 'Generate annotated source code with Docco', ->
   fs.readdir 'src', (err, contents) ->
     files = ("src/#{file}" for file in contents when /\.coffee$/.test file)
@@ -22,8 +34,23 @@ task 'docs', 'Generate annotated source code with Docco', ->
     docco.stderr.on 'data', (data) -> print data.toString()
     docco.on 'exit', (status) -> callback?() if status is 0
 
-task 'build', 'Compile CoffeeScript source files', ->
-  build()
+task 'compile', 'Compile CoffeeScript source files', ->
+  compile()
 
-task 'watch', 'Recompile CoffeeScript source files when modified', ->
-  build true
+task 'smoosh', "Smoosh all the compiled CoffeeScripts", ->
+  smoosh()
+
+task 'smoosh:verbose', "Smoosh all the compiled CoffeeScript source files & print out Smoosh output", ->
+  smoosh true
+
+task 'build', 'Compiles and smooshes CoffeeScript source files', ->
+  compile smoosh
+
+task 'build:verbose', 'Compiles and smooshes CoffeScript source files with smoosh analyses', ->
+  compile(smoosh(true))
+
+task 'watch', "Recompile CoffeeScript source files when modified", ->
+  compile(true)
+
+task 'ci', "Recompile CoffeeScript source files when modified", ->
+  compile(true, smoosh(true))

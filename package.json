@@ -1,21 +1,33 @@
 {
-    "name": "backpack"
-  , "description": "A backpack full of UI components for your Backbone.js projects"
-  , "version": "0.0.1"
-  , "homepage": "https://github.com/airbnb/backpack.js"
-  , "authors": ["Harrison Shoff <harry@airbnb.com> (https://github.com/h4rry)", "Dave Augustine <dave@airbnb.com> (https://github.com/daveaugustine)"]
-  , "main": "./lib/index.js"
-  , "repository": {
+    "name":         "Backpack"
+  , "description":  "A backpack full of UI components for your Backbone.js projects"
+  , "version":      "0.0.1"
+  , "main":         "./Backpack-bundle"
+  , "homepage":     "https://github.com/airbnb/backpack.js"
+  , "keywords": [
+        "ui"
+      , "backbone"
+      , "backpack"
+      , "airbnb"
+    ]
+  , "authors": [
+        "Harrison Shoff <@hshoff>"
+      , "Dave Augustine <@daveaugustine>"
+    ]
+  , "repository": { 
         "type": "git"
-      , "url": "https://github.com/airbnb/backpack.js.git"
+      , "url":  "https://github.com/airbnb/backpack.js.git"
     }
-  , "scripts": {
-      "test": "jasmine mon"
+  , "engine": { 
+      "node": ">=0.6"
     }
-  , "dependencies": {
+  , "scripts": { 
+        "test":   "jasmine mon"
     }
+  , "dependencies": {}
   , "devDependencies": {
-      "coffee-script": "1.2.x"
+        "smoosh": "*"
+      , "coffee-script": "1.2.x"
     }
-  , "engine": { "node": "0.4.x" }
+  , "ender": "./ender.js"
 }
