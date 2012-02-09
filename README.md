@@ -38,7 +38,7 @@ Setting up testing is easy. Clone the repo and `cd` into /backpack.js and run `n
 There are few ways you can run the specs:
 
   - `npm test` - runs `jasmine-node --color --coffee ./spec`
-  - `cake test` - runs `jasmine-node --color --coffee ./spec`
+  - `cake test` - also runs `jasmine-node --color --coffee ./spec`
   - `cake test:verbose` - runs `jasmine-node --color --verbose --coffee ./spec`
   - `jasmine-node`
 
