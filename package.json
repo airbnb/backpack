@@ -22,7 +22,7 @@
       "node": "0.6.x"
     }
   , "scripts": { 
-        "test":   "jasmine-node --color --coffee ./spec"
+        "test":   "cake test"
     }
   , "dependencies": {}
   , "devDependencies": {

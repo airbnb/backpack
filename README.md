@@ -1,4 +1,12 @@
-# Backpack.js
+    ______            _                     _      _
+    | ___ \          | |                   | |    (_)
+    | |_/ / __ _  ___| | ___ __   __ _  ___| | __  _ ___
+    | ___ \/ _` |/ __| |/ / '_ \ / _` |/ __| |/ / | / __|
+    | |_/ / (_| | (__|   <| |_) | (_| | (__|   < _| \__ \
+    \____/ \__,_|\___|_|\_\ .__/ \__,_|\___|_|\_(_) |___/
+                          | |                    _/ |
+                          |_|                   |__/
+
 ### A backpack full of UI components for your Backbone.js projects
  
 By [@hshoff](http://www.twitter.com/hshoff) & [@daveaugustine](http://www.twitter.com/daveaugustine)
