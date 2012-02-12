@@ -1,3 +1,8 @@
+Backpack = =>
+  @
+
 root = exports ? this
-root.Backpack = ->
-  console.log "Backpack RULES"
+root.Backbone ?= Backbone ?= require?("backbone")
+root.Backpack ?= Backpack ?= {}
+
+Backpack.VERSION = '0.0.1'

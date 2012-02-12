@@ -1,50 +1,75 @@
-fs            = require 'fs'
-{print}       = require 'util'
-{spawn, exec} = require 'child_process'
+{print} = require 'util'
+{exec} = require 'child_process'
 
 
-compile = (watch, callback) ->
-  if typeof watch is 'function'
-    callback = watch
-    watch = false
-  options = ['-c', '-o', 'lib', 'src']
-  options.unshift '-w' if watch
+package = "Backpack"
 
-  coffee = spawn 'coffee', options
-  coffee.stdout.on 'data', (data) -> print data.toString()
-  coffee.stderr.on 'data', (data) -> print data.toString()
-  coffee.on 'exit', (status) -> callback?() if status is 0
+src_path    = "./src"
+lib_path    = "./lib"
+js_path     = "#{lib_path}/js"
+bndl_path   = "#{lib_path}/#{package}-bundle.js"
+min_path    = "#{lib_path}/#{package}-bundle.min.js"
+nm_path     = "./node_modules"
+bin_path    = "#{nm_path}/.bin"
+
+
 
 run = (command, callback) ->
-  cmd = exec command
-  cmd.stdout.on 'data', (data) -> print data
-  cmd.stderr.on 'data', (data) -> print data
-  cmd.on 'exit', (status) -> callback?() if status is 0
-  
+  exec command, (err, stdout, stderr) ->
+    console.warn stderr if stderr
+    callback?() unless err
 
-task 'docs', 'Generate annotated source code with Docco', ->
-  fs.readdir 'src', (err, contents) ->
-    files = ("src/#{file}" for file in contents when /\.coffee$/.test file)
-    docco = spawn 'docco', files
-    docco.stdout.on 'data', (data) -> print data.toString()
-    docco.stderr.on 'data', (data) -> print data.toString()
-    docco.on 'exit', (status) -> callback?() if status is 0
+
+# ----------------------------------
+# Commands
+# ----------------------------------
+
+compile = (watch, callback) ->
+  # creates /lib/js
+  run "coffee -co #{js_path} #{src_path}", callback
+
+watchJS = (callback) ->
+  run "coffee -wco #{js_path} #{src_path}", callback
+
+watchBundle = (callback) ->
+  run "coffee -j #{bndl_path} -wco #{lib_path} #{src_path}", callback
+
+bundle = (callback) ->
+  # creates /lib/Package-bundle.js
+  run "coffee -j #{bndl_path} -co #{lib_path} #{src_path}", callback
+
+minify = (callback) ->
+  # creates /lib/Backpack-bundle.min.js
+  run "#{bin_path}/uglifyjs  -o #{min_path} #{bndl_path}", callback
+
+test = (callback) ->
+  run "mocha --require #{nm_path}/expect.js/expect.js --ui bdd", callback
+
+docs = (callback) ->
+  run "docco #{src_path}/*.coffee"
+
+
+# ----------------------------------
+# Tasks
+# ----------------------------------
 
 task 'compile', 'Compile CoffeeScript source files', ->
   compile()
 
-task 'smoosh', "Smoosh all the compiled CoffeeScripts", ->
-  run 'smoosh ./smoosh.json'
+task 'bundle', "Bundle /lib for the browser", ->
+  bundle(compile)
 
-task 'build', 'Build /lib from /src, then smoosh /src', ->
-  cb = -> run 'smoosh ./smoosh.json' 
-  compile cb
+task 'build', "Creates /lib/package-bundle.js & /lib/package-bundle.min.js", ->
+  bundle(minify)
 
-task 'watch', "Recompile CoffeeScript source files when modified", ->
-  compile true
+task 'watch:js', "Recompile CoffeeScript source files when modified to individual .js files", ->
+  watchJS()
+
+task 'watch:bundle', "Recompile CoffeeScript source files when modified to package-bundle.js", ->
+  watchBundle()
 
 task 'test', "Run tests", ->
-  run 'jasmine-node --color --coffee ./spec'
+  test()
 
-task 'test:verbose', "Run tests", ->
-  run 'jasmine-node --color --verbose --coffee ./spec'
+task 'docs', 'Generate annotated source code with Docco', ->
+  docs()

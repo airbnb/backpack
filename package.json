@@ -1,5 +1,6 @@
 {
-    "name":         "Backpack"
+    "private":  true
+  , "name":         "Backpack"
   , "description":  "A backpack full of UI components for your Backbone.js projects"
   , "version":      "0.0.1"
   , "main":         "./Backpack-bundle"
@@ -19,16 +20,21 @@
       , "url":  "https://github.com/airbnb/backpack.js.git"
     }
   , "engine": { 
-      "node": "0.6.x"
+      "node": ">=0.6"
     }
   , "scripts": { 
         "test":   "cake test"
     }
-  , "dependencies": {}
+  , "dependencies": {
+      "jquery":         "*"
+    , "underscore":     "*"
+    , "backbone":       "*"
+  }
   , "devDependencies": {
-        "smoosh":         "0.3.x"
-      , "coffee-script":  "1.2.x"
-      , "jasmine-node":   "1.0.x"
+        "coffee-script":  "1.2.x"
+      , "mocha":          "*"
+      , "expect.js":      "*"
+      , "uglify-js":      "*"
     }
   , "ender": "./ender.js"
 }
