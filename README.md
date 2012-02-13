@@ -13,55 +13,38 @@ By [@hshoff](http://www.twitter.com/hshoff) & [@daveaugustine](http://www.twitte
 
 ## Work in Progress.
 
-1. Tabs
-1. Menus
-1. Forms
-1. Modals
-1. Dialogs
-1. Alerts
-1. Pagination
-1. Infinite Scroll
-1. Responsive
+- Tabs
+- Menus
+- Forms
+- Modals
+- Dialogs
+- Alerts
+- Pagination
+- Infinite Scroll
+- Responsive
 
 ## Development
+
+### Quick Start
+
+1. `git clone git@github.com:airbnb/backpack.js.git`
+1. `cd backpack.js`
+1. `npm install`
 
 ### Cake Build Tools
 
 The Cakefile defines the following tasks:
 
-    cake docs                 # Generate annotated source code with Docco
-    cake compile              # Compile CoffeeScript source files
-    cake smoosh               # Smoosh all the compiled CoffeeScripts
-    cake build                # Build /lib from /src. Then creates Backpack-bundle.js & Backpack-bundle.min.js.
-    cake watch                # Recompile CoffeeScript source files when modified
-    cake test                 # Run tests
-    cake test:verbose         # Run tests with verbose flag
+    cake compile          # Compile CoffeeScript source files
+    cake bundle           # Creates /lib_path/Backpack-bundle.js & /lib_path/js/*.js
+    cake build            # Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js
+    cake watch:js         # Recompile CoffeeScript source files when modified to individual .js files
+    cake watch:bundle     # Recompile CoffeeScript source files when modified to Backage-bundle.js
+    cake test             # Run tests
+    cake docs             # Generate annotated source code with Docco
 
 ### Testing
 
-Backpack.js tests are written using [Jasmine](https://github.com/pivotal/jasmine). We use the lovely [jasmine-node](https://github.com/mhevery/jasmine-node). 
+Backpack.js tests are written using [Mocha](https://github.com/visionmedia/mocha) with [expect.js](https://github.com/LearnBoost/expect.js).
 
-Setting up testing is easy. Clone the repo and `cd` into /backpack.js and run `npm install` to install all the dependencies. You can find the list of dependencies in the _package.json_ file.
-
-There are few ways you can run the specs:
-
-  - `npm test` - runs `jasmine-node --color --coffee ./spec`
-  - `cake test` - also runs `jasmine-node --color --coffee ./spec`
-  - `cake test:verbose` - runs `jasmine-node --color --verbose --coffee ./spec`
-  - `jasmine-node`
-
-          USAGE: jasmine-node [--color|--noColor] [--verbose] [--coffee] directory
-
-          Options:
-            - --autotest         - rerun automatically the specs when a file changes
-            - --color            - use color coding for output
-            - --noColor          - do not use color coding for output
-            - -m, --match REGEXP - load only specs containing "REGEXPspec"
-            - --verbose          - print extra information per each test run
-            - --coffee           - load coffee-script which allows execution .coffee files
-            - --junitreport      - export tests results as junitreport xml format
-            - --teamcity         - converts all console output to teamcity custom test runner commands.
-            - --runWithRequireJs - loads all specs using requirejs instead of node's native require method
-            - --test-dir         - the absolute root directory path where tests are located
-            - --nohelpers        - does not load helpers.
-            - -h, --help         - display this help and exit
+You can run the test suite with `cake test` and edit the options you pass to mocha in `./test/mocha.opts`.
