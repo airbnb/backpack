@@ -1,5 +1,5 @@
 {print} = require 'util'
-{exec} = require 'child_process'
+{exec}  = require 'child_process'
 
 
 package = "Backpack"
@@ -15,38 +15,43 @@ bin_path    = "#{nm_path}/.bin"
 
 
 run = (command, callback) ->
-  exec command, (err, stdout, stderr) ->
-    console.warn stderr if stderr
-    callback?() unless err
-
+  # executes a command and runs a callback when it's done,
+  # prints out info while it's doing so
+  proc = exec command
+  proc.stdout.on 'data', (data) -> print data.toString()
+  proc.stderr.on 'data', (data) -> print data.toString()
+  proc.on 'exit', (status) -> callback?() if status is 0
 
 # ----------------------------------
 # Commands
 # ----------------------------------
 
 compile = (watch, callback) ->
-  # creates /lib/js
-  run "coffee -co #{js_path} #{src_path}", callback
+  # creates /lib_path/js
+  run "#{bin_path}/coffee -co #{js_path} #{src_path}", callback
 
 watchJS = (callback) ->
-  run "coffee -wco #{js_path} #{src_path}", callback
+  # recompiles /src_path to individual JavaScript files in /lib_path/js
+  run "#{bin_path}/coffee -wco #{js_path} #{src_path}", callback
 
 watchBundle = (callback) ->
-  run "coffee -j #{bndl_path} -wco #{lib_path} #{src_path}", callback
+  # recompiles and joins /src_path to /lib_path
+  run "#{bin_path}/coffee -j #{bndl_path} -wco #{lib_path} #{src_path}", callback
 
 bundle = (callback) ->
-  # creates /lib/Package-bundle.js
-  run "coffee -j #{bndl_path} -co #{lib_path} #{src_path}", callback
+  # creates /lib_path/Backpack-bundle.js
+  run "#{bin_path}/coffee -j #{bndl_path} -co #{lib_path} #{src_path}", callback
 
 minify = (callback) ->
-  # creates /lib/Backpack-bundle.min.js
+  # creates /lib_path/Backpack-bundle.min.js
   run "#{bin_path}/uglifyjs  -o #{min_path} #{bndl_path}", callback
 
 test = (callback) ->
-  run "mocha --require #{nm_path}/expect.js/expect.js --ui bdd", callback
+  # use ./test/mocha.opts for options
+  run "#{bin_path}/mocha", callback
 
 docs = (callback) ->
-  run "docco #{src_path}/*.coffee"
+  run "#{bin_path}/docco #{src_path}/*.coffee"
 
 
 # ----------------------------------
@@ -56,20 +61,20 @@ docs = (callback) ->
 task 'compile', 'Compile CoffeeScript source files', ->
   compile()
 
-task 'bundle', "Bundle /lib for the browser", ->
+task 'bundle', "Creates /lib_path/Backpack-bundle.js & /lib_path/js/*.js", ->
   bundle(compile)
 
-task 'build', "Creates /lib/package-bundle.js & /lib/package-bundle.min.js", ->
+task 'build', "Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js", ->
   bundle(minify)
 
 task 'watch:js', "Recompile CoffeeScript source files when modified to individual .js files", ->
   watchJS()
 
-task 'watch:bundle', "Recompile CoffeeScript source files when modified to package-bundle.js", ->
+task 'watch:bundle', "Recompile CoffeeScript source files when modified to Backage-bundle.js", ->
   watchBundle()
 
 task 'test', "Run tests", ->
-  test()
+  bundle(test)
 
 task 'docs', 'Generate annotated source code with Docco', ->
   docs()
