@@ -1,11 +1,15 @@
 # **Backpack.Menu** This is documentation 
 
+{Backpack, Backbone} = require?('./Backpack')
+
 class Backpack.Menu extends Backbone.View
 
-  # fill in a ul
   tagName: 'ul'
 
-  # let's you know what's up!!!!!
   initialize: ->
-    console.log 'new Backpack.Menu'
+    console.log 'new Menu'
+    @items = {}
+
+  render: =>
+    # console.log @items, @$el
     @

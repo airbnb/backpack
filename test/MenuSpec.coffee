@@ -1,13 +1,13 @@
 expect = require "expect.js"
-Backpack = require "../src/Backpack"
 
+Backpack = {}
+Backpack.Menu = require "../src/Backpack.Menu"
 
 
 describe "Backpack.Menu", ->
 
-  beforeEach =>
-    # console.log Backpack.Menu?
-
-  describe "Mocha Test", ->
-    it "should identify numbers", ->
-      expect([]).to.be.a('array')
+  describe "#initialize", ->
+    it "should have zero items", ->
+      menu = new Backpack.Menu
+      console.log menu
+      expect(menu).to.eql({})

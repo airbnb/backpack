@@ -1,13 +1,7 @@
 root = exports ? this
-root.Backbone ?= Backbone ?= require?("backbone")
+root.Backbone ?= require?("backbone")
 
+Backpack = 
+    VERSION: '0.0.1'
 
-Backpack = =>
-  version = '0.0.1'
-
-  return {
-    VERSION: version
-  }
-
-
-root.Backpack ?= Backpack 
+root.Backpack = Backpack
