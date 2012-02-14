@@ -1,14 +1,28 @@
 <!DOCTYPE HTML>
 <html lang="en-us">
-<head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <title>Backpack.js</title>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="./node_modules/underscore/underscore-min.js" type="text/javascript"></script>
-  <script src="./node_modules/backbone/backbone-min.js" type="text/javascript"></script>
-  <script src="./lib/Backpack-bundle.min.js" type="text/javascript"></script>
-</head>
-<body>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Backpack.js</title>
+    <link rel=StyleSheet href="./lib/css/Backpack.css" type="text/css" media=screen>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="./node_modules/underscore/underscore-min.js" type="text/javascript"></script>
+    <script src="./node_modules/backbone/backbone-min.js" type="text/javascript"></script>
+    <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
+  </head>
+  <body class='bp'>
 
-</body>
+    <script>
+      $(function(){
+
+        var navigation = new Backpack.Menu('nav');
+
+        navigation.add('Home')
+                  .add('About')
+                  .add('Download')
+                  .add('Github', function(){ window.location = 'https://github.com/airbnb/backpack.js' })
+                  .render();
+
+      });
+    </script>
+  </body>
 </html>

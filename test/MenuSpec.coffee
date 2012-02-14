@@ -1,13 +1,10 @@
-expect = require "expect.js"
+expect        = require "expect.js"
+Backpack      = {}
+Menu = require "../lib/Backpack-bundle"
 
-Backpack = {}
-Backpack.Menu = require "../src/Backpack.Menu"
 
+describe "Backpack.Menu", =>
 
-describe "Backpack.Menu", ->
-
-  describe "#initialize", ->
-    it "should have zero items", ->
-      menu = new Backpack.Menu
-      console.log menu
-      expect(menu).to.eql({})
+  describe "#initialize", =>
+    it "should have zero items", =>
+      menu = new Menu
