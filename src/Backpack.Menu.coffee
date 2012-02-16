@@ -42,7 +42,7 @@ class Backpack.MenuItem extends Backbone.View
 
   tagName:    'li'
   className:  'backpack-menu-item'
-  template:   _.template  "<a href='<%= href %>'><%= html %></a>"
+  template:   _.template  "<a href='<%= href %>'><%= content %></a>"
 
   events: {}
 
@@ -68,14 +68,14 @@ class Backpack.MenuItem extends Backbone.View
       @content = content.el
       return @
     if _.isString events
-      @content = @template {'href': events, 'html': content}
+      @content = @template { href: events, content: content }
       return @
     if _.isFunction events
       @events  = {'click': events}
-      @content = @template {href: 'javascript:void(0);', html: content}
+      @content = @template { href: 'javascript:void(0);', content: content }
       return @
       
     @events  = events
-    @content = @template {href: 'javascript:void(0);', html: content}
+    @content = @template { href: 'javascript:void(0);', content: content }
 
     @

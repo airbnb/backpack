@@ -10,16 +10,22 @@
     <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
   </head>
   <body class='backpack' style='width: 960px; margin: 30px auto 0;'>
-    
-    <h3>Backpack.Menu &amp; Backpack.MenuItem</h3>
+
+    <h2>Backpack Demo</h2><br/>
     <div id='menu'></div>
+
+
+
 
     <script>
       $(function(){
 
+        // ------------------------------------
+        //  Backpack.Menu & Backpack.MenuItem
+        // ------------------------------------
         var navigation = new Backpack.Menu('#menu'),
-                github = new Backpack.MenuItem('Download on Github', "http://github.com", 'github'),
-                 alert = new Backpack.MenuItem("Events <div class='target' style='height: 3px;background:grey;'></div>",  
+                github = new Backpack.MenuItem("Download on Github<div class='target' style='height: 3px;background:grey;'></div>", "http://github.com", 'github'),
+                 alert = new Backpack.MenuItem("Events Object",  
                                                 {
                                                   "click": function(){
                                                     console.log('click');
@@ -29,14 +35,34 @@
                                                   }
                                                 }
                                               );
-        navigation.add("Home")
-                  .add("About Us", '#about')
-                  .add("<span class='bold'>Airbnb</span>", "http://www.airbnb.com")
-                  .add('Clicks', function(){ console.log('click event') })
-                  .add(github)
-                  .add(alert)
-                  .render();
+        // navigation.add("Home")
+        //           .add("About Us", '#about')
+        //           .add("<span class='bold'>Airbnb</span>", "http://www.airbnb.com")
+        //           .add('Clicks', function(){ console.log('click event') })
+        //           .add(github)
+        //           .add(alert)
+        //           .render();
         
+
+
+        // ------------------------------------
+        //  Backpack.Overlay
+        // ------------------------------------
+        var overlay = Backpack.Overlay.getInstance().render().hide();
+        navigation.add('Overlay', function(){ overlay.setLock(false).show() }).render();
+
+
+        // ------------------------------------
+        //  Backpack.Dialog
+        // ------------------------------------
+        navigation.add('Dialog', function(){ new Backpack.Dialog({ content: "Dialog" }).render().show() }).render()
+
+        // ------------------------------------
+        //  Backpack.Modal
+        // ------------------------------------
+        var modal = new Backpack.Modal({ content: "This is a Modal" }).render().hide();
+        navigation.add("Modal", function(){ modal.show() })
+
       });
     </script>
   </body>

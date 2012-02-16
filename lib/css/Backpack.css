@@ -4,6 +4,17 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
+.backpack .hide {
+  opacity: 0;
+  display: none;
+  pointer-events: none;
+}
+
+/* --------------------
+ * Backpack.Menu
+ * Backpack.MenuItem
+ * --------------------
+ */
 .backpack-menu {
   display: block;
   overflow: hidden;
@@ -12,7 +23,7 @@
   background: #FEFEFE;
   display: block;
   text-align: center;
-  border: 1px solid #eee;
+  border: 1px solid #EEE;
 }
 
 .backpack-menu li, .backpack-menu-item {
@@ -24,7 +35,7 @@
   display: inline-block;
   padding: 15px 25px;
   text-decoration: none;
-  border-right: 1px solid #eee;
+  border-right: 1px solid #EEE;
   color: #999;
 }
 
@@ -34,4 +45,44 @@
 
 .backpack-menu li a:hover {
   text-decoration: underline;
+}
+
+
+
+/* --------------------
+ * Backpack.Dialog
+ * Backpack.Modal
+ * --------------------
+ */
+.backpack-dialog, .backpack-modal {
+  z-index: 2;
+  position: relative;
+  min-width: 50px;
+  max-width: 450px;
+  padding: 20px;
+  margin: 15px auto;
+  border: 1px solid #DDD;
+  background-color: #FFF;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.backpack-modal {}
+
+
+/* --------------------
+ * Backpack.Overlay
+ * --------------------
+ */
+#backpack-overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
