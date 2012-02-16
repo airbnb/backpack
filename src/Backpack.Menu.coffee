@@ -1,60 +1,67 @@
-# **Backpack.Menu** 
+# ## Backpack.Menu
 
 class Backpack.Menu extends Backbone.View 
 
   tagName:    'ul'
-  className:  'bp-menu'
+  className:  'backpack-menu'
 
-  initialize: ->
-    @items    = {}
-    @observer  = new Backpack.Observer
+  initialize: (parent = 'body', className = '') ->
+    @setParent parent
+    @addClass className
     @
-
+  
   render: =>
-    @$el.appendTo 'body'
+    @$el.appendTo @parent
     @
+  
+  add: (content = '', options = {}) =>
+    if content.el?
+      menuItem = content
+    else 
+      menuItem = new Backpack.MenuItem content, options
 
-  add: (name, fn) =>
-    menuItem = new Backpack.MenuItem @observer, name, fn
     @$el.append menuItem.render().el
-    @items[name] = menuItem
+    @
+  
+  setParent: (parent) =>
+    @parent = $(parent)
+    @
+
+  addClass: (className) =>
+    @$el.addClass className
     @
 
 
 
-# **Backpack.MenuItem** 
+# **Backpack.MenuItem**
 
 class Backpack.MenuItem extends Backbone.View
 
   tagName:    'li'
-  className:  'bp-menuItem'
-  template:   _.template """
-                            <a href='javascript:void(0);'> <%= name %> </a> 
-                         """
-  events:
-    'click':  'handleClick'
-    'hover':  'handleHover'
+  className:  'backpack-menu-item'
+  events:     {}
 
-  initialize: (@observer, @name, @fn) ->
-    @$el.addClass @slug @name
-
-  render: =>
-    @$el.html @template {name: @name}
+  initialize: (content = '', options = {}) ->
+    {name, @events} = options
+    @setContent content
+    @delegateEvents @events
+    @$el.addClass @slug name
     @
 
-  handleClick: (e) =>
-    e.preventDefault()
-    e.stopPropagation()
-    @observer.publish "menu:#{@name}:click"
-    @fn?()
+  render: =>
+    @$el.html @content
+    @
 
-  handleHover: (e) =>
-    e.preventDefault()
-    e.stopPropagation()
-    @observer.publish "menu:#{@name}:hover"
+  setContent: (content = '') =>
+    if content.el?
+      @content = content.render().el
+    else
+      @content = $(content)
+    @
+
+  addClass: (className) =>
+    @$el.addClass className
+    @
 
   slug: (string) =>
-    string
-      .toLowerCase()
-      .replace(/\ +/g, "-")
-      .replace(/[^a-z0-9-]/g, "")
+    Backpack.Helpers.slug string

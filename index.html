@@ -5,23 +5,59 @@
     <title>Backpack.js</title>
     <link rel=StyleSheet href="./lib/css/Backpack.css" type="text/css" media=screen>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="./node_modules/underscore/underscore-min.js" type="text/javascript"></script>
-    <script src="./node_modules/backbone/backbone-min.js" type="text/javascript"></script>
+    <script src="./vendor/underscore.js" type="text/javascript"></script>
+    <script src="./vendor/backbone.js" type="text/javascript"></script>
     <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
   </head>
-  <body class='bp'>
+  <body class='backpack'>
+
+    <div id='nav' style='display:block; width: 960px; margin: 30px auto 0;'></div>
 
     <script>
       $(function(){
 
-        var navigation = new Backpack.Menu('nav');
+        var navigation = new Backpack.Menu('#nav', 'main-navigation'),
+                github = new Backpack.MenuItem(
+                                "<a href='javascript:void(0);'>Download on Github</a>",
+                                { 
+                                  "name": "Download on Github",
+                                  "events": 
+                                    {
+                                      "click": function() {
+                                        window.location = 'http://www.airbnb.com';
+                                      }
+                                    }
+                                }
+                              );
 
-        navigation.add('Home')
-                  .add('About')
-                  .add('Download')
-                  .add('Github', function(){ window.location = 'https://github.com/airbnb/backpack.js' })
+        navigation.add( 
+                        "<a href='javascript:void(0);'>Home</a>",
+                        {
+                          "name": "Home",
+                          "events": 
+                            {
+                              "click": 
+                                  function(){
+                                    alert('Home was clicked'); 
+                                  },
+                              "mouseenter": 
+                                  function() {
+                                    console.log('Home mouseenter');
+                                  },
+                              "mouseleave":
+                                  function() {
+                                    console.log('Home mouseleave');
+                                  }
+                            }
+                        }
+                      )
                   .render();
 
+        navigation.add(github)
+                  .add("<a>New Stuff</a>")
+                  .add("<a href='http://github.com'>Andrew</a>")
+                  .render();
+        
       });
     </script>
   </body>

@@ -1,33 +1,33 @@
-.bp {
+.backpack {
   margin: 0;
   padding: 0;
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.bp-menu {
+.backpack-menu {
   display: block;
   overflow: hidden;
   margin: 0;
   padding: 0;
-  background: white;
+  background: #FEFEFE;
   display: block;
   text-align: center;
   border: 1px solid #eee;
 }
 
-.bp-menu li {
+.backpack-menu li, .backpack-menu-item {
   float: left;
   list-style: none;
 }
 
-.bp-menu li a {
+.backpack-menu li a {
   display: inline-block;
   padding: 15px 25px;
   text-decoration: none;
   border-right: 1px solid #eee;
-  color: #666;
+  color: #999;
 }
 
-.bp-menu li a:hover {
+.backpack-menu li a:hover {
   text-decoration: underline;
 }
