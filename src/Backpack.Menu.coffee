@@ -5,63 +5,77 @@ class Backpack.Menu extends Backbone.View
   tagName:    'ul'
   className:  'backpack-menu'
 
-  initialize: (parent = 'body', className = '') ->
+  initialize: (parent = 'body', name = '') ->
     @setParent parent
-    @addClass className
+    @addClass name
     @
   
   render: =>
     @$el.appendTo @parent
     @
-  
-  add: (content = '', options = {}) =>
-    if content.el?
-      menuItem = content
-    else 
-      menuItem = new Backpack.MenuItem content, options
 
-    @$el.append menuItem.render().el
-    @
-  
   setParent: (parent) =>
     @parent = $(parent)
     @
 
-  addClass: (className) =>
-    @$el.addClass className
+  addClass: (name = '') =>
+    @$el.addClass @slug name
+    @
+  
+  slug: (string = '') =>
+    Backpack.Helpers.slug string
+
+  add: (content = '', events = {}, name) =>
+    if content.el?
+      menuItem = content
+    else
+      menuItem = new Backpack.MenuItem content, events, name
+
+    @$el.append menuItem.render().el
     @
 
 
 
-# **Backpack.MenuItem**
+# ## Backpack.MenuItem
 
 class Backpack.MenuItem extends Backbone.View
 
   tagName:    'li'
   className:  'backpack-menu-item'
-  events:     {}
+  template:   _.template  "<a href='<%= href %>'><%= html %></a>"
 
-  initialize: (content = '', options = {}) ->
-    {name, @events} = options
-    @setContent content
+  events: {}
+
+  initialize: (content = '', events = {}, name = '') ->
+    @setContent content, events
     @delegateEvents @events
-    @$el.addClass @slug name
+    @addClass name 
     @
 
   render: =>
     @$el.html @content
     @
-
-  setContent: (content = '') =>
-    if content.el?
-      @content = content.render().el
-    else
-      @content = $(content)
+  
+  addClass: (name = '') =>
+    @$el.addClass @slug name
     @
-
-  addClass: (className) =>
-    @$el.addClass className
-    @
-
-  slug: (string) =>
+  
+  slug: (string = '') =>
     Backpack.Helpers.slug string
+
+  setContent: (content = '', events = {}) =>
+    if content.el?
+      @content = content.el
+      return @
+    if _.isString events
+      @content = @template {'href': events, 'html': content}
+      return @
+    if _.isFunction events
+      @events  = {'click': events}
+      @content = @template {href: 'javascript:void(0);', html: content}
+      return @
+      
+    @events  = events
+    @content = @template {href: 'javascript:void(0);', html: content}
+
+    @

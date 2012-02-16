@@ -28,6 +28,10 @@
   color: #999;
 }
 
+.backpack-menu li:last-child a {
+  border-right: none;
+}
+
 .backpack-menu li a:hover {
   text-decoration: underline;
 }

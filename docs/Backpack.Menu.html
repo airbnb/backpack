@@ -3,59 +3,73 @@
   <span class="nv">tagName: </span>   <span class="s">&#39;ul&#39;</span>
   <span class="nv">className: </span> <span class="s">&#39;backpack-menu&#39;</span>
 
-  <span class="nv">initialize: </span><span class="nf">(parent = &#39;body&#39;, className = &#39;&#39;) -&gt;</span>
+  <span class="nv">initialize: </span><span class="nf">(parent = &#39;body&#39;, name = &#39;&#39;) -&gt;</span>
     <span class="nx">@setParent</span> <span class="nx">parent</span>
-    <span class="nx">@addClass</span> <span class="nx">className</span>
+    <span class="nx">@addClass</span> <span class="nx">name</span>
     <span class="nx">@</span>
   
   <span class="nv">render: </span><span class="o">=&gt;</span>
     <span class="nx">@$el</span><span class="p">.</span><span class="nx">appendTo</span> <span class="nx">@parent</span>
     <span class="nx">@</span>
-  
-  <span class="nv">add: </span><span class="p">(</span><span class="nv">content = </span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="nv">options = </span><span class="p">{})</span> <span class="o">=&gt;</span>
-    <span class="k">if</span> <span class="nx">content</span><span class="p">.</span><span class="nx">el</span><span class="o">?</span>
-      <span class="nv">menuItem = </span><span class="nx">content</span>
-    <span class="k">else</span> 
-      <span class="nv">menuItem = </span><span class="k">new</span> <span class="nx">Backpack</span><span class="p">.</span><span class="nx">MenuItem</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">options</span>
 
-    <span class="nx">@$el</span><span class="p">.</span><span class="nx">append</span> <span class="nx">menuItem</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span>
-    <span class="nx">@</span>
-  
   <span class="nv">setParent: </span><span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="o">=&gt;</span>
     <span class="vi">@parent = </span><span class="nx">$</span><span class="p">(</span><span class="nx">parent</span><span class="p">)</span>
     <span class="nx">@</span>
 
-  <span class="nv">addClass: </span><span class="p">(</span><span class="nx">className</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="nx">@$el</span><span class="p">.</span><span class="nx">addClass</span> <span class="nx">className</span>
-    <span class="nx">@</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p><strong>Backpack.MenuItem</strong></p>             </td>             <td class="code">               <div class="highlight"><pre><span class="k">class</span> <span class="nx">Backpack</span><span class="p">.</span><span class="nx">MenuItem</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span>
+  <span class="nv">addClass: </span><span class="p">(</span><span class="nv">name = </span><span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">@$el</span><span class="p">.</span><span class="nx">addClass</span> <span class="nx">@slug</span> <span class="nx">name</span>
+    <span class="nx">@</span>
+  
+  <span class="nv">slug: </span><span class="p">(</span><span class="nv">string = </span><span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">Backpack</span><span class="p">.</span><span class="nx">Helpers</span><span class="p">.</span><span class="nx">slug</span> <span class="nx">string</span>
+
+  <span class="nv">add: </span><span class="p">(</span><span class="nv">content = </span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="nv">events = </span><span class="p">{},</span> <span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="k">if</span> <span class="nx">content</span><span class="p">.</span><span class="nx">el</span><span class="o">?</span>
+      <span class="nv">menuItem = </span><span class="nx">content</span>
+    <span class="k">else</span>
+      <span class="nv">menuItem = </span><span class="k">new</span> <span class="nx">Backpack</span><span class="p">.</span><span class="nx">MenuItem</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">events</span><span class="p">,</span> <span class="nx">name</span>
+
+    <span class="nx">@$el</span><span class="p">.</span><span class="nx">append</span> <span class="nx">menuItem</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span>
+    <span class="nx">@</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h2>Backpack.MenuItem</h2>             </td>             <td class="code">               <div class="highlight"><pre><span class="k">class</span> <span class="nx">Backpack</span><span class="p">.</span><span class="nx">MenuItem</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span>
 
   <span class="nv">tagName: </span>   <span class="s">&#39;li&#39;</span>
   <span class="nv">className: </span> <span class="s">&#39;backpack-menu-item&#39;</span>
-  <span class="nv">events: </span>    <span class="p">{}</span>
+  <span class="nv">template: </span>  <span class="nx">_</span><span class="p">.</span><span class="nx">template</span>  <span class="s">&quot;&lt;a href=&#39;&lt;%= href %&gt;&#39;&gt;&lt;%= html %&gt;&lt;/a&gt;&quot;</span>
 
-  <span class="nv">initialize: </span><span class="nf">(content = &#39;&#39;, options = {}) -&gt;</span>
-    <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">@events</span><span class="p">}</span> <span class="o">=</span> <span class="nx">options</span>
-    <span class="nx">@setContent</span> <span class="nx">content</span>
+  <span class="nv">events: </span><span class="p">{}</span>
+
+  <span class="nv">initialize: </span><span class="nf">(content = &#39;&#39;, events = {}, name = &#39;&#39;) -&gt;</span>
+    <span class="nx">@setContent</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">events</span>
     <span class="nx">@delegateEvents</span> <span class="nx">@events</span>
-    <span class="nx">@$el</span><span class="p">.</span><span class="nx">addClass</span> <span class="nx">@slug</span> <span class="nx">name</span>
+    <span class="nx">@addClass</span> <span class="nx">name</span> 
     <span class="nx">@</span>
 
   <span class="nv">render: </span><span class="o">=&gt;</span>
     <span class="nx">@$el</span><span class="p">.</span><span class="nx">html</span> <span class="nx">@content</span>
     <span class="nx">@</span>
-
-  <span class="nv">setContent: </span><span class="p">(</span><span class="nv">content = </span><span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="k">if</span> <span class="nx">content</span><span class="p">.</span><span class="nx">el</span><span class="o">?</span>
-      <span class="vi">@content = </span><span class="nx">content</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span>
-    <span class="k">else</span>
-      <span class="vi">@content = </span><span class="nx">$</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
+  
+  <span class="nv">addClass: </span><span class="p">(</span><span class="nv">name = </span><span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">@$el</span><span class="p">.</span><span class="nx">addClass</span> <span class="nx">@slug</span> <span class="nx">name</span>
     <span class="nx">@</span>
-
-  <span class="nv">addClass: </span><span class="p">(</span><span class="nx">className</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="nx">@$el</span><span class="p">.</span><span class="nx">addClass</span> <span class="nx">className</span>
-    <span class="nx">@</span>
-
-  <span class="nv">slug: </span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span>
+  
+  <span class="nv">slug: </span><span class="p">(</span><span class="nv">string = </span><span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">=&gt;</span>
     <span class="nx">Backpack</span><span class="p">.</span><span class="nx">Helpers</span><span class="p">.</span><span class="nx">slug</span> <span class="nx">string</span>
+
+  <span class="nv">setContent: </span><span class="p">(</span><span class="nv">content = </span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="nv">events = </span><span class="p">{})</span> <span class="o">=&gt;</span>
+    <span class="k">if</span> <span class="nx">content</span><span class="p">.</span><span class="nx">el</span><span class="o">?</span>
+      <span class="vi">@content = </span><span class="nx">content</span><span class="p">.</span><span class="nx">el</span>
+      <span class="k">return</span> <span class="nx">@</span>
+    <span class="k">if</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isString</span> <span class="nx">events</span>
+      <span class="vi">@content = </span><span class="nx">@template</span> <span class="p">{</span><span class="s">&#39;href&#39;</span><span class="o">:</span> <span class="nx">events</span><span class="p">,</span> <span class="s">&#39;html&#39;</span><span class="o">:</span> <span class="nx">content</span><span class="p">}</span>
+      <span class="k">return</span> <span class="nx">@</span>
+    <span class="k">if</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isFunction</span> <span class="nx">events</span>
+      <span class="vi">@events  = </span><span class="p">{</span><span class="s">&#39;click&#39;</span><span class="o">:</span> <span class="nx">events</span><span class="p">}</span>
+      <span class="vi">@content = </span><span class="nx">@template</span> <span class="p">{</span><span class="nv">href: </span><span class="s">&#39;javascript:void(0);&#39;</span><span class="p">,</span> <span class="nv">html: </span><span class="nx">content</span><span class="p">}</span>
+      <span class="k">return</span> <span class="nx">@</span>
+      
+    <span class="vi">@events  = </span><span class="nx">events</span>
+    <span class="vi">@content = </span><span class="nx">@template</span> <span class="p">{</span><span class="nv">href: </span><span class="s">&#39;javascript:void(0);&#39;</span><span class="p">,</span> <span class="nv">html: </span><span class="nx">content</span><span class="p">}</span>
+
+    <span class="nx">@</span>
 
 </pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
