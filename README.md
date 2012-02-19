@@ -28,8 +28,7 @@ By [@hshoff](http://www.twitter.com/hshoff) & [@daveaugustine](http://www.twitte
 ### Quick Start
 
 1. `git clone git@github.com:airbnb/backpack.js.git`
-1. `cd backpack.js`
-1. `npm install`
+1. `cd backpack.js && npm install`
 
 ### Cake Build Tools
 
@@ -45,6 +44,6 @@ The Cakefile defines the following tasks:
 
 ### Testing
 
-Backpack.js tests are written using [Mocha](https://github.com/visionmedia/mocha) with [expect.js](https://github.com/LearnBoost/expect.js).
+Backpack.js tests are written using [jasmine](http://pivotal.github.com/jasmine/) with [sinon.js](https://github.com/cjohansen/Sinon.JS) and [jasmine-sinon](https://github.com/froots/jasmine-sinon).
 
-You can run the test suite with `cake test` and edit the options you pass to mocha in `./test/mocha.opts`.
+You can run the test suite with `cake test`.
