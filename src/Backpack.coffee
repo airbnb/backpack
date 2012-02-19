@@ -1,12 +1,7 @@
+# support server + browser
 root = exports ? this
 
-Backpack = 
+Backpack = root.Backpack = 
+    # Current version of Backpack.js
+    # keep in sync with `package.json`
     VERSION: '0.0.1'
-
-    Helpers: 
-      slug: (string = "") ->
-              string.toLowerCase()
-                .replace(/\ +/g, "-")
-                .replace(/[^a-z0-9-]/g, "")
-
-root.Backpack = Backpack

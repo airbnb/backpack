@@ -1,29 +1,15 @@
 # ## Backpack.Menu
 
-class Backpack.Menu extends Backbone.View 
+class Backpack.Menu extends Backpack.Component
 
   tagName:    'ul'
-  className:  'backpack-menu'
 
-  initialize: (parent = 'body', name = '') ->
+  initialize: ->
+    {name, parent} = @options
+    @addClass 'backpack-menu'
     @setParent parent
     @addClass name
     @
-  
-  render: =>
-    @$el.appendTo @parent
-    @
-
-  setParent: (parent) =>
-    @parent = $(parent)
-    @
-
-  addClass: (name = '') =>
-    @$el.addClass @slug name
-    @
-  
-  slug: (string = '') =>
-    Backpack.Helpers.slug string
 
   add: (content = '', events = {}, name) =>
     if content.el?
@@ -38,15 +24,15 @@ class Backpack.Menu extends Backbone.View
 
 # ## Backpack.MenuItem
 
-class Backpack.MenuItem extends Backbone.View
+class Backpack.MenuItem extends Backpack.Component
 
   tagName:    'li'
-  className:  'backpack-menu-item'
   template:   _.template  "<a href='<%= href %>'><%= content %></a>"
 
   events: {}
 
   initialize: (content = '', events = {}, name = '') ->
+    @addClass 'backpack-menu-item'
     @setContent content, events
     @delegateEvents @events
     @addClass name 
@@ -55,13 +41,6 @@ class Backpack.MenuItem extends Backbone.View
   render: =>
     @$el.html @content
     @
-  
-  addClass: (name = '') =>
-    @$el.addClass @slug name
-    @
-  
-  slug: (string = '') =>
-    Backpack.Helpers.slug string
 
   setContent: (content = '', events = {}) =>
     if content.el?

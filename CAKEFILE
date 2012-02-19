@@ -6,6 +6,7 @@ package = "Backpack"
 
 src_path    = "./src"
 lib_path    = "./lib"
+spec_path   = "./specs"
 js_path     = "#{lib_path}/js"
 bndl_path   = "#{lib_path}/#{package}-bundle.js"
 min_path    = "#{lib_path}/#{package}-bundle.min.js"
@@ -38,6 +39,10 @@ watchBundle = (callback) ->
   # recompiles and joins /src_path to /lib_path
   run "#{bin_path}/coffee -j #{bndl_path} -wco #{lib_path} #{src_path}", callback
 
+watchTest = (callback) ->
+  # use ./test/mocha.opts for options
+  run "#{bin_path}/jasmine-node --autotest --color --coffee #{spec_path}", callback
+
 bundle = (callback) ->
   # creates /lib_path/Backpack-bundle.js
   run "#{bin_path}/coffee -j #{bndl_path} -co #{lib_path} #{src_path}", callback
@@ -48,7 +53,7 @@ minify = (callback) ->
 
 test = (callback) ->
   # use ./test/mocha.opts for options
-  run "#{bin_path}/mocha", callback
+  run "#{bin_path}/jasmine-node --coffee #{spec_path}", callback
 
 docs = (callback) ->
   run "#{bin_path}/docco #{src_path}/*.coffee"

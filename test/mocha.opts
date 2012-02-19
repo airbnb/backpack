@@ -1,4 +1,0 @@
---require expect.js colors
---reporter dot
---ui bdd
---colors

@@ -8,6 +8,23 @@
   opacity: 0;
   display: none;
   pointer-events: none;
+  filter: alpha(opacity=0);
+}
+
+.backpack .press {
+  border-top: 1px solid rgba(128,128,128,0.2);
+  border-right: 1px solid rgba(128,128,128,0.3);
+  border-left: 1px solid rgba(128,128,128,0.3);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  background:-webkit-gradient(linear,center top,center bottom,from(#FEFEFE),to(#F0F0F0));
+  background:-moz-linear-gradient(top,#FEFEFE,#F0F0F0);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FEFEFE',endColorstr='#F0F0F0',GradientType=0);
+}
+
+.backpack-component {
+  -webkit-box-sizing: border-box; 
+     -moz-box-sizing: border-box; 
+          box-sizing: border-box;
 }
 
 /* --------------------
@@ -16,14 +33,16 @@
  * --------------------
  */
 .backpack-menu {
+  padding: 0;
+  margin: 10px 0;
   display: block;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
-  background: #FEFEFE;
-  display: block;
   text-align: center;
-  border: 1px solid #EEE;
+  background: #FEFEFE;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
 }
 
 .backpack-menu li, .backpack-menu-item {
@@ -31,12 +50,19 @@
   list-style: none;
 }
 
+.backpack-menu-item .logo {
+  float: left;
+}
+
 .backpack-menu li a {
-  display: inline-block;
-  padding: 15px 25px;
+  color: #999;
+  height: 55px;
+  padding: 0 25px;
+  display: table-cell;
+  vertical-align: middle;
   text-decoration: none;
   border-right: 1px solid #EEE;
-  color: #999;
+  border-top: 1px solid rgba(255,255,255,0.9);
 }
 
 .backpack-menu li:last-child a {
@@ -44,7 +70,8 @@
 }
 
 .backpack-menu li a:hover {
-  text-decoration: underline;
+  opacity: 0.8;
+  filter: alpha(opacity=0);
 }
 
 
@@ -57,28 +84,33 @@
 .backpack-dialog, .backpack-modal {
   z-index: 2;
   position: relative;
+  padding: 20px;
   min-width: 50px;
   max-width: 450px;
-  padding: 20px;
   margin: 15px auto;
   border: 1px solid #DDD;
   background-color: #FFF;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-  -webkit-box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.backpack-modal {}
+.backpack-modal {
+  z-index: 3;
+  -webkit-box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
+     -moz-box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
+          box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
+}
 
 
 /* --------------------
  * Backpack.Overlay
  * --------------------
  */
-#backpack-overlay {
+.backpack-overlay {
   z-index: 1;
   position: fixed;
   top: 0;

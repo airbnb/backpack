@@ -1,67 +1,26 @@
 # ## Backpack.Overlay
-class Backpack.Dialog extends Backbone.View
+class Backpack.Dialog extends Backpack.Component
 
   tagName:   'div'
-  className: 'backpack-dialog'
-
-  options:
-    name:     ''
-    parent:   'body'
-    content:  ''
 
   events:
-    'click': 'hide'
+    'click': 'close'
 
   initialize: ->
     {name, parent, content} = @options
+    @addClass 'backpack-dialog'
     @setContent content
     @setParent parent
     @addClass name
     @
 
-  render: =>
-    @$el.appendTo @parent
-    @
-
-  setContent: (content) =>
-    if content.el?
-      @content = content
-    else
-      @content = content
-
-    @$el.html @content
-    @
-  
-  setParent: (parent) =>
-    @parent = parent
-    @
-
-  hide: =>
-    @$el.addClass 'hide'
-    @undelegateEvents()
-    @
-  
-  show: =>
-    @delegateEvents @events
-    @$el.removeClass 'hide'
-    @
-
-  addClass: (name) =>
-    @$el.addClass @slug name
-    @
-
-  slug: (name = '') =>
-    Backpack.Helpers.slug name
 
 
-
-# TODO: make this a singleton
 # ## Backpack.Overlay
-class Backpack.Overlay extends Backbone.View
+class Backpack.Overlay extends Backpack.Component
 
-  id:        'backpack-overlay'
   tagName:   'div'
-  className: 'hide'
+  className: 'backpack-overlay hide'
 
   options:
     lock:   false
@@ -70,17 +29,8 @@ class Backpack.Overlay extends Backbone.View
 
   events:
     'click': 'unlock'
-  
-  instance = false
-
-  @getInstance = (options) ->
-    {lock, parent, color} = options?
-    return instance.setLock {lock, parent, color} if instance
-    instance = new Backpack.Overlay()
 
   initialize: ->
-    return instance if instance
-
     {lock, parent, color} = @options
     @setLock lock
     @setParent parent
@@ -88,21 +38,12 @@ class Backpack.Overlay extends Backbone.View
     @
 
   render: =>
+    console.log @parent, @options, @option
     @$el.prependTo @parent
-    @
-
-  hide: =>
-    @$el.addClass 'hide'
-    @undelegateEvents()
-    @
-
-  show: =>
-    @delegateEvents @events
-    @$el.removeClass 'hide'
     @
     
   unlock: =>
-    @hide() unless @lock
+    @close() unless @lock
     @
 
   setLock: (@lock) =>
@@ -111,13 +52,10 @@ class Backpack.Overlay extends Backbone.View
   setColor: (color) =>
     @el.style.backgroundColor = color
     @
-  
-  setParent: (parent) =>
-    @parent = parent
-    @
 
   setOptions: (options) =>
     @setLock lock
+    @
 
 
 
@@ -129,24 +67,26 @@ class Backpack.Modal extends Backpack.Dialog
   className:  'backpack-modal'
 
   events:
-    'click': 'hide'
+    'click': 'close'
 
-  overlay = Backpack.Overlay.getInstance()
+  overlay = new Backpack.Overlay()
 
   initialize: ->
     super()
     @
   
-  render: =>
-    @$el.appendTo @parent
-    @
-  
   show: =>
     super()
+    console.log overlay
     overlay.setLock(true).render().show()
     @
   
   hide: =>
     super()
-    overlay.render().hide()
+    overlay.hide()
+    @
+
+  close: =>
+    super()
+    overlay.remove()
     @
