@@ -13,16 +13,6 @@ By [@hshoff](http://www.twitter.com/hshoff) & [@daveaugustine](http://www.twitte
 
 ## Work in Progress.
 
-- Tabs
-- Menus
-- Forms
-- Modals
-- Dialogs
-- Alerts
-- Pagination
-- Infinite Scroll
-- Responsive
-
 ## Development
 
 ### Quick Start
