@@ -298,17 +298,6 @@
     });
   });
 
-  describe('Backpack.Menu', function() {
-    beforeEach(function() {
-      return this.menu = new Backpack.Menu;
-    });
-    return describe('instantiation', function() {
-      return it('should create a <ul>', function() {
-        return expect(this.menu.el.nodeName).toEqual("UL");
-      });
-    });
-  });
-
   describe('dependencies', function() {
     it('should have $', function() {
       return expect($).toBeDefined();
@@ -321,6 +310,51 @@
     });
     return it('should have Backbone', function() {
       return expect(Backpack).toBeDefined();
+    });
+  });
+
+  describe("Backpack.Dialog", function() {
+    beforeEach(function() {
+      return this.dialog = new Backpack.Dialog;
+    });
+    return describe("#initialize", function() {
+      it("should create a <div>", function() {
+        var nodeName;
+        nodeName = this.dialog.el.nodeName;
+        return expect(nodeName).toEqual('DIV');
+      });
+      it("should have a 'backpack-component' class", function() {
+        var hasClass;
+        hasClass = this.dialog.$el.hasClass('backpack-component');
+        return expect(hasClass).toBeTruthy();
+      });
+      it("should have a 'backpack-dialog' class", function() {
+        var hasClass;
+        hasClass = this.dialog.$el.hasClass('backpack-dialog');
+        return expect(hasClass).toBeTruthy();
+      });
+      it("should call #hide", function() {
+        var spy;
+        spy = sinon.spy(this.dialog, 'hide');
+        this.dialog.initialize();
+        return expect(spy).toHaveBeenCalled();
+      });
+      return it("should have a 'hide' class", function() {
+        var hasClass;
+        hasClass = this.dialog.$el.hasClass('hide');
+        return expect(hasClass).toBeTruthy();
+      });
+    });
+  });
+
+  describe('Backpack.Menu', function() {
+    beforeEach(function() {
+      return this.menu = new Backpack.Menu;
+    });
+    return describe('instantiation', function() {
+      return it('should create a <ul>', function() {
+        return expect(this.menu.el.nodeName).toEqual("UL");
+      });
     });
   });
 

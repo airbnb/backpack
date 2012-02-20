@@ -13,16 +13,16 @@ class Backpack.Component extends Backbone.View
     @
 
   render: =>
-    @parent.append @el
+    @parent.append(@el)
     @
 
   show: =>
-    @delegateEvents @events
-    @$el.removeClass 'hide'
+    @delegateEvents(@events)
+    @$el.removeClass('hide')
     @
 
   hide: =>
-    @$el.addClass 'hide'
+    @$el.addClass('hide')
     @undelegateEvents()
     @
 
@@ -33,26 +33,26 @@ class Backpack.Component extends Backbone.View
 
   before: (content) =>
     return unless content?
-    @setContent content
-    @$el.before content
+    @setContent(content)
+    @$el.before(content)
     @
   
   after: (content) =>
     return unless content?
-    @setContent content
-    @$el.after @content
+    @setContent(content)
+    @$el.after(@content)
     @
 
   append: (content) =>
     return unless content?
-    @setContent content
-    @$el.append @content
+    @setContent(content)
+    @$el.append(@content)
     @
 
   prepend: (content) =>
     return unless content?
-    @setContent content
-    @$el.prepend @content
+    @setContent(content)
+    @$el.prepend(@content)
     @
 
   setContent: (content) =>
@@ -73,5 +73,5 @@ class Backpack.Component extends Backbone.View
 
   addClass: (klass) =>
     return unless klass?
-    @$el.addClass klass
+    @$el.addClass(klass)
     @

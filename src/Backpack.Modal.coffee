@@ -1,26 +1,22 @@
 # ## Backpack.Overlay
 class Backpack.Dialog extends Backpack.Component
 
-  tagName:   'div'
-
   events:
     'click': 'close'
 
   initialize: ->
+    super()
+    @addClass('backpack-dialog')
     {name, parent, content} = @options
-    @addClass 'backpack-dialog'
-    @setContent content
-    @setParent parent
-    @addClass name
+    @setContent(content)
+    @setParent(parent)
+    @addClass(name)
     @
 
 
 
 # ## Backpack.Overlay
 class Backpack.Overlay extends Backpack.Component
-
-  tagName:   'div'
-  className: 'backpack-overlay hide'
 
   options:
     lock:   false
@@ -31,15 +27,17 @@ class Backpack.Overlay extends Backpack.Component
     'click': 'unlock'
 
   initialize: ->
+    super()
     {lock, parent, color} = @options
-    @setLock lock
-    @setParent parent
-    @setColor color
+    @addClass('backpack-overlay')
+    @setLock(lock)
+    @setParent(parent)
+    @setColor(color)
     @
 
   render: =>
     console.log @parent, @options, @option
-    @$el.prependTo @parent
+    @$el.prependTo(@parent)
     @
     
   unlock: =>
@@ -54,7 +52,7 @@ class Backpack.Overlay extends Backpack.Component
     @
 
   setOptions: (options) =>
-    @setLock lock
+    @setLock(lock)
     @
 
 
@@ -63,9 +61,6 @@ class Backpack.Overlay extends Backpack.Component
 # ## Backpack.Modal
 class Backpack.Modal extends Backpack.Dialog
 
-  tagName:    'div'
-  className:  'backpack-modal'
-
   events:
     'click': 'close'
 
@@ -73,11 +68,12 @@ class Backpack.Modal extends Backpack.Dialog
 
   initialize: ->
     super()
+    @addClass('backpack-modal')
     @
   
   show: =>
     super()
-    console.log overlay
+    console.log(overlay)
     overlay.setLock(true).render().show()
     @
   

@@ -6,7 +6,7 @@ package = "Backpack"
 
 src_path    = "./src"
 lib_path    = "./lib"
-spec_path   = "./specs"
+spec_path   = "./spec"
 js_path     = "#{lib_path}/js"
 bndl_path   = "#{lib_path}/#{package}-bundle.js"
 min_path    = "#{lib_path}/#{package}-bundle.min.js"
@@ -53,7 +53,7 @@ minify = (callback) ->
 
 test = (callback) ->
   # use ./test/mocha.opts for options
-  run "#{bin_path}/jasmine-node --coffee #{spec_path}", callback
+  run "open #{spec_path}/SpecRunner.html", callback
 
 docs = (callback) ->
   run "#{bin_path}/docco #{src_path}/*.coffee"
