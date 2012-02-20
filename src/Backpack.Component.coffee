@@ -7,9 +7,20 @@ class Backpack.Component extends Backbone.View
     name:    ''
     content: ''
     parent:  'body'
+    hide:    true
 
   initialize: ->
-    @hide()
+    @options = _.extend({}, @defaults, @options)
+    @setup()
+    @
+
+  setup: =>
+    {hide, name, content, parent} = @options
+    console.log content
+    @hide() if hide
+    @setParent(parent)
+    @setContent(content)
+    @addClass(@slug(name))
     @
 
   render: =>
@@ -64,6 +75,8 @@ class Backpack.Component extends Backbone.View
         @content = content.el
     else
       @content = content
+
+    @$el.html(@content)
     @
   
   setParent: (parent) =>
@@ -75,3 +88,15 @@ class Backpack.Component extends Backbone.View
     return unless klass?
     @$el.addClass(klass)
     @
+  
+  removeClass: (klass) =>
+    return unless klass?
+    @$el.removeClass(klass)
+    @
+
+  slug: (string) =>
+    return unless string?
+    string
+      .toLowerCase()
+      .replace(/\ +/g, "-")
+      .replace(/[^a-z0-9-]/g, "")

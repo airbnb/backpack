@@ -14,10 +14,11 @@ describe "Backpack.Component", ->
       hasClass = @component.$el.hasClass('backpack-component')
       expect(hasClass).toBeTruthy()
 
-    it "should call #hide", ->
-      spy = sinon.spy(@component, 'hide')
+    it "should call #setup", ->
+      spy = sinon.spy(@component, 'setup')
       @component.initialize()
       expect(spy).toHaveBeenCalled()
+      @component.setup.restore()
 
     it "should have a 'hide' class", ->
       hasClass = @component.$el.hasClass('hide')
@@ -46,6 +47,14 @@ describe "Backpack.Component", ->
         expect(options.parent).toEqual('#test')
         expect(options.content).toEqual('test')
 
+    describe "events", ->
+
+      beforeEach ->
+        @events = @component.events
+
+      it "should have no events", ->
+        expect(@events).toBeUndefined()
+
 
   describe "#render", ->
 
@@ -61,11 +70,11 @@ describe "Backpack.Component", ->
       expect(@component.render()).toEqual(@component)
 
     it "should call the parents #append", ->
-      parent = $('<div>')
-      spy = sinon.spy(parent, 'append')
-      @component.setParent(parent)
+      @component.setParent('<div>')
+      spy = sinon.spy(@component.parent, 'append')
       @component.render()
       expect(spy).toHaveBeenCalled()
+      @component.parent.append.restore()
 
   
   describe "#addClass", ->
@@ -75,9 +84,20 @@ describe "Backpack.Component", ->
       expect(@component.$el.hasClass("test")).toBeTruthy()
 
     it "should do nothing if passed nothing", ->
-      className = @component.className
+      className = @component.$el.className
       @component.addClass()
-      expect(@component.className).toEqual(className)
+      expect(@component.$el.className).toEqual(className)
+
+  describe "#removeClass", ->
+
+    it "should remove a class to the component", ->
+      @component.addClass("test").removeClass('test')
+      expect(@component.$el.hasClass("test")).toBeFalsy()
+
+    it "should do nothing if passed nothing", ->
+      className = @component.$el.className
+      @component.removeClass()
+      expect(@component.$el.className).toEqual(className)
 
 
   describe "#setParent", ->
@@ -108,11 +128,13 @@ describe "Backpack.Component", ->
       spy = sinon.spy(@component, 'undelegateEvents')
       @component.hide()
       expect(spy).toHaveBeenCalled()
+      @component.undelegateEvents.restore()
 
     it "should call #addClass", ->
       spy = sinon.spy(@component.$el, 'addClass')
       @component.hide()
       expect(spy).toHaveBeenCalled()
+      @component.$el.addClass.restore()
 
 
   describe "#show", ->
@@ -126,11 +148,13 @@ describe "Backpack.Component", ->
       spy = sinon.spy(@component, 'delegateEvents')
       @component.show()
       expect(spy).toHaveBeenCalled()
+      @component.delegateEvents.restore()
 
     it "should call #removeClass", ->
       spy = sinon.spy(@component.$el, 'removeClass')
       @component.show()
       expect(spy).toHaveBeenCalled()
+      @component.$el.removeClass.restore()
 
 
   describe "#close", ->
@@ -139,11 +163,13 @@ describe "Backpack.Component", ->
       spy = sinon.spy(@component, 'hide')
       @component.close()
       expect(spy).toHaveBeenCalled()
+      @component.hide.restore()
 
     it "should call #remove", ->
       spy = sinon.spy(@component, 'remove')
       @component.close()
       expect(spy).toHaveBeenCalled()
+      @component.remove.restore()
 
 
   describe "#append", ->
@@ -152,11 +178,13 @@ describe "Backpack.Component", ->
       spy = sinon.spy(@component.$el, 'append')
       @component.append('')
       expect(spy).toHaveBeenCalled()
+      @component.$el.append.restore()
 
     it "should call #setContent", ->
       spy = sinon.spy(@component, 'setContent')
       @component.append('')
       expect(spy).toHaveBeenCalled()
+      @component.setContent.restore()
 
     it "should do nothing if passed nothing", ->
       testContent = @component.content
@@ -170,11 +198,13 @@ describe "Backpack.Component", ->
       spy = sinon.spy(@component.$el, 'prepend')
       @component.prepend('')
       expect(spy).toHaveBeenCalled()
+      @component.$el.prepend.restore()
 
     it "should call #setContent", ->
       spy = sinon.spy(@component, 'setContent')
       @component.append('')
       expect(spy).toHaveBeenCalled()
+      @component.setContent.restore()
 
     it "should do nothing if passed nothing", ->
       testContent = @component.content
@@ -188,11 +218,13 @@ describe "Backpack.Component", ->
       spy = sinon.spy(@component.$el, 'before')
       @component.before('')
       expect(spy).toHaveBeenCalled()
+      @component.$el.before.restore()
 
     it "should call #setContent", ->
       spy = sinon.spy(@component, 'setContent')
       @component.append('')
       expect(spy).toHaveBeenCalled()
+      @component.setContent.restore()
 
     it "should do nothing if passed nothing", ->
       @component.content = 'lkja'
@@ -206,11 +238,13 @@ describe "Backpack.Component", ->
       spy = sinon.spy(@component.$el, 'after')
       @component.after('')
       expect(spy).toHaveBeenCalled()
+      @component.$el.after.restore()
 
     it "should call #setContent", ->
       spy = sinon.spy(@component, 'setContent')
       @component.append('')
       expect(spy).toHaveBeenCalled()
+      @component.setContent.restore()
 
     it "should do nothing if passed nothing", ->
       testContent = @component.content
@@ -237,8 +271,16 @@ describe "Backpack.Component", ->
       @component.setContent(testContent)
       expect(spy).toHaveBeenCalled()
       expect(@component.content).toEqual(testContent.render().el)
+      testContent.render.restore()
 
     it "should set @conent to content.el if content.render doesn't exist", ->
       testContent = { el: document.createElement('div') }
       @component.setContent(testContent)
       expect(@component.content).toEqual(testContent.el)
+  
+  describe "#setup", ->
+
+    it "should add a class of the slugged version of name", ->
+      @component.options.name = 'admin only stuff'
+      @component.setup()
+      expect(@component.$el.hasClass('admin-only-stuff')).toBeTruthy()
