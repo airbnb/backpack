@@ -1,6 +1,6 @@
     ______            _                     _      _        |
-    | ___ \          | |                   | |    (_)       |   A backpack full of UI components for your Backbone.js projects.
-    | |_/ / __ _  ___| | ___ __   __ _  ___| | __  _ ___    |   Grab your backpack and get some nice Views. 
+    | ___ \          | |                   | |    (_)       |  A backpack full of UI components for your Backbone.js
+    | |_/ / __ _  ___| | ___ __   __ _  ___| | __  _ ___    |  projects. Grab your backpack and get some nice Views. 
     | ___ \/ _` |/ __| |/ / '_ \ / _` |/ __| |/ / | / __|   |
     | |_/ / (_| | (__|   <| |_) | (_| | (__|   < _| \__ \   |
     \____/ \__,_|\___|_|\_\ .__/ \__,_|\___|_|\_(_) |___/   |
