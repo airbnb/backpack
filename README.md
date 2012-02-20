@@ -6,12 +6,10 @@
     \____/ \__,_|\___|_|\_\ .__/ \__,_|\___|_|\_(_) |___/
                           | |                    _/ |
                           |_|                   |__/
-                          
-    A backpack full of UI components for your Backbone.js projects
 
-### Grab your Backpack and get some nice Views
+    A backpack full of UI components for your Backbone.js projects. Grab your backpack and get some nice Views. 
 
-## Work in Progress.
+
 
 ## Development
 
