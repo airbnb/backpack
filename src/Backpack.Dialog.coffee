@@ -42,16 +42,22 @@ class Backpack.Overlay extends Backpack.Component
 class Backpack.Dialog extends Backpack.Component
 
   events:
-    'click': 'close'
+    'click .close': 'close'
 
   defaults:
     'lockOverlay': false
     'showOverlay': false
+    'closable': true
 
   initialize: ->
     super()
     @addClass('backpack-dialog')
     @setOverlay() if @options.showOverlay
+    @setClosable() if @options.closable
+    @
+
+  setClosable: =>
+    @$el.prepend("<span class='close'>×</span>")
     @
 
   setOverlay: =>
@@ -82,8 +88,9 @@ class Backpack.Modal extends Backpack.Dialog
   defaults:
     'lockOverlay': true
     'showOverlay': true
+    'closable': true
 
   initialize: ->
-    super()
+    super(@defaults)
     @addClass('backpack-modal')
     @

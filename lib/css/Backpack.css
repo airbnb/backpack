@@ -98,6 +98,18 @@
           box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.backpack-dialog .close, .backpack-modal .close {
+  display: block;
+  position: absolute;
+  right: 2px;
+  top: 0;
+  padding: 0 6px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+}
+
 .backpack-modal {
   z-index: 3;
   -webkit-box-shadow: 0 15px 50px rgba(0, 0, 0, .5);

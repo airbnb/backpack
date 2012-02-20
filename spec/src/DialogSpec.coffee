@@ -66,13 +66,13 @@ describe "Backpack.Dialog", ->
         expect(@events).toBeDefined()
 
       it "should have a click event", ->
-        expect(@events.click).toBeDefined()
+        expect(@events['click .close']).toBeDefined()
 
       it "should call #close when click event triggered", ->
         spy = sinon.spy(@dialog, 'close')
         @dialog.render()
         @dialog.show()
-        @dialog.$el.trigger('click')
+        @dialog.$el.find('.close').trigger('click')
         expect(spy).toHaveBeenCalled()
         @dialog.close.restore()
 

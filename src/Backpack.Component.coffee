@@ -16,7 +16,6 @@ class Backpack.Component extends Backbone.View
 
   setup: =>
     {hide, name, content, parent} = @options
-    console.log content
     @hide() if hide
     @setParent(parent)
     @setContent(content)

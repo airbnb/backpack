@@ -427,14 +427,14 @@
           return expect(this.events).toBeDefined();
         });
         it("should have a click event", function() {
-          return expect(this.events.click).toBeDefined();
+          return expect(this.events['click .close']).toBeDefined();
         });
         return it("should call #close when click event triggered", function() {
           var spy;
           spy = sinon.spy(this.dialog, 'close');
           this.dialog.render();
           this.dialog.show();
-          this.dialog.$el.trigger('click');
+          this.dialog.$el.find('.close').trigger('click');
           expect(spy).toHaveBeenCalled();
           return this.dialog.close.restore();
         });
