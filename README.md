@@ -7,9 +7,9 @@
                           | |                    _/ |
                           |_|                   |__/
 
-### A backpack full of UI components for your Backbone.js projects
- 
-By [@hshoff](http://www.twitter.com/hshoff) & [@daveaugustine](http://www.twitter.com/daveaugustine)
+### Grab your Backpack and get some nice Views
+
+#### A backpack full of UI components for your Backbone.js projects
 
 ## Work in Progress.
 
