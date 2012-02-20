@@ -7,7 +7,8 @@
                           | |                    _/ |
                           |_|                   |__/
 
-    A backpack full of UI components for your Backbone.js projects. Grab your backpack and get some nice Views. 
+    A backpack full of UI components for your Backbone.js projects.
+    Grab your backpack and get some nice Views. 
 
 
 
