@@ -37,8 +37,22 @@
         //  Backpack.Menu
         // ------------------------------------
         var navigation = new Backpack.Menu({ parent:'#nav' }),
-                  menu = new Backpack.Menu({ parent: '#docs', render: true, show: true, before: "<h2>Menus</h2>" }),
-                dialog = new Backpack.Menu({ parent: '#docs', render: true, show: true, before: "<h2>Dialogs, Overlays, &amp; Modals</h2>" }),
+
+                  menu = new Backpack.Menu({ 
+                    parent: '#docs', 
+                    render: true, 
+                    show: true, 
+                    before: "<h2>Backpack.Menu</h2>",
+                    after:  "<br/><br/><br/>"
+                  }),
+
+                dialog = new Backpack.Menu({ 
+                  parent: '#docs',
+                  render: true,
+                  show: true,
+                  before: "<h2>Backpack.Dialog, Backpack.Overlay, &amp; Backpack.Modal</h2>"
+                }),
+
                 github = new Backpack.MenuItem({ 
                                 content: "Download on Github",
                                 events: { 

@@ -32,7 +32,7 @@ describe "Backpack.Overlay", ->
         expect(@options._content).toEqual('')
 
       it "should have 'body' as a default parent", ->
-        expect(@options.$parent).toEqual('body')
+        expect(@options.parent).toEqual('body')
 
       it "should have false as a default lockOverlay", ->
         expect(@options.lockOverlay).toBeFalsy()
@@ -43,12 +43,12 @@ describe "Backpack.Overlay", ->
       it "should set options", ->
         options = (new Backpack.Dialog { 
                   name: 'test'
-                , $parent: '#test'
+                , parent: '#test'
                 , _content: 'test'
                 , color: 'blue'
                 , lockOverlay: false }).options
         expect(options.name).toEqual('test')
-        expect(options.$parent).toEqual('#test')
+        expect(options.parent).toEqual('#test')
         expect(options._content).toEqual('test')
         expect(options.color).toEqual('blue')
         expect(options.lockOverlay).toBeFalsy()

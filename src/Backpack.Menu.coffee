@@ -29,10 +29,9 @@ class Backpack.MenuItem extends Backpack.Component
 
   initialize: ->
     @addClass 'backpack-menu-item'
-    {content, events, name} = @options
+    {content, events} = @options
     @setContent(content, events)
     @delegateEvents(@events)
-    @addClass(@slug(name))
     @
 
   render: =>

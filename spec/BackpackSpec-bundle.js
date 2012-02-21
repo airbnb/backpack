@@ -66,7 +66,7 @@
           return expect(this.options._content).toEqual('');
         });
         it("should have 'body' as a default $parent", function() {
-          return expect(this.options.$parent).toEqual('body');
+          return expect(this.options.parent).toEqual('body');
         });
         return it("should set options", function() {
           var options;
@@ -390,7 +390,7 @@
           return expect(this.options._content).toEqual('');
         });
         it("should have 'body' as a default parent", function() {
-          return expect(this.options.$parent).toEqual('body');
+          return expect(this.options.parent).toEqual('body');
         });
         it("should have false as a default overlay", function() {
           return expect(this.options.showOverlay).toBeFalsy();
@@ -560,7 +560,7 @@
           return expect(this.options._content).toEqual('');
         });
         it("should have 'body' as a default parent", function() {
-          return expect(this.options.$parent).toEqual('body');
+          return expect(this.options.parent).toEqual('body');
         });
         it("should have true as a default overlay", function() {
           return expect(this.options.showOverlay).toBeTruthy();
@@ -619,7 +619,7 @@
           return expect(this.options._content).toEqual('');
         });
         it("should have 'body' as a default parent", function() {
-          return expect(this.options.$parent).toEqual('body');
+          return expect(this.options.parent).toEqual('body');
         });
         it("should have false as a default lockOverlay", function() {
           return expect(this.options.lockOverlay).toBeFalsy();
@@ -631,13 +631,13 @@
           var options;
           options = (new Backpack.Dialog({
             name: 'test',
-            $parent: '#test',
+            parent: '#test',
             _content: 'test',
             color: 'blue',
             lockOverlay: false
           })).options;
           expect(options.name).toEqual('test');
-          expect(options.$parent).toEqual('#test');
+          expect(options.parent).toEqual('#test');
           expect(options._content).toEqual('test');
           expect(options.color).toEqual('blue');
           return expect(options.lockOverlay).toBeFalsy();

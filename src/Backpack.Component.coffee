@@ -6,7 +6,7 @@ class Backpack.Component extends Backbone.View
   options:
     'class':    ''
     '_content': ''
-    '$parent': 'body'
+    'parent': 'body'
     'hide':    true
 
   initialize: ->
@@ -17,7 +17,6 @@ class Backpack.Component extends Backbone.View
       else
         @[func]?.apply(@, args)
       null
-    @parent(@options.$parent) unless @options.parent
 
   render: =>
     @$parent.append(@el)

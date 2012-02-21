@@ -33,7 +33,7 @@ describe "Backpack.Component", ->
         expect(@options._content).toEqual('')
 
       it "should have 'body' as a default $parent", ->
-        expect(@options.$parent).toEqual('body')
+        expect(@options.parent).toEqual('body')
 
       it "should set options", ->
         options = (new Backpack.Component { 

@@ -58,7 +58,6 @@ class Backpack.Dialog extends Backpack.Component
   showOverlay: (show) =>
     return @ unless show
     @overlay = new Backpack.Overlay
-      parent: @$parent
       lockOverlay: @options.lockOverlay
     @overlay.on('overlay-close', @close)
     @

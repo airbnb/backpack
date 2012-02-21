@@ -33,7 +33,7 @@ describe "Backpack.Modal", ->
         expect(@options._content).toEqual('')
 
       it "should have 'body' as a default parent", ->
-        expect(@options.$parent).toEqual('body')
+        expect(@options.parent).toEqual('body')
 
       it "should have true as a default overlay", ->
         expect(@options.showOverlay).toBeTruthy()
