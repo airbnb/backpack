@@ -23,8 +23,11 @@
       it('should have a Dialog', function() {
         return expect(Backpack.Dialog).toBeDefined();
       });
-      return it('should have an Overlay', function() {
+      it('should have an Overlay', function() {
         return expect(Backpack.Overlay).toBeDefined();
+      });
+      return it('should have a Button', function() {
+        return expect(Backpack.Button).toBeDefined();
       });
     });
   });

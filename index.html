@@ -43,8 +43,7 @@
                                                   }
                                                 }});
 
-        navigation.render().show()
-                  .addClass('press');
+        navigation.render().show().addClass('press');
         menu.render().show();
 
         navigation.add({ content: "<img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png'", events: 'http://www.airbnb.com', name: 'logo' })
@@ -57,7 +56,18 @@
         // ------------------------------------
         //  Backpack.Dialog
         // ------------------------------------
-        menu.add({ content: 'Dialog', events: function(){ new Backpack.Dialog({ content: "Dialog " + Math.floor(Math.random()*11) }).render().show(); }});
+        menu.add({ 
+            content: 'Dialog'
+          , events: 
+              function(){ 
+                new Backpack.Dialog({ 
+                  content: "Dialog " + Math.floor(Math.random()*11) 
+                })
+                .render()
+                .show()
+                .addButton(new Backpack.Button({content:'Accept'})); 
+              }
+        });
 
         // ------------------------------------
         //  Backpack.Overlay
@@ -67,8 +77,8 @@
         // ------------------------------------
         //  Backpack.Modal
         // ------------------------------------
-        menu.add({ content: "Modal", events: function(){ new Backpack.Modal({ content: "This is a Modal" }).render().show(); }});
-
+        menu.add({ content: "Modal", events: function(){ new Backpack.Modal({ content: "This is a Modal" }).render().show().addButton(new Backpack.Button({content:'Accept'})); }});
+        
 
       });
     </script>

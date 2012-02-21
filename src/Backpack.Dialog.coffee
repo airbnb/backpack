@@ -80,6 +80,14 @@ class Backpack.Dialog extends Backpack.Component
     @overlay?.remove()
     @
 
+  addButton: (button) =>
+    return unless button?
+    container = @make("div", {"class": "backpack-dialog-button-container"})
+    $(container).append(button.setParent(container).render().show())
+    button.on('button-close', @close)
+    @$el.append(container)
+    @
+
 
 
 # ## Backpack.Modal

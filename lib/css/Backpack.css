@@ -110,6 +110,16 @@
   cursor: pointer;
 }
 
+.backpack-dialog .backpack-dialog-button-container,
+.backpack-modal .backpack-dialog-button-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: pink;
+  text-align: right;
+}
+
 .backpack-modal {
   z-index: 3;
   -webkit-box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
