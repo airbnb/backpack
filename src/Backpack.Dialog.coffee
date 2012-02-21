@@ -11,17 +11,14 @@ class Backpack.Overlay extends Backpack.Component
   initialize: ->
     super()
     @addClass('backpack-overlay')
-    {lockOverlay, color} = @options
-    @setLock(lockOverlay)
-    @setColor(color)
     @
 
   render: =>
-    @parent.prepend(@el)
+    @$parent.prepend(@el)
     @
     
   unlock: =>
-    @close() unless @lockOverlay
+    @close() unless @_lockOverlay
     @
 
   close: =>
@@ -29,10 +26,10 @@ class Backpack.Overlay extends Backpack.Component
     @trigger('overlay-close')
     @
     
-  setLock: (@lockOverlay) =>
+  lockOverlay: (@_lockOverlay) =>
     @
   
-  setColor: (color) =>
+  color: (color) =>
     @el.style.backgroundColor = color
     @
 
@@ -52,16 +49,17 @@ class Backpack.Dialog extends Backpack.Component
   initialize: ->
     super()
     @addClass('backpack-dialog')
-    @setOverlay() if @options.showOverlay
-    @setClosable() if @options.closable
     @
 
-  setClosable: =>
+  closable: =>
     @$el.prepend("<span class='close'>×</span>")
     @
 
-  setOverlay: =>
-    @overlay = new Backpack.Overlay({ lockOverlay: @options.lockOverlay })
+  showOverlay: (show) =>
+    return @ unless show
+    @overlay = new Backpack.Overlay
+      parent: @$parent
+      lockOverlay: @options.lockOverlay
     @overlay.on('overlay-close', @close)
     @
 
@@ -80,13 +78,13 @@ class Backpack.Dialog extends Backpack.Component
     @overlay?.remove()
     @
 
-  addButton: (button) =>
-    return unless button?
-    container = @make("div", {"class": "backpack-dialog-button-container"})
-    $(container).append(button.setParent(container).render().show())
-    button.on('button-close', @close)
-    @$el.append(container)
-    @
+  # addButton: (button) =>
+  #   return unless button?
+  #   container = @make("div", {"class": "backpack-dialog-button-container"})
+  #   $(container).append(button.setParent(container).render().show())
+  #   button.on('button-close', @close)
+  #   @$el.append(container)
+  #   @
 
 
 

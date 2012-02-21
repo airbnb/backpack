@@ -9,9 +9,13 @@
     <script src="./vendor/backbone.js" type="text/javascript"></script>
     <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
   </head>
-  <body class='backpack' style='width: 680px; margin: 30px auto 0;color: #333; background-color: #F0F2F1;'>
+  <body class='backpack'>
+    
+    <section id='main' style='color: #333; background-color: whitesmoke;'>
+      <nav id='nav' style='width: 960px; margin: 0 auto; height: 100px; padding: 20px 0 0;'></nav>
+    </section>
 
-    <div id='nav'></div>
+    <section id='docs' style='width: 960px; margin: 0 auto;'></section>
 
 
     <script>
@@ -33,51 +37,54 @@
         //  Backpack.Menu
         // ------------------------------------
         var navigation = new Backpack.Menu({ parent:'#nav' }),
-                  menu = new Backpack.Menu(),
-                github = new Backpack.MenuItem({ content: "Download on Github", events:
-                                                {"mouseleave": function(){
-                                                    console.log('mouseleave');
-                                                  },
-                                                  "mouseenter": function() {
-                                                    console.log('mouseenter')
-                                                  }
-                                                }});
+                  menu = new Backpack.Menu({ parent: '#docs', render: true, show: true, before: "<h2>Menus</h2>" }),
+                dialog = new Backpack.Menu({ parent: '#docs', render: true, show: true, before: "<h2>Dialogs, Overlays, &amp; Modals</h2>" }),
+                github = new Backpack.MenuItem({ 
+                                content: "Download on Github",
+                                events: { 
+                                     "mouseleave": function(){
+                                        console.log('mouseleave');
+                                  }, "mouseenter": function() {
+                                        console.log('mouseenter')
+                                      }
+                                  }
+                                });
 
-        navigation.render().show().addClass('press');
-        menu.render().show();
+        // navigation.render().addClass('press').show();
 
-        navigation.add({ content: "<img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png'", events: 'http://www.airbnb.com', name: 'logo' })
+        navigation.add({ content: "<img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png'", events: 'http://www.airbnb.com', 'class': 'logo' })
                   .add({ content: 'Home', events: '#' })
                   .add({ content: 'About Us', events: '#about' })
                   .add({ content: 'Clicks', events: function() { console.log("click") } })
                   .add(github);
 
+        menu.add({ content: 'Menu Item 1' })
+            .add({ content: 'Menu Item 2' })
+            .add({ content: 'Menu Item 3' });
+
 
         // ------------------------------------
         //  Backpack.Dialog
         // ------------------------------------
-        menu.add({ 
+        dialog.add({ 
             content: 'Dialog'
           , events: 
               function(){ 
                 new Backpack.Dialog({ 
-                  content: "Dialog " + Math.floor(Math.random()*11) 
-                })
-                .render()
-                .show()
-                .addButton(new Backpack.Button({content:'Accept'})); 
+                  content: "Dialog " + Math.floor(Math.random()*11)
+                }).render().show()
               }
         });
 
         // ------------------------------------
         //  Backpack.Overlay
         // ------------------------------------
-        menu.add({ content: 'Overlay', events: function(){ new Backpack.Overlay({lock: false}).render().show(); }});
+        dialog.add({ content: 'Overlay', events: function(){ new Backpack.Overlay({lock: false}).render().show(); }});
 
         // ------------------------------------
         //  Backpack.Modal
         // ------------------------------------
-        menu.add({ content: "Modal", events: function(){ new Backpack.Modal({ content: "This is a Modal" }).render().show().addButton(new Backpack.Button({content:'Save'})).addButton(new Backpack.Button({content:'Cancel'})) }});
+        dialog.add({ content: "Modal", events: function(){ new Backpack.Modal({ content: "This is a Modal" }).render().show();} });
         
 
       });

@@ -18,12 +18,6 @@ describe "Backpack.Dialog", ->
       hasClass = @dialog.$el.hasClass('backpack-dialog')
       expect(hasClass).toBeTruthy()
 
-    it "should call #hide", ->
-      spy = sinon.spy(@dialog, 'hide')
-      @dialog.initialize()
-      expect(spy).toHaveBeenCalled()
-      @dialog.hide.restore()
-
     it "should have a 'hide' class", ->
       hasClass = @dialog.$el.hasClass('hide')
       expect(hasClass).toBeTruthy()
@@ -34,28 +28,19 @@ describe "Backpack.Dialog", ->
         @options = @dialog.options
     
       it "should have a blank default name", ->
-        expect(@options.name).toEqual('')
+        expect(@options.class).toEqual('')
 
       it "should have a blank default content", ->
-        expect(@options.content).toEqual('')
+        expect(@options._content).toEqual('')
 
       it "should have 'body' as a default parent", ->
-        expect(@options.parent).toEqual('body')
+        expect(@options.$parent).toEqual('body')
 
       it "should have false as a default overlay", ->
         expect(@options.showOverlay).toBeFalsy()
 
       it "should have false as a default lock", ->
         expect(@options.lockOverlay).toBeFalsy()
-
-      it "should set options", ->
-        options = (new Backpack.Dialog { 
-                  name: 'test'
-                , parent: '#test'
-                , content: 'test' }).options
-        expect(options.name).toEqual('test')
-        expect(options.parent).toEqual('#test')
-        expect(options.content).toEqual('test')
 
     describe "events", ->
 
@@ -81,7 +66,7 @@ describe "Backpack.Dialog", ->
     it "should not exist on default initialization", ->
       expect(@dialog.overlay).toBeUndefined()
 
-    describe "options.showOverlay", ->
+    describe "#showOverlay", ->
 
       it "should create an Overlay if showOverlay set to true", ->
         dialog = new Backpack.Dialog({ showOverlay: true })
@@ -98,8 +83,8 @@ describe "Backpack.Dialog", ->
       it "should set lockOverlay based on arguments", ->
         dialog1 = new Backpack.Dialog({ showOverlay: true, lockOverlay: true })
         dialog2 = new Backpack.Dialog({ showOverlay: true, lockOverlay: false })
-        expect(dialog1.overlay.lockOverlay).toBeTruthy()
-        expect(dialog2.overlay.lockOverlay).toBeFalsy()
+        expect(dialog1.overlay._lockOverlay).toBeTruthy()
+        expect(dialog2.overlay._lockOverlay).toBeFalsy()
 
 describe "it has an overlay", ->
 
@@ -133,7 +118,7 @@ describe "it has an overlay", ->
       expect(spy).toHaveBeenCalled()
       @oDialog.overlay.remove.restore()
 
-  describe "options.lockOverlay is false", ->
+  describe "options._lockOverlay is false", ->
 
     it "should trigger 'overlay-close' when the overlay is clicked", ->
       dialog = new Backpack.Dialog({ showOverlay: true, lockOverlay: false })

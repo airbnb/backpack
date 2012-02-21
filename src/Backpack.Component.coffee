@@ -4,26 +4,23 @@ class Backpack.Component extends Backbone.View
   className: 'backpack-component'
 
   options:
-    name:    ''
-    content: ''
-    parent:  'body'
-    hide:    true
+    'class':    ''
+    '_content': ''
+    '$parent': 'body'
+    'hide':    true
 
   initialize: ->
     @options = _.extend({}, @defaults, @options)
-    @setup()
-    @
-
-  setup: =>
-    {hide, name, content, parent} = @options
-    @hide() if hide
-    @setParent(parent)
-    @setContent(content)
-    @addClass(@slug(name))
-    @
+    for func, args of @options
+      unless _.isArray(args)
+        @[func]?.call(@, args)
+      else
+        @[func]?.apply(@, args)
+      null
+    @parent(@options.$parent) unless @options.parent
 
   render: =>
-    @parent.append(@el)
+    @$parent.append(@el)
     @
 
   show: =>
@@ -42,60 +39,67 @@ class Backpack.Component extends Backbone.View
     @
 
   before: (content) =>
-    return unless content?
-    @setContent(content)
+    return @ unless content?
+    content = @setContent(content)
     @$el.before(content)
     @
   
   after: (content) =>
-    return unless content?
-    @setContent(content)
-    @$el.after(@content)
+    return @ unless content?
+    content = @setContent(content)
+    @$el.after(content)
     @
 
   append: (content) =>
-    return unless content?
-    @setContent(content)
-    @$el.append(@content)
+    return @ unless content?
+    content = @setContent(content)
+    @$el.append(content)
     @
 
   prepend: (content) =>
-    return unless content?
-    @setContent(content)
-    @$el.prepend(@content)
+    return @ unless content?
+    content = @setContent(content)
+    @$el.prepend(content)
     @
 
   setContent: (content) =>
-    return unless content?
+    return @ unless content?
     if content.el?
       if content.render?
-        @content = content.render().el
+        content = content.render().el
       else
-        @content = content.el
+        content = content.el
     else
-      @content = content
-      
-    wrapContent = @make('div', {class: 'content'}, @content)
-    @$el.html(wrapContent)
+      content = content
+
+  content: (content) =>
+    return @ unless content?
+    @_content = @setContent(content)
+    wrappedContent = @make('div', {class: 'content'}, @_content)
+    @$el.append(wrappedContent)
     @
-  
-  setParent: (parent) =>
-    return unless parent?
-    @parent = $(parent)
+
+  parent: (parent) =>
+    return @ unless parent?
+    @$parent = $(parent)
+    @
+
+  class: (klass) =>
+    @addClass(klass)
     @
 
   addClass: (klass) =>
-    return unless klass?
+    return @ unless klass?
     @$el.addClass(klass)
     @
   
   removeClass: (klass) =>
-    return unless klass?
+    return @ unless klass?
     @$el.removeClass(klass)
     @
 
   slug: (string) =>
-    return unless string?
+    return @ unless string?
     string
       .toLowerCase()
       .replace(/\ +/g, "-")

@@ -14,15 +14,12 @@ describe "Backpack.Component", ->
       hasClass = @component.$el.hasClass('backpack-component')
       expect(hasClass).toBeTruthy()
 
-    it "should call #setup", ->
-      spy = sinon.spy(@component, 'setup')
-      @component.initialize()
-      expect(spy).toHaveBeenCalled()
-      @component.setup.restore()
-
     it "should have a 'hide' class", ->
       hasClass = @component.$el.hasClass('hide')
       expect(hasClass).toBeTruthy()
+
+    it "should define @$parent", ->
+      expect(@component.$parent).toBeDefined()
 
     describe "options", ->
 
@@ -30,13 +27,13 @@ describe "Backpack.Component", ->
         @options = @component.options
     
       it "should have a blank default name", ->
-        expect(@options.name).toEqual('')
+        expect(@options.class).toEqual('')
 
       it "should have a blank default content", ->
-        expect(@options.content).toEqual('')
+        expect(@options._content).toEqual('')
 
-      it "should have 'body' as a default parent", ->
-        expect(@options.parent).toEqual('body')
+      it "should have 'body' as a default $parent", ->
+        expect(@options.$parent).toEqual('body')
 
       it "should set options", ->
         options = (new Backpack.Component { 
@@ -60,21 +57,21 @@ describe "Backpack.Component", ->
 
     it "should append the component to it's parent", ->
       parent = $('<div>')
-      @component.setParent(parent)
+      @component.parent(parent)
       @component.render()
       expect(parent.children().length).toEqual(1)
 
     it "should return the component for chaining", ->
       parent = $('<div>')
-      @component.setParent(parent)
+      @component.parent(parent)
       expect(@component.render()).toEqual(@component)
 
     it "should call the parents #append", ->
-      @component.setParent('<div>')
-      spy = sinon.spy(@component.parent, 'append')
+      @component.parent('<div>')
+      spy = sinon.spy(@component.$parent, 'append')
       @component.render()
       expect(spy).toHaveBeenCalled()
-      @component.parent.append.restore()
+      @component.$parent.append.restore()
 
   
   describe "#addClass", ->
@@ -100,20 +97,20 @@ describe "Backpack.Component", ->
       expect(@component.$el.className).toEqual(className)
 
 
-  describe "#setParent", ->
+  describe "#parent", ->
 
     it "should set the component's parent", ->
       parent1 = $('<div>')
-      @component.setParent(parent1)
-      expect(@component.parent).toEqual(parent1)
+      @component.parent(parent1)
+      expect(@component.$parent).toEqual(parent1)
       parent2 = $('<ul>')
-      @component.setParent(parent2)
-      expect(@component.parent).toEqual(parent2)
+      @component.parent(parent2)
+      expect(@component.$parent).toEqual(parent2)
 
     it "should do nothing if passed nothing", ->
-      parent = @component.parent
-      @component.setParent()
-      expect(@component.parent).toEqual(parent)
+      parent = @component.$parent
+      @component.parent()
+      expect(@component.$parent).toEqual(parent)
 
 
   describe "#hide", ->
@@ -252,35 +249,33 @@ describe "Backpack.Component", ->
       expect(@component.content).toEqual(testContent)
 
   
-  describe "#setContent", ->
+  describe "#content", ->
     
     it "should do nothing if passed nothing", ->
       testContent = 'test'
-      @component.setContent(testContent)
-      @component.setContent()
-      expect(@component.content).toEqual(testContent)
+      @component.content(testContent)
+      @component.content()
+      expect(@component._content).toEqual(testContent)
 
-    it "should set @content to content if content isn't a View", ->
+    it "should return content if content isn't a View", ->
       testContent = 'test'
-      @component.setContent(testContent)
-      expect(@component.content).toEqual(testContent)
+      @component.content(testContent)
+      expect(@component._content).toEqual(testContent)
 
-    it "should set @conent to content.render().el if it's a View", ->
+    it "should return content.render().el if it's a View", ->
       testContent = new Backbone.View
       spy = sinon.spy(testContent, 'render')
-      @component.setContent(testContent)
+      @component.content(testContent)
       expect(spy).toHaveBeenCalled()
-      expect(@component.content).toEqual(testContent.render().el)
+      expect(@component._content).toEqual(testContent.render().el)
       testContent.render.restore()
 
-    it "should set @conent to content.el if content.render doesn't exist", ->
+    it "should return content.el if content.render doesn't exist", ->
       testContent = { el: document.createElement('div') }
-      @component.setContent(testContent)
-      expect(@component.content).toEqual(testContent.el)
-  
-  describe "#setup", ->
+      @component.content(testContent)
+      expect(@component._content).toEqual(testContent.el)
 
-    it "should add a class of the slugged version of name", ->
-      @component.options.name = 'admin only stuff'
-      @component.setup()
-      expect(@component.$el.hasClass('admin-only-stuff')).toBeTruthy()
+    it "should call #setContent", ->
+      spy = sinon.spy(@component, 'setContent')
+      @component.content('test')
+      expect(spy).toHaveBeenCalled()

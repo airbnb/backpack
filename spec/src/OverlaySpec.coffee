@@ -16,12 +16,6 @@ describe "Backpack.Overlay", ->
       hasClass = @overlay.$el.hasClass('backpack-overlay')
       expect(hasClass).toBeTruthy()
 
-    it "should call #hide", ->
-      spy = sinon.spy(@overlay, 'hide')
-      @overlay.initialize()
-      expect(spy).toHaveBeenCalled()
-      @overlay.hide.restore()
-
     it "should have a 'hide' class", ->
       hasClass = @overlay.$el.hasClass('hide')
       expect(hasClass).toBeTruthy()
@@ -32,13 +26,13 @@ describe "Backpack.Overlay", ->
         @options = @overlay.options
     
       it "should have a blank default name", ->
-        expect(@options.name).toEqual('')
+        expect(@options.class).toEqual('')
 
       it "should have a blank default content", ->
-        expect(@options.content).toEqual('')
+        expect(@options._content).toEqual('')
 
       it "should have 'body' as a default parent", ->
-        expect(@options.parent).toEqual('body')
+        expect(@options.$parent).toEqual('body')
 
       it "should have false as a default lockOverlay", ->
         expect(@options.lockOverlay).toBeFalsy()
@@ -49,13 +43,13 @@ describe "Backpack.Overlay", ->
       it "should set options", ->
         options = (new Backpack.Dialog { 
                   name: 'test'
-                , parent: '#test'
-                , content: 'test'
+                , $parent: '#test'
+                , _content: 'test'
                 , color: 'blue'
                 , lockOverlay: false }).options
         expect(options.name).toEqual('test')
-        expect(options.parent).toEqual('#test')
-        expect(options.content).toEqual('test')
+        expect(options.$parent).toEqual('#test')
+        expect(options._content).toEqual('test')
         expect(options.color).toEqual('blue')
         expect(options.lockOverlay).toBeFalsy()
 
@@ -81,10 +75,10 @@ describe "Backpack.Overlay", ->
   describe "#render", ->
 
     it "should call parent's prepend", ->
-      spy = sinon.spy(@overlay.parent, 'prepend')
+      spy = sinon.spy(@overlay.$parent, 'prepend')
       @overlay.render()
       expect(spy).toHaveBeenCalled()
-      @overlay.parent.prepend.restore()
+      @overlay.$parent.prepend.restore()
 
   describe "#unlock", ->
 
@@ -102,12 +96,12 @@ describe "Backpack.Overlay", ->
       expect(spy).toHaveBeenCalledWith('overlay-close')
       @overlay.trigger.restore()
 
-  describe "#setlock", ->
+  describe "#lockOverlay", ->
 
     it "should set lockOverlay appropriately", ->
-      @overlay.setLock(false)
-      expect(@overlay.lockOverlay).toBeFalsy()
-      @overlay.setLock()
-      expect(@overlay.lockOverlay).toBeFalsy()
-      @overlay.setLock(true)
-      expect(@overlay.lockOverlay).toBeTruthy()
+      @overlay.lockOverlay(false)
+      expect(@overlay._lockOverlay).toBeFalsy()
+      @overlay.lockOverlay()
+      expect(@overlay._lockOverlay).toBeFalsy()
+      @overlay.lockOverlay(true)
+      expect(@overlay._lockOverlay).toBeTruthy()

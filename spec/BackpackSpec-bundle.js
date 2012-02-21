@@ -47,30 +47,26 @@
         hasClass = this.component.$el.hasClass('backpack-component');
         return expect(hasClass).toBeTruthy();
       });
-      it("should call #setup", function() {
-        var spy;
-        spy = sinon.spy(this.component, 'setup');
-        this.component.initialize();
-        expect(spy).toHaveBeenCalled();
-        return this.component.setup.restore();
-      });
       it("should have a 'hide' class", function() {
         var hasClass;
         hasClass = this.component.$el.hasClass('hide');
         return expect(hasClass).toBeTruthy();
+      });
+      it("should define @$parent", function() {
+        return expect(this.component.$parent).toBeDefined();
       });
       describe("options", function() {
         beforeEach(function() {
           return this.options = this.component.options;
         });
         it("should have a blank default name", function() {
-          return expect(this.options.name).toEqual('');
+          return expect(this.options["class"]).toEqual('');
         });
         it("should have a blank default content", function() {
-          return expect(this.options.content).toEqual('');
+          return expect(this.options._content).toEqual('');
         });
-        it("should have 'body' as a default parent", function() {
-          return expect(this.options.parent).toEqual('body');
+        it("should have 'body' as a default $parent", function() {
+          return expect(this.options.$parent).toEqual('body');
         });
         return it("should set options", function() {
           var options;
@@ -97,23 +93,23 @@
       it("should append the component to it's parent", function() {
         var parent;
         parent = $('<div>');
-        this.component.setParent(parent);
+        this.component.parent(parent);
         this.component.render();
         return expect(parent.children().length).toEqual(1);
       });
       it("should return the component for chaining", function() {
         var parent;
         parent = $('<div>');
-        this.component.setParent(parent);
+        this.component.parent(parent);
         return expect(this.component.render()).toEqual(this.component);
       });
       return it("should call the parents #append", function() {
         var spy;
-        this.component.setParent('<div>');
-        spy = sinon.spy(this.component.parent, 'append');
+        this.component.parent('<div>');
+        spy = sinon.spy(this.component.$parent, 'append');
         this.component.render();
         expect(spy).toHaveBeenCalled();
-        return this.component.parent.append.restore();
+        return this.component.$parent.append.restore();
       });
     });
     describe("#addClass", function() {
@@ -140,21 +136,21 @@
         return expect(this.component.$el.className).toEqual(className);
       });
     });
-    describe("#setParent", function() {
+    describe("#parent", function() {
       it("should set the component's parent", function() {
         var parent1, parent2;
         parent1 = $('<div>');
-        this.component.setParent(parent1);
-        expect(this.component.parent).toEqual(parent1);
+        this.component.parent(parent1);
+        expect(this.component.$parent).toEqual(parent1);
         parent2 = $('<ul>');
-        this.component.setParent(parent2);
-        return expect(this.component.parent).toEqual(parent2);
+        this.component.parent(parent2);
+        return expect(this.component.$parent).toEqual(parent2);
       });
       return it("should do nothing if passed nothing", function() {
         var parent;
-        parent = this.component.parent;
-        this.component.setParent();
-        return expect(this.component.parent).toEqual(parent);
+        parent = this.component.$parent;
+        this.component.parent();
+        return expect(this.component.$parent).toEqual(parent);
       });
     });
     describe("#hide", function() {
@@ -303,43 +299,42 @@
         return expect(this.component.content).toEqual(testContent);
       });
     });
-    describe("#setContent", function() {
+    return describe("#content", function() {
       it("should do nothing if passed nothing", function() {
         var testContent;
         testContent = 'test';
-        this.component.setContent(testContent);
-        this.component.setContent();
-        return expect(this.component.content).toEqual(testContent);
+        this.component.content(testContent);
+        this.component.content();
+        return expect(this.component._content).toEqual(testContent);
       });
-      it("should set @content to content if content isn't a View", function() {
+      it("should return content if content isn't a View", function() {
         var testContent;
         testContent = 'test';
-        this.component.setContent(testContent);
-        return expect(this.component.content).toEqual(testContent);
+        this.component.content(testContent);
+        return expect(this.component._content).toEqual(testContent);
       });
-      it("should set @conent to content.render().el if it's a View", function() {
+      it("should return content.render().el if it's a View", function() {
         var spy, testContent;
         testContent = new Backbone.View;
         spy = sinon.spy(testContent, 'render');
-        this.component.setContent(testContent);
+        this.component.content(testContent);
         expect(spy).toHaveBeenCalled();
-        expect(this.component.content).toEqual(testContent.render().el);
+        expect(this.component._content).toEqual(testContent.render().el);
         return testContent.render.restore();
       });
-      return it("should set @conent to content.el if content.render doesn't exist", function() {
+      it("should return content.el if content.render doesn't exist", function() {
         var testContent;
         testContent = {
           el: document.createElement('div')
         };
-        this.component.setContent(testContent);
-        return expect(this.component.content).toEqual(testContent.el);
+        this.component.content(testContent);
+        return expect(this.component._content).toEqual(testContent.el);
       });
-    });
-    return describe("#setup", function() {
-      return it("should add a class of the slugged version of name", function() {
-        this.component.options.name = 'admin only stuff';
-        this.component.setup();
-        return expect(this.component.$el.hasClass('admin-only-stuff')).toBeTruthy();
+      return it("should call #setContent", function() {
+        var spy;
+        spy = sinon.spy(this.component, 'setContent');
+        this.component.content('test');
+        return expect(spy).toHaveBeenCalled();
       });
     });
   });
@@ -379,13 +374,6 @@
         hasClass = this.dialog.$el.hasClass('backpack-dialog');
         return expect(hasClass).toBeTruthy();
       });
-      it("should call #hide", function() {
-        var spy;
-        spy = sinon.spy(this.dialog, 'hide');
-        this.dialog.initialize();
-        expect(spy).toHaveBeenCalled();
-        return this.dialog.hide.restore();
-      });
       it("should have a 'hide' class", function() {
         var hasClass;
         hasClass = this.dialog.$el.hasClass('hide');
@@ -396,30 +384,19 @@
           return this.options = this.dialog.options;
         });
         it("should have a blank default name", function() {
-          return expect(this.options.name).toEqual('');
+          return expect(this.options["class"]).toEqual('');
         });
         it("should have a blank default content", function() {
-          return expect(this.options.content).toEqual('');
+          return expect(this.options._content).toEqual('');
         });
         it("should have 'body' as a default parent", function() {
-          return expect(this.options.parent).toEqual('body');
+          return expect(this.options.$parent).toEqual('body');
         });
         it("should have false as a default overlay", function() {
           return expect(this.options.showOverlay).toBeFalsy();
         });
-        it("should have false as a default lock", function() {
+        return it("should have false as a default lock", function() {
           return expect(this.options.lockOverlay).toBeFalsy();
-        });
-        return it("should set options", function() {
-          var options;
-          options = (new Backpack.Dialog({
-            name: 'test',
-            parent: '#test',
-            content: 'test'
-          })).options;
-          expect(options.name).toEqual('test');
-          expect(options.parent).toEqual('#test');
-          return expect(options.content).toEqual('test');
         });
       });
       return describe("events", function() {
@@ -447,7 +424,7 @@
       it("should not exist on default initialization", function() {
         return expect(this.dialog.overlay).toBeUndefined();
       });
-      describe("options.showOverlay", function() {
+      describe("#showOverlay", function() {
         it("should create an Overlay if showOverlay set to true", function() {
           var dialog;
           dialog = new Backpack.Dialog({
@@ -478,8 +455,8 @@
             showOverlay: true,
             lockOverlay: false
           });
-          expect(dialog1.overlay.lockOverlay).toBeTruthy();
-          return expect(dialog2.overlay.lockOverlay).toBeFalsy();
+          expect(dialog1.overlay._lockOverlay).toBeTruthy();
+          return expect(dialog2.overlay._lockOverlay).toBeFalsy();
         });
       });
     });
@@ -521,7 +498,7 @@
         return this.oDialog.overlay.remove.restore();
       });
     });
-    return describe("options.lockOverlay is false", function() {
+    return describe("options._lockOverlay is false", function() {
       return it("should trigger 'overlay-close' when the overlay is clicked", function() {
         var dialog, spy;
         dialog = new Backpack.Dialog({
@@ -567,13 +544,6 @@
         hasClass = this.modal.$el.hasClass('backpack-modal');
         return expect(hasClass).toBeTruthy();
       });
-      it("should call #hide", function() {
-        var spy;
-        spy = sinon.spy(this.modal, 'hide');
-        this.modal.initialize();
-        expect(spy).toHaveBeenCalled();
-        return this.modal.hide.restore();
-      });
       it("should have a 'hide' class", function() {
         var hasClass;
         hasClass = this.modal.$el.hasClass('hide');
@@ -584,13 +554,13 @@
           return this.options = this.modal.options;
         });
         it("should have a blank default name", function() {
-          return expect(this.options.name).toEqual('');
+          return expect(this.options["class"]).toEqual('');
         });
         it("should have a blank default content", function() {
-          return expect(this.options.content).toEqual('');
+          return expect(this.options._content).toEqual('');
         });
         it("should have 'body' as a default parent", function() {
-          return expect(this.options.parent).toEqual('body');
+          return expect(this.options.$parent).toEqual('body');
         });
         it("should have true as a default overlay", function() {
           return expect(this.options.showOverlay).toBeTruthy();
@@ -633,13 +603,6 @@
         hasClass = this.overlay.$el.hasClass('backpack-overlay');
         return expect(hasClass).toBeTruthy();
       });
-      it("should call #hide", function() {
-        var spy;
-        spy = sinon.spy(this.overlay, 'hide');
-        this.overlay.initialize();
-        expect(spy).toHaveBeenCalled();
-        return this.overlay.hide.restore();
-      });
       it("should have a 'hide' class", function() {
         var hasClass;
         hasClass = this.overlay.$el.hasClass('hide');
@@ -650,13 +613,13 @@
           return this.options = this.overlay.options;
         });
         it("should have a blank default name", function() {
-          return expect(this.options.name).toEqual('');
+          return expect(this.options["class"]).toEqual('');
         });
         it("should have a blank default content", function() {
-          return expect(this.options.content).toEqual('');
+          return expect(this.options._content).toEqual('');
         });
         it("should have 'body' as a default parent", function() {
-          return expect(this.options.parent).toEqual('body');
+          return expect(this.options.$parent).toEqual('body');
         });
         it("should have false as a default lockOverlay", function() {
           return expect(this.options.lockOverlay).toBeFalsy();
@@ -668,14 +631,14 @@
           var options;
           options = (new Backpack.Dialog({
             name: 'test',
-            parent: '#test',
-            content: 'test',
+            $parent: '#test',
+            _content: 'test',
             color: 'blue',
             lockOverlay: false
           })).options;
           expect(options.name).toEqual('test');
-          expect(options.parent).toEqual('#test');
-          expect(options.content).toEqual('test');
+          expect(options.$parent).toEqual('#test');
+          expect(options._content).toEqual('test');
           expect(options.color).toEqual('blue');
           return expect(options.lockOverlay).toBeFalsy();
         });
@@ -704,10 +667,10 @@
     describe("#render", function() {
       return it("should call parent's prepend", function() {
         var spy;
-        spy = sinon.spy(this.overlay.parent, 'prepend');
+        spy = sinon.spy(this.overlay.$parent, 'prepend');
         this.overlay.render();
         expect(spy).toHaveBeenCalled();
-        return this.overlay.parent.prepend.restore();
+        return this.overlay.$parent.prepend.restore();
       });
     });
     describe("#unlock", function() {
@@ -728,14 +691,14 @@
         return this.overlay.trigger.restore();
       });
     });
-    return describe("#setlock", function() {
+    return describe("#lockOverlay", function() {
       return it("should set lockOverlay appropriately", function() {
-        this.overlay.setLock(false);
-        expect(this.overlay.lockOverlay).toBeFalsy();
-        this.overlay.setLock();
-        expect(this.overlay.lockOverlay).toBeFalsy();
-        this.overlay.setLock(true);
-        return expect(this.overlay.lockOverlay).toBeTruthy();
+        this.overlay.lockOverlay(false);
+        expect(this.overlay._lockOverlay).toBeFalsy();
+        this.overlay.lockOverlay();
+        expect(this.overlay._lockOverlay).toBeFalsy();
+        this.overlay.lockOverlay(true);
+        return expect(this.overlay._lockOverlay).toBeTruthy();
       });
     });
   });

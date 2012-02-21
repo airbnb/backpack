@@ -17,12 +17,6 @@ describe "Backpack.Modal", ->
       hasClass = @modal.$el.hasClass('backpack-modal')
       expect(hasClass).toBeTruthy()
 
-    it "should call #hide", ->
-      spy = sinon.spy(@modal, 'hide')
-      @modal.initialize()
-      expect(spy).toHaveBeenCalled()
-      @modal.hide.restore()
-
     it "should have a 'hide' class", ->
       hasClass = @modal.$el.hasClass('hide')
       expect(hasClass).toBeTruthy()
@@ -33,13 +27,13 @@ describe "Backpack.Modal", ->
         @options = @modal.options
     
       it "should have a blank default name", ->
-        expect(@options.name).toEqual('')
+        expect(@options.class).toEqual('')
 
       it "should have a blank default content", ->
-        expect(@options.content).toEqual('')
+        expect(@options._content).toEqual('')
 
       it "should have 'body' as a default parent", ->
-        expect(@options.parent).toEqual('body')
+        expect(@options.$parent).toEqual('body')
 
       it "should have true as a default overlay", ->
         expect(@options.showOverlay).toBeTruthy()
