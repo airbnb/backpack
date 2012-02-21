@@ -74,8 +74,9 @@ class Backpack.Component extends Backbone.View
         @content = content.el
     else
       @content = content
-
-    @$el.html(@content)
+      
+    wrapContent = @make('div', {class: 'content'}, @content)
+    @$el.html(wrapContent)
     @
   
   setParent: (parent) =>
