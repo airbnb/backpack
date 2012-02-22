@@ -4,29 +4,3 @@ section {
   margin-bottom: 40px;
   clear: both;
 }
-
-.row {
-  margin-left: -20px;
-}
-
-.row::before, .row::after {
-  display: table;
-  content: "";
-}
-
-.row::after {
-  clear: both;
-}
-.row::before, .row::after {
-  display: table;
-  content: "";
-}
-
-.span6 {
-  width: 460px;
-}
-
-[class*="span"] {
-  float: left;
-  margin-left: 20px;
-}
