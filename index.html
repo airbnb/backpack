@@ -4,6 +4,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Backpack.js</title>
     <link rel="stylesheet" href="./lib/css/Backpack.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./assets/css/docs.css" type="text/css" media="screen">
     <link rel="stylesheet" href="./assets/css/prettify.css" type="text/css" media="screen">
   </head>
   <body class='backpack'>
@@ -12,8 +13,11 @@
       <nav id='nav' style='width: 960px; margin: 0 auto; height: 100px; padding: 20px 0 0;'></nav>
     </section>
 
-    <section id='docs' style='width: 960px; margin: 0 auto;'>
+    <section>
       <h2>Backpack.Menu</h2>
+      <div class="row">
+        <div class="span6">
+          <div id="backpack-menu"></div>
 <pre class="prettyprint linenums">
 var menu = new Backpack.Menu({ 
   parent: '#backpack-menu', 
@@ -25,10 +29,33 @@ menu.add({ content: 'Menu Item 1' })
     .add({ content: 'Menu Item 2' })
     .add({ content: 'Menu Item 3' });
 </pre>
-      <div id="backpack-menu"></div>
+          </div>
+          <div class="span6">
+            <p>Easily build menus.</p>
+          </div>
+    </section>
 
+    <section>
       <h2>Backpack.Dialog, Backpack.Overlay, &amp; Backpack.Modal</h2>
-      <div id="backpack-dialog"></div>
+      <div class="row">
+        <div class="span6">
+          <div id="backpack-dialog"></div>
+<pre class="prettyprint linenums">
+var menu = new Backpack.Menu({ 
+  parent: '#backpack-menu', 
+  render: true, 
+  show: true
+});
+
+menu.add({ content: 'Menu Item 1' })
+    .add({ content: 'Menu Item 2' })
+    .add({ content: 'Menu Item 3' });
+</pre>
+        </div>
+        <div class="span6">
+          <p></p>
+        </div>
+      </div>
     </section>
 
     <script src="./vendor/jquery.js"></script>
