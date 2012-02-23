@@ -16,27 +16,10 @@
   <body class='backpack'>
     <section id='docs' style='width: 960px; margin: 0 auto;'></section>
     <script>
-        $(document).ready(function(){
-          prettyPrint();
-        });
-
-        // var menu = new Backpack.Menu({
-        //               before: "lkajsdlkjasd",
-        //               hide: true
-        // });
-
-        // var menu = new Backpack.Menu().hide().before("kjahsdkjhasdkjahs");
-
-        // var layout = new Backpack.Layout(8);
-
-        // layout.add(menu, 2)
-        //       .add(nav)
-
-
       $(function(){
-        // ------------------------------------
-        //  Backpack.Menu
-        // ------------------------------------
+          // ------------------------------------
+          //  Backpack.Menu
+          // ------------------------------------
           var menu = new Backpack.Menu({ 
                           parent:   '#docs',
                           show:     true,
@@ -67,72 +50,87 @@
                                 addClass: "push-right"                
                               }
                             ]
-                        });
+                        }),
 
-          var github = new Backpack.MenuItem({ 
+              github = new Backpack.MenuItem({ 
                             content: "Download on Github",
                             events:  "http://github.com/airbnb/backpack.js"
                           });
 
-        menu.add(github.bump('right'));
+          menu.add(github.bump('right'));
 
 
-        var dialog = new Backpack.Menu({ 
-              parent: '#docs',
-              show: true,
-              before: "<h2>Backpack.Modal &amp; Backpack.Overlay</h2>",
-              bump: 'left'
-            });
-        // ------------------------------------
-        //  Backpack.Modal
-        // ------------------------------------
-        dialog.add({ 
-            content: 'Modal'
-          , events: 
-              function(){ 
-                new Backpack.Modal({ 
-                  content: "<p>This is a simple Modal.</p><p>This particular Modal only aspires to be a Modal. But there's much more that a Modal could be...</p>",
+          var dialog = new Backpack.Menu({ 
+                parent: '#docs',
+                show: true,
+                before: "<h2>Backpack.Modal &amp; Backpack.Overlay</h2>",
+                bump: 'left'
+              });
+          // ------------------------------------
+          //  Backpack.Modal
+          // ------------------------------------
+          dialog.add({ 
+              content: 'Modal'
+            , events: 
+                function(){ 
+                  new Backpack.Modal({ 
+                    content: "<p>This is a simple Modal.</p><p>This particular Modal only aspires to be a Modal. But there's much more that a Modal could be...</p>",
+                    show: true
+                  })
+                }
+          });
+
+          // ------------------------------------
+          //  Backpack.Modal with an Overlay
+          // ------------------------------------
+          dialog.add({ 
+            content: 'Overlay',
+            events: {
+              'hover': function() { console.log('hover') },
+              'click': function(){ 
+                new Backpack.Modal({
+                  content: "<p>This Modal is a bit fancier.</p><p>It's got a classy overlay in the background. This says, 'hey look at me, I'm a Modal.'</p>",
+                  color: 'rgba(0,0,0,0.7)',
+                  lockOverlay: false,
                   show: true
                 })
               }
-        });
-
-        // ------------------------------------
-        //  Backpack.Modal with an Overlay
-        // ------------------------------------
-        dialog.add({ 
-          content: 'Overlay',
-          events: {
-            'hover': function() { console.log('hover') },
-            'click': function(){ 
-              new Backpack.Modal({
-                content: "<p>This Modal is a bit fancier.</p><p>It's got a classy overlay in the background. This says, 'hey look at me, I'm a Modal.'</p>",
-                color: 'rgba(0,0,0,0.7)',
-                lockOverlay: false,
-                show: true
-              })
             }
-          }
-        });
+          });
 
-        // ------------------------------------
-        //  Backpack.Modal with a locked Overlay
-        // ------------------------------------
-        dialog.add({ 
-          content: 'Overlay',
-          events: 
-            function(){ 
-              new Backpack.Modal({
-                content: "<p>This is a modal with a locked overlay</p>",
-                color: 'rgba(0,0,0,0.7)',
-                lockOverlay: true,
-                show: true
-              })
-            }
-        });
+          // ------------------------------------
+          //  Backpack.Modal with a locked Overlay
+          // ------------------------------------
+          dialog.add({ 
+            content: 'Overlay',
+            events: 
+              function(){ 
+                new Backpack.Modal({
+                  content: "<p>This is a modal with a locked overlay</p>",
+                  color: 'rgba(0,0,0,0.7)',
+                  lockOverlay: true,
+                  show: true
+                })
+              }
+          });
         
-
       });
+
+        // $(document).ready(function(){
+        //   prettyPrint();
+        // });
+
+        // var menu = new Backpack.Menu({
+        //               before: "lkajsdlkjasd",
+        //               hide: true
+        // });
+
+        // var menu = new Backpack.Menu().hide().before("kjahsdkjhasdkjahs");
+
+        // var layout = new Backpack.Layout(8);
+
+        // layout.add(menu, 2)
+        //       .add(nav)
     </script>
   </body>
 </html>
