@@ -1,22 +1,36 @@
-# ## Backpack.Overlay
+# ## Backpack.Lift
 class Backpack.Overlay extends Backpack.Component
 
+  template: """
+              <div class='backpack-overlay-outer'>
+                <div class='backpack-overlay-inner'>
+                  <div class='backpack-overlay-container'></div>
+                </div>
+              </div>
+            """
   events:
     'click': 'unlock'
+    'click .backpack-overlay-container': (e) -> e.stopPropagation()
 
   defaults:
-    'lockOverlay': false
-    'color': 'rgba(0,0,0,0.7)'
+    lockOverlay: false
+    color: 'rgba(0,0,0,0.7)'
 
   initialize: ->
-    super()
     @addClass('backpack-overlay')
-    @
+    @append @template
+    super()
 
   render: =>
+    @$('.backpack-overlay-container').html(@_content)
     @$parent.prepend(@el)
     @
-    
+
+  content: (content) =>
+    return @ unless content?
+    @_content = @setContent(content)
+    @
+
   unlock: =>
     @close() unless @_lockOverlay
     @
@@ -28,43 +42,42 @@ class Backpack.Overlay extends Backpack.Component
     
   lockOverlay: (@_lockOverlay) =>
     @
-  
+
   color: (color) =>
     @el.style.backgroundColor = color
     @
 
 
 
-# ## Backpack.Dialog
-class Backpack.Dialog extends Backpack.Component
+# ## Backpack.Modal
+class Backpack.Modal extends Backpack.Component
 
   events:
     'click .close': 'close'
 
   defaults:
-    'lockOverlay': false
-    'showOverlay': false
+    'lockOverlay': true
     'closable': true
 
   initialize: ->
     super()
-    @addClass('backpack-dialog')
+    @addClass('backpack-modal')
+    @overlay = new Backpack.Overlay
+      lockOverlay: @options.lockOverlay
+      content:     @el
+      color:       @options.color
+      show:        true
+    @overlay.on('overlay-close', @close)
     @
 
   closable: =>
-    @$el.prepend("<span class='close'>×</span>")
-    @
-
-  showOverlay: (show) =>
-    return @ unless show
-    @overlay = new Backpack.Overlay
-      lockOverlay: @options.lockOverlay
-    @overlay.on('overlay-close', @close)
+    return @ unless !!arguments[0]
+    @$el.prepend("<span class='close'>&times;</span>")
     @
 
   show: =>
     super()
-    @overlay?.render().show()
+    @overlay?.show()
     @
 
   hide: =>
@@ -85,17 +98,3 @@ class Backpack.Dialog extends Backpack.Component
   #   @$el.append(container)
   #   @
 
-
-
-# ## Backpack.Modal
-class Backpack.Modal extends Backpack.Dialog
-
-  defaults:
-    'lockOverlay': true
-    'showOverlay': true
-    'closable': true
-
-  initialize: ->
-    super(@defaults)
-    @addClass('backpack-modal')
-    @

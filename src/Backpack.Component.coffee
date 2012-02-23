@@ -4,10 +4,7 @@ class Backpack.Component extends Backbone.View
   className: 'backpack-component'
 
   options:
-    'class':    ''
-    '_content': ''
     'parent': 'body'
-    'hide':    true
 
   initialize: ->
     @options = _.extend({}, @defaults, @options)
@@ -23,6 +20,7 @@ class Backpack.Component extends Backbone.View
     @
 
   show: =>
+    @render()
     @delegateEvents(@events)
     @$el.removeClass('hide')
     @
@@ -35,6 +33,11 @@ class Backpack.Component extends Backbone.View
   close: =>
     @hide()
     @remove()
+    @
+
+  remove: =>
+    @undelegateEvents()
+    super()
     @
 
   before: (content) =>
@@ -95,6 +98,11 @@ class Backpack.Component extends Backbone.View
   removeClass: (klass) =>
     return @ unless klass?
     @$el.removeClass(klass)
+    @
+
+  bump: (direction) =>
+    return @ unless direction?
+    @addClass("bump-#{direction}")
     @
 
   slug: (string) =>

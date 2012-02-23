@@ -10,11 +10,6 @@
     <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
   </head>
   <body class='backpack'>
-    
-    <section id='main' style='color: #333; background-color: whitesmoke;'>
-      <nav id='nav' style='width: 960px; margin: 0 auto; height: 100px; padding: 20px 0 0;'></nav>
-    </section>
-
     <section id='docs' style='width: 960px; margin: 0 auto;'></section>
 
 
@@ -36,69 +31,100 @@
         // ------------------------------------
         //  Backpack.Menu
         // ------------------------------------
-        var navigation = new Backpack.Menu({ parent:'#nav' }),
 
-                  menu = new Backpack.Menu({ 
-                    parent: '#docs', 
-                    render: true, 
-                    show: true, 
-                    before: "<h2>Backpack.Menu</h2>",
-                    after:  "<br/><br/><br/>"
-                  }),
-
-                dialog = new Backpack.Menu({ 
-                  parent: '#docs',
-                  render: true,
-                  show: true,
-                  before: "<h2>Backpack.Dialog, Backpack.Overlay, &amp; Backpack.Modal</h2>"
-                }),
-
-                github = new Backpack.MenuItem({ 
-                                content: "Download on Github",
+          var menu = new Backpack.Menu({ 
+                          parent:   '#docs',
+                          show:     true,
+                          addClass: 'press',
+                          before:   "<h2>Backpack.Menu</h2>",
+                          after:    "<br/><br/><br/>",
+                          add: 
+                            [
+                              {
+                                content: "Menu Item 1", 
                                 events: { 
-                                     "mouseleave": function(){
-                                        console.log('mouseleave');
-                                  }, "mouseenter": function() {
-                                        console.log('mouseenter')
-                                      }
-                                  }
-                                });
+                                  'mouseenter': function() {
+                                    this.addClass('hover');},
+                                  'mouseleave': function() {
+                                    this.removeClass('hover');
+                                  } 
+                                }
+                              }, 
+                              {
+                                content: "Menu Item 2",
+                                events: {
+                                  'mouseleave': function() {
+                                    console.log('mouseleave');}
+                                }                        
+                              },
+                              {
+                                content: "Menu Item 3",
+                                addClass: "push-right"                
+                              }
+                            ]
+                        });
 
-        // navigation.render().addClass('press').show();
+          var github = new Backpack.MenuItem({ 
+                            content: "Download on Github",
+                            events:  "http://github.com/airbnb/backpack.js"
+                          });
 
-        navigation.add({ content: "<img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png'", events: 'http://www.airbnb.com', 'class': 'logo' })
-                  .add({ content: 'Home', events: '#' })
-                  .add({ content: 'About Us', events: '#about' })
-                  .add({ content: 'Clicks', events: function() { console.log("click") } })
-                  .add(github);
-
-        menu.add({ content: 'Menu Item 1' })
-            .add({ content: 'Menu Item 2' })
-            .add({ content: 'Menu Item 3' });
+        menu.add(github.bump('right'));
 
 
+        var dialog = new Backpack.Menu({ 
+              parent: '#docs',
+              show: true,
+              before: "<h2>Backpack.Modal &amp; Backpack.Overlay</h2>",
+              bump: 'left'
+            });
         // ------------------------------------
-        //  Backpack.Dialog
+        //  Backpack.Modal
         // ------------------------------------
         dialog.add({ 
-            content: 'Dialog'
+            content: 'Modal'
           , events: 
               function(){ 
-                new Backpack.Dialog({ 
-                  content: "Dialog " + Math.floor(Math.random()*11)
-                }).render().show()
+                new Backpack.Modal({ 
+                  content: "<p>This is a simple Modal.</p><p>This particular Modal only aspires to be a Modal. But there's much more that a Modal could be...</p>",
+                  show: true
+                })
               }
         });
 
         // ------------------------------------
-        //  Backpack.Overlay
+        //  Backpack.Modal with an Overlay
         // ------------------------------------
-        dialog.add({ content: 'Overlay', events: function(){ new Backpack.Overlay({lock: false}).render().show(); }});
+        dialog.add({ 
+          content: 'Overlay',
+          events: {
+            'hover': function() { console.log('hover') },
+            'click': function(){ 
+              new Backpack.Modal({
+                content: "<p>This Modal is a bit fancier.</p><p>It's got a classy overlay in the background. This says, 'hey look at me, I'm a Modal.'</p>",
+                color: 'rgba(0,0,0,0.7)',
+                lockOverlay: false,
+                show: true
+              })
+            }
+          }
+        });
 
         // ------------------------------------
-        //  Backpack.Modal
+        //  Backpack.Modal with a locked Overlay
         // ------------------------------------
-        dialog.add({ content: "Modal", events: function(){ new Backpack.Modal({ content: "This is a Modal" }).render().show();} });
+        dialog.add({ 
+          content: 'Overlay',
+          events: 
+            function(){ 
+              new Backpack.Modal({
+                content: "<p>This is a modal with a locked overlay</p>",
+                color: 'rgba(0,0,0,0.7)',
+                lockOverlay: true,
+                show: true
+              })
+            }
+        });
         
 
       });
