@@ -86,11 +86,8 @@ background-color: #A89467;*/
   list-style: none;
 }
 
-.backpack-menu-item .logo {
-  float: left;
-}
-
-.backpack-menu li a {
+.backpack-menu li a,
+.backpack-menu-item a {
   color: #999;
   height: 55px;
   padding: 0 25px;
@@ -128,6 +125,48 @@ background-color: #A89467;*/
 
 
 /* --------------------
+ * Backpack.Menu
+ * Backpack.MenuItem
+ * --------------------
+ */
+.backpack-tabs {
+  padding: 0;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  background: #FEFEFE;
+  border-bottom: 1px solid #DDD;
+}
+
+.backpack-tabs li,
+.backpack-tab {
+  float: left;
+  list-style: none;
+}
+
+.backpack-tabs li a,
+.backpack-tabs .tab {
+  color: #999;
+  padding: 15px 25px;
+  display: table-cell;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+.backpack-tab-active {
+  margin-bottom: -1px;
+}
+
+.backpack-tab-active a {
+  border: 1px solid #ddd;
+  border-bottom: transparent;
+  background-color: #fff;
+}
+
+
+
+/* --------------------
  * Backpack.Dialog
  * Backpack.Modal
  * --------------------
@@ -136,6 +175,7 @@ background-color: #A89467;*/
   position: relative;
   text-align: left;
   color: #333;
+  margin: 20px 0;
   padding: 10px 23px;
   font-size: 15px;
   min-width: 400px;
@@ -181,7 +221,7 @@ background-color: #A89467;*/
  * Backpack.Overlay
  * --------------------
  */
-.backpack .backpack-overlay {
+.backpack-overlay {
   overflow-x: auto;
   overflow-y: scroll;
   position: fixed;
@@ -192,26 +232,26 @@ background-color: #A89467;*/
   z-index: 9;
 }
 
-.backpack .backpack-overlay-outer {
+.backpack-overlay-outer {
   display: table;
   height: 100%;
   table-layout: fixed;
   width: 100%;
 }
 
-.backpack .backpack-overlay-inner {
+.backpack-overlay-inner {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
   width: 100%;
 }
 
-.backpack .backpack-overlay-container {
+.backpack-overlay-container {
   display: inline-block;
   outline: none;
   text-align: left;
 }
 
-.backpack .backpack-overlay-border {
+.backpack-overlay-border {
   margin: 20px 0;
 }

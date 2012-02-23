@@ -17,6 +17,10 @@
     <section id='docs' style='width: 960px; margin: 0 auto;'></section>
     <script>
       $(function(){
+
+          /*============================================
+           *  SECTION 1
+           ============================================*/
           // ------------------------------------
           //  Backpack.Menu
           // ------------------------------------
@@ -46,8 +50,7 @@
                                 }                        
                               },
                               {
-                                content: "Menu Item 3",
-                                addClass: "push-right"                
+                                content: "Menu Item 3"            
                               }
                             ]
                         }),
@@ -60,12 +63,20 @@
           menu.add(github.bump('right'));
 
 
+
+
+          /*============================================
+           *  SECTION 2
+           ============================================*/
           var dialog = new Backpack.Menu({ 
                 parent: '#docs',
                 show: true,
                 before: "<h2>Backpack.Modal &amp; Backpack.Overlay</h2>",
+                after: "<div class='clearfix'/><br/><br/><br/>",
+                addClass: 'clearfix',
                 bump: 'left'
               });
+
           // ------------------------------------
           //  Backpack.Modal
           // ------------------------------------
@@ -84,15 +95,14 @@
           //  Backpack.Modal with an Overlay
           // ------------------------------------
           dialog.add({ 
-            content: 'Overlay',
+            content: 'Modal + Overlay',
             events: {
               'hover': function() { console.log('hover') },
               'click': function(){ 
                 new Backpack.Modal({
-                  content: "<p>This Modal is a bit fancier.</p><p>It's got a classy overlay in the background. This says, 'hey look at me, I'm a Modal.'</p>",
+                  content: "<p>This Modal is a bit fancier.</p><p>It's got a classy overlay in the background. This says, 'hey look at me, I'm a Modal.'</p><p>That's what we shoot for.</p>",
                   color: 'rgba(0,0,0,0.7)',
-                  lockOverlay: false,
-                  show: true
+                  lockOverlay: false
                 })
               }
             }
@@ -102,17 +112,112 @@
           //  Backpack.Modal with a locked Overlay
           // ------------------------------------
           dialog.add({ 
-            content: 'Overlay',
+            content: 'Modal + Overlay 2',
             events: 
               function(){ 
                 new Backpack.Modal({
-                  content: "<p>This is a modal with a locked overlay</p>",
-                  color: 'rgba(0,0,0,0.7)',
-                  lockOverlay: true,
-                  show: true
+                  content: "<p>This would be the monocle of modals.</p><p>It's got a locked overlay and show's how easy it is to change the overlay color.</p>",
+                  color: 'rgba(255,255,255,0.7)',
+                  lockOverlay: true
                 })
               }
           });
+
+
+          dialog.add({
+            content: "Handles Overflow",
+              events: 
+              function(){ 
+                new Backpack.Modal({
+                  content:
+                    "<br/><h2>Look how long this modal is.</h2><hr/>" + 
+                    "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod" +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
+                        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" +
+                        "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                        "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non" +
+                        "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>" +
+
+                        "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod" +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
+                        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" +
+                        "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                        "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non" +
+                        "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>" +
+
+                        "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod" +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
+                        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" +
+                        "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                        "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non" +
+                        "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>" +
+
+                        "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod" +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
+                        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" +
+                        "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                        "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non" +
+                        "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>" +
+
+                        "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod" +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
+                        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" +
+                        "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                        "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non" +
+                        "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>" +
+
+                        "<br/><h2>Notice the fixed Background?</h2><hr/>" + 
+
+                        "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod" +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
+                        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" +
+                        "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                        "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non" +
+                        "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>" +
+
+                        "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod" +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
+                        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" +
+                        "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                        "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non" +
+                        "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>" +
+
+                        "<br/><h2>Try resizing the window.</h2><hr/>" +
+                        "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod" +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
+                        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" +
+                        "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                        "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non" +
+                        "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+                  color: 'rgba(0,0,0,0.7)',
+                  lockOverlay: true
+                })
+              }
+          })
+
+
+
+          /*============================================
+           *  SECTION 3
+           ============================================*/
+          // ------------------------------------
+          //  Backpack.Tabs
+          // ------------------------------------
+          var tabs = new Backpack.Tabs({
+                        parent: '#docs',
+                        show: true,
+                        before: '<h2>Backpack.Tabs</h2>',
+                        add: 
+                          [
+                            {
+                              content: 'Tab 1',
+                            },
+                            {
+                              content: 'Tab 2'
+                            }
+                          ]
+          });
+
         
       });
 

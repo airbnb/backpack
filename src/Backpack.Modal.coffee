@@ -40,7 +40,8 @@ class Backpack.Overlay extends Backpack.Component
     @trigger('overlay-close')
     @
     
-  lockOverlay: (@_lockOverlay) =>
+  lockOverlay: (lockOverlay) =>
+    @_lockOverlay = !!lockOverlay
     @
 
   color: (color) =>
@@ -62,17 +63,7 @@ class Backpack.Modal extends Backpack.Component
   initialize: ->
     super()
     @addClass('backpack-modal')
-    @overlay = new Backpack.Overlay
-      lockOverlay: @options.lockOverlay
-      content:     @el
-      color:       @options.color
-      show:        true
-    @overlay.on('overlay-close', @close)
-    @
-
-  closable: =>
-    return @ unless !!arguments[0]
-    @$el.prepend("<span class='close'>&times;</span>")
+    @newOverlay()
     @
 
   show: =>
@@ -88,6 +79,20 @@ class Backpack.Modal extends Backpack.Component
   close: =>
     super()
     @overlay?.remove()
+    @
+
+  closable: =>
+    return @ unless !!arguments[0]
+    @$el.prepend("<span class='close'>&times;</span>")
+    @
+
+  newOverlay: =>
+    @overlay = new Backpack.Overlay
+      lockOverlay: @options.lockOverlay
+      content:     @el
+      color:       @options.color
+      show:        true
+    @overlay.on('overlay-close', @close)
     @
 
   # addButton: (button) =>
