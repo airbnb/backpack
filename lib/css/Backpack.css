@@ -221,6 +221,11 @@ background-color: #A89467;*/
  * Backpack.Overlay
  * --------------------
  */
+
+.backpack.overlay {
+  overflow: hidden;
+}
+
 .backpack-overlay {
   overflow-x: auto;
   overflow-y: scroll;

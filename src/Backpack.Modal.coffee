@@ -20,6 +20,7 @@ class Backpack.Overlay extends Backpack.Component
     @addClass('backpack-overlay')
     @append @template
     super()
+    @$parent.addClass('overlay')
 
   render: =>
     @$('.backpack-overlay-container').html(@_content)
