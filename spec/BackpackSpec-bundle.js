@@ -1,6 +1,6 @@
 (function() {
 
-  describe('Backpack', function() {
+  describe('BackpackSpec', function() {
     it('should be defined', function() {
       return expect(Backpack).toBeDefined();
     });
@@ -19,9 +19,6 @@
       });
       it('should have a Modal', function() {
         return expect(Backpack.Modal).toBeDefined();
-      });
-      it('should have a Dialog', function() {
-        return expect(Backpack.Dialog).toBeDefined();
       });
       it('should have an Overlay', function() {
         return expect(Backpack.Overlay).toBeDefined();
@@ -47,11 +44,6 @@
         hasClass = this.component.$el.hasClass('backpack-component');
         return expect(hasClass).toBeTruthy();
       });
-      it("should have a 'hide' class", function() {
-        var hasClass;
-        hasClass = this.component.$el.hasClass('hide');
-        return expect(hasClass).toBeTruthy();
-      });
       it("should define @$parent", function() {
         return expect(this.component.$parent).toBeDefined();
       });
@@ -59,11 +51,8 @@
         beforeEach(function() {
           return this.options = this.component.options;
         });
-        it("should have a blank default name", function() {
-          return expect(this.options["class"]).toEqual('');
-        });
         it("should have a blank default content", function() {
-          return expect(this.options._content).toEqual('');
+          return expect(this.options._content).toBeUndefined();
         });
         it("should have 'body' as a default $parent", function() {
           return expect(this.options.parent).toEqual('body');
@@ -177,6 +166,7 @@
     });
     describe("#show", function() {
       it("should remove the hide class from the component", function() {
+        this.component.hide();
         expect(this.component.$el.hasClass('hide')).toBeTruthy();
         this.component.show();
         return expect(this.component.$el.hasClass('hide')).toBeFalsy();
@@ -354,165 +344,6 @@
     });
   });
 
-  describe("Backpack.Dialog", function() {
-    beforeEach(function() {
-      return this.dialog = new Backpack.Dialog;
-    });
-    describe("#initialize", function() {
-      it("should create a <div>", function() {
-        var nodeName;
-        nodeName = this.dialog.el.nodeName;
-        return expect(nodeName).toEqual('DIV');
-      });
-      it("should have a 'backpack-component' class", function() {
-        var hasClass;
-        hasClass = this.dialog.$el.hasClass('backpack-component');
-        return expect(hasClass).toBeTruthy();
-      });
-      it("should have a 'backpack-dialog' class", function() {
-        var hasClass;
-        hasClass = this.dialog.$el.hasClass('backpack-dialog');
-        return expect(hasClass).toBeTruthy();
-      });
-      it("should have a 'hide' class", function() {
-        var hasClass;
-        hasClass = this.dialog.$el.hasClass('hide');
-        return expect(hasClass).toBeTruthy();
-      });
-      describe("options", function() {
-        beforeEach(function() {
-          return this.options = this.dialog.options;
-        });
-        it("should have a blank default name", function() {
-          return expect(this.options["class"]).toEqual('');
-        });
-        it("should have a blank default content", function() {
-          return expect(this.options._content).toEqual('');
-        });
-        it("should have 'body' as a default parent", function() {
-          return expect(this.options.parent).toEqual('body');
-        });
-        it("should have false as a default overlay", function() {
-          return expect(this.options.showOverlay).toBeFalsy();
-        });
-        return it("should have false as a default lock", function() {
-          return expect(this.options.lockOverlay).toBeFalsy();
-        });
-      });
-      return describe("events", function() {
-        beforeEach(function() {
-          return this.events = this.dialog.events;
-        });
-        it("should have events defined", function() {
-          return expect(this.events).toBeDefined();
-        });
-        it("should have a click event", function() {
-          return expect(this.events['click .close']).toBeDefined();
-        });
-        return it("should call #close when click event triggered", function() {
-          var spy;
-          spy = sinon.spy(this.dialog, 'close');
-          this.dialog.render();
-          this.dialog.show();
-          this.dialog.$el.find('.close').trigger('click');
-          expect(spy).toHaveBeenCalled();
-          return this.dialog.close.restore();
-        });
-      });
-    });
-    return describe("overlay", function() {
-      it("should not exist on default initialization", function() {
-        return expect(this.dialog.overlay).toBeUndefined();
-      });
-      describe("#showOverlay", function() {
-        it("should create an Overlay if showOverlay set to true", function() {
-          var dialog;
-          dialog = new Backpack.Dialog({
-            showOverlay: true
-          });
-          return expect(dialog.overlay).toBeDefined();
-        });
-        return it("should set showOverlay based on arguments", function() {
-          var dialog1, dialog2;
-          dialog1 = new Backpack.Dialog({
-            showOverlay: true
-          });
-          dialog2 = new Backpack.Dialog({
-            showOverlay: false
-          });
-          expect(dialog1.options.showOverlay).toBeTruthy();
-          return expect(dialog2.options.showOverlay).toBeFalsy();
-        });
-      });
-      return describe("options.lockOverlay", function() {
-        return it("should set lockOverlay based on arguments", function() {
-          var dialog1, dialog2;
-          dialog1 = new Backpack.Dialog({
-            showOverlay: true,
-            lockOverlay: true
-          });
-          dialog2 = new Backpack.Dialog({
-            showOverlay: true,
-            lockOverlay: false
-          });
-          expect(dialog1.overlay._lockOverlay).toBeTruthy();
-          return expect(dialog2.overlay._lockOverlay).toBeFalsy();
-        });
-      });
-    });
-  });
-
-  describe("it has an overlay", function() {
-    beforeEach(function() {
-      return this.oDialog = new Backpack.Dialog({
-        showOverlay: true
-      });
-    });
-    describe("#show", function() {
-      return it("should render and show it's overlay", function() {
-        var spyRender, spyShow;
-        spyShow = sinon.spy(this.oDialog.overlay, 'show');
-        spyRender = sinon.spy(this.oDialog.overlay, 'render');
-        this.oDialog.show();
-        expect(spyShow).toHaveBeenCalled();
-        expect(spyRender).toHaveBeenCalled();
-        this.oDialog.overlay.show.restore();
-        return this.oDialog.overlay.render.restore();
-      });
-    });
-    describe("#hide", function() {
-      return it("should hide it's overlay", function() {
-        var spy;
-        spy = sinon.spy(this.oDialog.overlay, 'hide');
-        this.oDialog.hide();
-        expect(spy).toHaveBeenCalled();
-        return this.oDialog.overlay.hide.restore();
-      });
-    });
-    describe("#close", function() {
-      return it("should remove it's overlay", function() {
-        var spy;
-        spy = sinon.spy(this.oDialog.overlay, 'remove');
-        this.oDialog.close();
-        expect(spy).toHaveBeenCalled();
-        return this.oDialog.overlay.remove.restore();
-      });
-    });
-    return describe("options._lockOverlay is false", function() {
-      return it("should trigger 'overlay-close' when the overlay is clicked", function() {
-        var dialog, spy;
-        dialog = new Backpack.Dialog({
-          showOverlay: true,
-          lockOverlay: false
-        });
-        spy = sinon.spy(dialog.overlay, 'trigger');
-        dialog.render().show();
-        dialog.overlay.$el.trigger('click');
-        return expect(spy).toHaveBeenCalledWith('overlay-close');
-      });
-    });
-  });
-
   describe('Backpack.Menu', function() {
     beforeEach(function() {
       return this.menu = new Backpack.Menu;
@@ -526,59 +357,132 @@
 
   describe("Backpack.Modal", function() {
     beforeEach(function() {
-      return this.modal = new Backpack.Modal;
+      return this.Modal = new Backpack.Modal();
     });
-    return describe("#initialize", function() {
+    afterEach(function() {
+      return this.Modal.remove();
+    });
+    describe("#initialize", function() {
       it("should create a <div>", function() {
         var nodeName;
-        nodeName = this.modal.el.nodeName;
+        nodeName = this.Modal.el.nodeName;
         return expect(nodeName).toEqual('DIV');
       });
       it("should have a 'backpack-component' class", function() {
         var hasClass;
-        hasClass = this.modal.$el.hasClass('backpack-component');
+        hasClass = this.Modal.$el.hasClass('backpack-component');
         return expect(hasClass).toBeTruthy();
       });
-      it("should have a 'backpack-modal' class", function() {
+      it("should have a 'backpack-Modal' class", function() {
         var hasClass;
-        hasClass = this.modal.$el.hasClass('backpack-modal');
+        hasClass = this.Modal.$el.hasClass('backpack-modal');
         return expect(hasClass).toBeTruthy();
       });
-      it("should have a 'hide' class", function() {
-        var hasClass;
-        hasClass = this.modal.$el.hasClass('hide');
-        return expect(hasClass).toBeTruthy();
-      });
-      return describe("options", function() {
+      describe("options", function() {
         beforeEach(function() {
-          return this.options = this.modal.options;
-        });
-        it("should have a blank default name", function() {
-          return expect(this.options["class"]).toEqual('');
+          return this.options = this.Modal.options;
         });
         it("should have a blank default content", function() {
-          return expect(this.options._content).toEqual('');
+          return expect(this.options._content).toBeUndefined();
         });
         it("should have 'body' as a default parent", function() {
           return expect(this.options.parent).toEqual('body');
         });
-        it("should have true as a default overlay", function() {
-          return expect(this.options.showOverlay).toBeTruthy();
+        return it("should have false as a default lock", function() {
+          return expect(this.options._lockOverlay).toBeFalsy();
         });
-        it("should have true as a default lock", function() {
-          return expect(this.options.lockOverlay).toBeTruthy();
+      });
+      return describe("events", function() {
+        beforeEach(function() {
+          return this.events = this.Modal.events;
         });
-        return it("should set options", function() {
-          var options;
-          options = (new Backpack.Dialog({
-            name: 'test',
-            parent: '#test',
-            content: 'test'
-          })).options;
-          expect(options.name).toEqual('test');
-          expect(options.parent).toEqual('#test');
-          return expect(options.content).toEqual('test');
+        it("should have events defined", function() {
+          return expect(this.events).toBeDefined();
         });
+        it("should have a click event", function() {
+          return expect(this.events['click .close']).toBeDefined();
+        });
+        return it("should call #close when click event triggered", function() {
+          var spy;
+          spy = sinon.spy(this.Modal, 'close');
+          this.Modal.render();
+          this.Modal.show();
+          this.Modal.$el.find('.close').trigger('click');
+          expect(spy).toHaveBeenCalled();
+          return this.Modal.close.restore();
+        });
+      });
+    });
+    return describe("overlay", function() {
+      it("should exist on default initialization", function() {
+        return expect(this.Modal.overlay).toBeDefined();
+      });
+      return describe("options._lockOverlay", function() {
+        return it("should set lockOverlay based on arguments", function() {
+          var Modal1, Modal2;
+          Modal1 = new Backpack.Modal({
+            lockOverlay: true
+          });
+          Modal2 = new Backpack.Modal({
+            lockOverlay: false
+          });
+          expect(Modal1.overlay._lockOverlay).toBeTruthy();
+          expect(Modal2.overlay._lockOverlay).toBeFalsy();
+          Modal1.remove();
+          return Modal2.remove();
+        });
+      });
+    });
+  });
+
+  describe("it has an overlay", function() {
+    beforeEach(function() {
+      return this.oModal = new Backpack.Modal;
+    });
+    afterEach(function() {
+      return this.oModal.remove();
+    });
+    describe("#show", function() {
+      return it("should render and show it's overlay", function() {
+        var spyRender, spyShow;
+        spyShow = sinon.spy(this.oModal.overlay, 'show');
+        spyRender = sinon.spy(this.oModal.overlay, 'render');
+        this.oModal.show();
+        expect(spyShow).toHaveBeenCalled();
+        expect(spyRender).toHaveBeenCalled();
+        this.oModal.overlay.show.restore();
+        return this.oModal.overlay.render.restore();
+      });
+    });
+    describe("#hide", function() {
+      return it("should hide it's overlay", function() {
+        var spy;
+        spy = sinon.spy(this.oModal.overlay, 'hide');
+        this.oModal.hide();
+        expect(spy).toHaveBeenCalled();
+        return this.oModal.overlay.hide.restore();
+      });
+    });
+    describe("#close", function() {
+      return it("should remove it's overlay", function() {
+        var spy;
+        spy = sinon.spy(this.oModal.overlay, 'remove');
+        this.oModal.close();
+        expect(spy).toHaveBeenCalled();
+        return this.oModal.overlay.remove.restore();
+      });
+    });
+    return describe("options._lockOverlay is false", function() {
+      return it("should trigger 'overlay-close' when the overlay is clicked", function() {
+        var Modal, spy;
+        Modal = new Backpack.Modal({
+          lockOverlay: false
+        });
+        spy = sinon.spy(Modal.overlay, 'trigger');
+        Modal.render().show();
+        Modal.overlay.$el.trigger('click');
+        expect(spy).toHaveBeenCalledWith('overlay-close');
+        return Modal.remove();
       });
     });
   });
@@ -586,6 +490,9 @@
   describe("Backpack.Overlay", function() {
     beforeEach(function() {
       return this.overlay = new Backpack.Overlay;
+    });
+    afterEach(function() {
+      return this.overlay.remove();
     });
     describe("#initialize", function() {
       it("should create a <div>", function() {
@@ -603,20 +510,12 @@
         hasClass = this.overlay.$el.hasClass('backpack-overlay');
         return expect(hasClass).toBeTruthy();
       });
-      it("should have a 'hide' class", function() {
-        var hasClass;
-        hasClass = this.overlay.$el.hasClass('hide');
-        return expect(hasClass).toBeTruthy();
-      });
       describe("options", function() {
         beforeEach(function() {
           return this.options = this.overlay.options;
         });
-        it("should have a blank default name", function() {
-          return expect(this.options["class"]).toEqual('');
-        });
         it("should have a blank default content", function() {
-          return expect(this.options._content).toEqual('');
+          return expect(this.options._content).toBeUndefined();
         });
         it("should have 'body' as a default parent", function() {
           return expect(this.options.parent).toEqual('body');
@@ -624,23 +523,9 @@
         it("should have false as a default lockOverlay", function() {
           return expect(this.options.lockOverlay).toBeFalsy();
         });
-        it("should have rgba(0,0,0,0.7) as a default color", function() {
-          return expect(this.options.color).toEqual("rgba(0,0,0,0.7)");
-        });
-        return it("should set options", function() {
-          var options;
-          options = (new Backpack.Dialog({
-            name: 'test',
-            parent: '#test',
-            _content: 'test',
-            color: 'blue',
-            lockOverlay: false
-          })).options;
-          expect(options.name).toEqual('test');
-          expect(options.parent).toEqual('#test');
-          expect(options._content).toEqual('test');
-          expect(options.color).toEqual('blue');
-          return expect(options.lockOverlay).toBeFalsy();
+        return it("should have rgba(0,0,0,0.7) as a default color", function() {
+          expect(this.options.color).toEqual("rgba(0,0,0,0.7)");
+          return expect(this.options.lockOverlay).toBeFalsy();
         });
       });
       return describe("events", function() {

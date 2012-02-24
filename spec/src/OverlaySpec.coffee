@@ -3,6 +3,9 @@ describe "Backpack.Overlay", ->
   beforeEach ->
     @overlay = new Backpack.Overlay
 
+  afterEach ->
+    @overlay.remove()
+
   describe "#initialize", ->
     it "should create a <div>", ->
       nodeName = @overlay.el.nodeName
@@ -16,20 +19,13 @@ describe "Backpack.Overlay", ->
       hasClass = @overlay.$el.hasClass('backpack-overlay')
       expect(hasClass).toBeTruthy()
 
-    it "should have a 'hide' class", ->
-      hasClass = @overlay.$el.hasClass('hide')
-      expect(hasClass).toBeTruthy()
-
     describe "options", ->
 
       beforeEach ->
         @options = @overlay.options
-    
-      it "should have a blank default name", ->
-        expect(@options.class).toEqual('')
 
       it "should have a blank default content", ->
-        expect(@options._content).toEqual('')
+        expect(@options._content).toBeUndefined()
 
       it "should have 'body' as a default parent", ->
         expect(@options.parent).toEqual('body')
@@ -39,19 +35,8 @@ describe "Backpack.Overlay", ->
 
       it "should have rgba(0,0,0,0.7) as a default color", ->
         expect(@options.color).toEqual("rgba(0,0,0,0.7)")
+        expect(@options.lockOverlay).toBeFalsy()
 
-      it "should set options", ->
-        options = (new Backpack.Dialog { 
-                  name: 'test'
-                , parent: '#test'
-                , _content: 'test'
-                , color: 'blue'
-                , lockOverlay: false }).options
-        expect(options.name).toEqual('test')
-        expect(options.parent).toEqual('#test')
-        expect(options._content).toEqual('test')
-        expect(options.color).toEqual('blue')
-        expect(options.lockOverlay).toBeFalsy()
 
     describe "events", ->
 

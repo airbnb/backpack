@@ -13,8 +13,8 @@ class Backpack.Overlay extends Backpack.Component
     'click .backpack-overlay-container': (e) -> e.stopPropagation()
 
   defaults:
-    lockOverlay: false
-    color: 'rgba(0,0,0,0.7)'
+    'lockOverlay': false
+    'color': 'rgba(0,0,0,0.7)'
 
   initialize: ->
     @addClass('backpack-overlay')
@@ -58,12 +58,12 @@ class Backpack.Modal extends Backpack.Component
     'click .close': 'close'
 
   defaults:
+    'closable':    true 
     'lockOverlay': true
-    'closable': true
 
   initialize: ->
-    super()
     @addClass('backpack-modal')
+    super()
     @newOverlay()
     @
 
@@ -94,6 +94,11 @@ class Backpack.Modal extends Backpack.Component
       color:       @options.color
       show:        true
     @overlay.on('overlay-close', @close)
+    @
+
+  remove: =>
+    super()
+    @overlay.remove()
     @
 
   # addButton: (button) =>
