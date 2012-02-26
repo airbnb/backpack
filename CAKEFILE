@@ -40,7 +40,6 @@ watchBundle = (callback) ->
   run "#{bin_path}/coffee -j #{bndl_path} -wco #{lib_path} #{src_path}", callback
 
 watchTest = (callback) ->
-  # use ./test/mocha.opts for options
   run "#{bin_path}/jasmine-node --autotest --color --coffee #{spec_path}", callback
 
 bundle = (callback) ->
@@ -52,11 +51,10 @@ minify = (callback) ->
   run "#{bin_path}/uglifyjs  -o #{min_path} #{bndl_path}", callback
 
 test = (callback) ->
-  # use ./test/mocha.opts for options
   run "open #{spec_path}/SpecRunner.html", callback
 
 docs = (callback) ->
-  run "#{bin_path}/docco #{src_path}/*.coffee"
+  run "#{bin_path}/docco #{src_path}/*.coffee", callback
 
 
 # ----------------------------------

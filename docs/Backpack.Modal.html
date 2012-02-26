@@ -12,8 +12,8 @@
     <span class="s">&#39;click .backpack-overlay-container&#39;</span><span class="o">:</span> <span class="nf">(e) -&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">()</span>
 
   <span class="nv">defaults:</span>
-    <span class="nv">lockOverlay: </span><span class="kc">false</span>
-    <span class="nv">color: </span><span class="s">&#39;rgba(0,0,0,0.7)&#39;</span>
+    <span class="s">&#39;lockOverlay&#39;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="s">&#39;color&#39;</span><span class="o">:</span> <span class="s">&#39;rgba(0,0,0,0.7)&#39;</span>
 
   <span class="nv">initialize: </span><span class="o">-&gt;</span>
     <span class="nx">@addClass</span><span class="p">(</span><span class="s">&#39;backpack-overlay&#39;</span><span class="p">)</span>
@@ -52,12 +52,12 @@
     <span class="s">&#39;click .close&#39;</span><span class="o">:</span> <span class="s">&#39;close&#39;</span>
 
   <span class="nv">defaults:</span>
+    <span class="s">&#39;closable&#39;</span><span class="o">:</span>    <span class="kc">true</span> 
     <span class="s">&#39;lockOverlay&#39;</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="s">&#39;closable&#39;</span><span class="o">:</span> <span class="kc">true</span>
 
   <span class="nv">initialize: </span><span class="o">-&gt;</span>
-    <span class="k">super</span><span class="p">()</span>
     <span class="nx">@addClass</span><span class="p">(</span><span class="s">&#39;backpack-modal&#39;</span><span class="p">)</span>
+    <span class="k">super</span><span class="p">()</span>
     <span class="nx">@newOverlay</span><span class="p">()</span>
     <span class="nx">@</span>
 
@@ -88,6 +88,11 @@
       <span class="nv">color: </span>      <span class="nx">@options</span><span class="p">.</span><span class="nx">color</span>
       <span class="nv">show: </span>       <span class="kc">true</span>
     <span class="nx">@overlay</span><span class="p">.</span><span class="kc">on</span><span class="p">(</span><span class="s">&#39;overlay-close&#39;</span><span class="p">,</span> <span class="nx">@close</span><span class="p">)</span>
+    <span class="nx">@</span>
+
+  <span class="nv">remove: </span><span class="o">=&gt;</span>
+    <span class="k">super</span><span class="p">()</span>
+    <span class="nx">@overlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
     <span class="nx">@</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>addButton: (button) =>
   return unless button?
   container = @make("div", {"class": "backpack-dialog-button-container"})

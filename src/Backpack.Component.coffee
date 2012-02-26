@@ -86,10 +86,6 @@ class Backpack.Component extends Backbone.View
     @$parent = $(parent)
     @
 
-  class: (klass) =>
-    @addClass(klass)
-    @
-
   addClass: (klass) =>
     return @ unless klass?
     @$el.addClass(klass)

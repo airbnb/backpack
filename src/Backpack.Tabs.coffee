@@ -7,7 +7,7 @@ class Backpack.Tabs extends Backpack.Component
 
   initialize: ->
     super()
-    @addClass('backpack-tabs')
+    @addClass('backpack-tabs clearfix')
     @contentArea = "<div class='backpack-tab-content-area'/>"
     @after(@contentArea)
 
@@ -62,8 +62,9 @@ class Backpack.Tab extends Backpack.Component
   initialize: ->
     super()
     @addClass('backpack-tab')
-    {tabContent} = @options
-    @tabContent = new Backpack.TabContent({ content: tabContent, parent: '.backpack-tab-content-area' })
+    @tabContent = new Backpack.TabContent
+      content: @options.tabContent, 
+      parent: '.backpack-tab-content-area'
 
   render: =>
     @$el.html(@_content)
@@ -75,6 +76,9 @@ class Backpack.Tab extends Backpack.Component
     @_content = @template({ href: 'javascript:void(0);', content: content })
     @
 
+  # **Select** Emits a 'tab-click' event.
+  # Passes the selected tab object to
+  # those listening to that event.
   select: =>
     @trigger('tab-click', @)
     @
