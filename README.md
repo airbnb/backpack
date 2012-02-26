@@ -13,7 +13,7 @@
 1. `git clone git@github.com:airbnb/backpack.js.git`
 1. `cd backpack.js && open example/index.html`
 
-### Intro by Example
+## Some Examples
 
 **Make a Menu**
 
