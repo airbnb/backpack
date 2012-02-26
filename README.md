@@ -1,6 +1,6 @@
     ______            _                     _      _        |
     | ___ \          | |                   | |    (_)       |  A backpack full of UI components for your Backbone.js
-    | |_/ / __ _  ___| | ___ __   __ _  ___| | __  _ ___    |  projects. Grab your backpack and get some nice Views. 
+    | |_/ / __ _  ___| | ___ __   __ _  ___| | __  _ ___    |  projects. Grab your backpack and enjoy the Views. 
     | ___ \/ _` |/ __| |/ / '_ \ / _` |/ __| |/ / | / __|   |
     | |_/ / (_| | (__|   <| |_) | (_| | (__|   < _| \__ \   |
     \____/ \__,_|\___|_|\_\ .__/ \__,_|\___|_|\_(_) |___/   |
@@ -10,7 +10,7 @@
 
 
 
-## Development
+## Hack on Backpack
 
 ### Quick Start
 
@@ -21,13 +21,12 @@
 
 The Cakefile defines the following tasks:
 
-    cake compile          # Compile CoffeeScript source files
-    cake bundle           # Creates /lib_path/Backpack-bundle.js & /lib_path/js/*.js
-    cake build            # Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js
-    cake watch:js         # Recompile CoffeeScript source files when modified to individual .js files
-    cake watch:bundle     # Recompile CoffeeScript source files when modified to Backage-bundle.js
-    cake test             # Run tests
-    cake docs             # Generate annotated source code with Docco
+    cake compile        # Compile CoffeeScript source files
+    cake build          # Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js
+    cake test           # Opens Jasmine SpecRunner. Watches BackpackSpec-Bundle.js for changes
+    cake docs           # Generate annotated source code with Docco
+    cake watch          # Recompile CoffeeScript source files when modified to Backpack-bundle.js
+    cake watch:js       # Recompile CoffeeScript source files when modified to individual .js files
 
 ### Testing
 

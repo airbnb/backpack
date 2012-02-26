@@ -20,7 +20,7 @@ class Backpack.Tabs extends Backpack.Component
       else
         tab = new Backpack.Tab(item)
       @setTab(tab)
-    @setItems()
+    @setActive()
     @
 
   setTab: (tab) =>
@@ -29,12 +29,8 @@ class Backpack.Tabs extends Backpack.Component
     @items.push(tab)
     @
 
-  setItems: =>
-    first  = _.first(@items)
-    last   = _.last(@items)
+  setActive: =>
     active = @items[@active]
-    first.addClass('backpack-tab-first')
-    last.addClass('backpack-tab-last')
     active.addClass('backpack-tab-active')
     @
 

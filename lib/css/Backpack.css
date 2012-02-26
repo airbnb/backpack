@@ -80,13 +80,13 @@ background-color: #A89467;*/
           border-radius: 4px;
 }
 
-.backpack-menu li, 
+.backpack-menu > li, 
 .backpack-menu-item {
   float: left;
   list-style: none;
 }
 
-.backpack-menu li a,
+.backpack-menu > li > a,
 .backpack-menu-item a {
   color: #999;
   height: 55px;
@@ -98,7 +98,7 @@ background-color: #A89467;*/
   border-top: 1px solid rgba(255,255,255,0.9);
 }
 
-.backpack-menu li:first-child a {
+.backpack-menu > li:first-child > a {
   -webkit-border-top-left-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;
   -moz-border-radius-topleft: 4px; 
@@ -107,7 +107,7 @@ background-color: #A89467;*/
   border-bottom-left-radius: 4px; 
 }
 
-.backpack-menu li:last-child a {
+.backpack-menu > li:last-child > a {
   -webkit-border-top-right-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
   -moz-border-radius-topright: 4px; 
@@ -117,7 +117,7 @@ background-color: #A89467;*/
   border-right: none;
 }
 
-.backpack-menu li a:hover {
+.backpack-menu > li > a:hover {
   opacity: 0.8;
   filter: alpha(opacity=0);
 }
@@ -144,14 +144,14 @@ background-color: #A89467;*/
   content: "";
 }
 
-.backpack-tabs li,
+.backpack-tabs > a,
 .backpack-tab {
   float: left;
   list-style: none;
+  border: 1px solid transparent;
 }
 
-.backpack-tabs li a,
-.backpack-tabs .tab {
+.backpack-tab > a {
   color: #999;
   padding: 15px 25px;
   display: table-cell;
@@ -160,14 +160,14 @@ background-color: #A89467;*/
 }
 
 .backpack-tab-active {
-  margin-bottom: -1px;
+  margin-bottom: -2px;
 }
 
-.backpack-tab-active a {
-  padding: 16px 25px 15px;
+.backpack-tab-active > a {
   border: 1px solid #ddd;
   border-bottom: transparent;
   background-color: #fff;
+  padding: 14px 24px 17px;
 }
 
 
@@ -196,7 +196,7 @@ background-color: #A89467;*/
           box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.backpack-modal .close {
+.backpack-modal > .close {
   display: block;
   position: absolute;
   top: 0;
@@ -208,12 +208,12 @@ background-color: #A89467;*/
   cursor: pointer;
 }
 
-.backpack-modal .content { 
+.backpack-modal > .content { 
   clear: both;
   margin: 0;
 }
 
-.backpack-modal .backpack-dialog-button-container {
+.backpack-modal > .backpack-dialog-button-container {
   position: absolute;
   bottom: 0;
   left: 0;
