@@ -7,7 +7,67 @@
                           | |                    _/ |       |
                           |_|                   |__/        |
 
+## Intro by Example
 
+### Make a Menu
+
+    var menu = new Backpack.Menu({ 
+                                    parent:   '#docs',
+                                    show:     true,
+                                    addClass: 'press',
+                                    before:   "<h2>Backpack.Menu</h2>",
+                                    after:    "<br/><br/><br/>",
+                                    add: 
+                                    [
+                                        {
+                                        content: "Menu Item 1", 
+                                        events: { 
+                                            'mouseenter': function() {
+                                            this.addClass('hover');},
+                                            'mouseleave': function() {
+                                            this.removeClass('hover');
+                                            } 
+                                        }
+                                        }, 
+                                        {
+                                        content: "Menu Item 2",
+                                        events: {
+                                            'mouseleave': function() {
+                                            console.log('mouseleave');}
+                                        }                        
+                                        },
+                                        {
+                                        content: "Menu Item 3"            
+                                        }
+                                    ]
+                                });
+
+## Make Tabs
+
+    var tabs = new Backpack.Tabs({  
+                                    parent: '#docs',
+                                    show: true,
+                                    before: '<h2>Backpack.Tabs</h2>',
+                                    add: 
+                                      [
+                                        {
+                                          content: 'Tab 1',
+                                          tabContent: '<h2>Tab 1</h2>'
+                                        },
+                                        {
+                                          content: 'Tab 2',
+                                          tabContent: '<h2>Tab 2</h2>'
+                                        },
+                                        {
+                                          content: 'Tab 3',
+                                          tabContent: '<h2>Tab 3</h2>'
+                                        },
+                                        {
+                                          content: 'Tab 4',
+                                          tabContent: '<h2>Tab 4</h2>'
+                                        }
+                                      ]
+                                });
 
 
 ## Hack on Backpack
