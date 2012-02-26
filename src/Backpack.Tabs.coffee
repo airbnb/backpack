@@ -50,7 +50,7 @@ class Backpack.Tab extends Backpack.Component
 
   tagName: 'li'
 
-  template: _.template("<a href='<%= href %>'><%= content %></a>")
+  template: _.template("<a class='round-top' href='<%= href %>'><%= content %></a>")
 
   events:
     'click': 'select'
