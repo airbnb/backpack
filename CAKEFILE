@@ -66,7 +66,7 @@ docs = (callback) ->
 task 'compile', 'Compile CoffeeScript source files', ->
   compile()
 
-task 'build', "Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js", ->
+task 'build', "Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js & /lib_path/js/*.js", ->
   compile(bundle(minify))
 
 task 'test', "Opens Jasmine SpecRunner. Watches BackpackSpec-Bundle.js for changes", ->

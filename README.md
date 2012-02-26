@@ -22,7 +22,7 @@
 The Cakefile defines the following tasks:
 
     cake compile        # Compile CoffeeScript source files
-    cake build          # Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js
+    cake build          # Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js & /lib_path/js/*.js
     cake test           # Opens Jasmine SpecRunner. Watches BackpackSpec-Bundle.js for changes
     cake docs           # Generate annotated source code with Docco
     cake watch          # Recompile CoffeeScript source files when modified to Backpack-bundle.js
