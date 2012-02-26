@@ -15,10 +15,11 @@
 
 ----------------------------
 
+
+
 ## Some Examples
 
 **Make a Menu**
-----------------------------
 
     var menu = new Backpack.Menu({ 
                                   parent:   '#docs',
@@ -51,8 +52,11 @@
                                     ]
                                 });
 
-**Make Tabs**
+
 ----------------------------
+
+
+**Make Tabs**
 
     var tabs = new Backpack.Tabs({
                                   parent: '#docs',
@@ -94,6 +98,8 @@
                                 });
 
 ----------------------------
+
+
 
 ## Hack on Backpack
 
