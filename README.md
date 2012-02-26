@@ -8,14 +8,17 @@
                           |_|                   |__/        |
 
 
-### Quick Start
+## Quick Start
 
 1. `git clone git@github.com:airbnb/backpack.js.git`
 1. `cd backpack.js && open example/index.html`
 
+----------------------------
+
 ## Some Examples
 
 **Make a Menu**
+----------------------------
 
     var menu = new Backpack.Menu({ 
                                   parent:   '#docs',
@@ -49,6 +52,7 @@
                                 });
 
 **Make Tabs**
+----------------------------
 
     var tabs = new Backpack.Tabs({
                                   parent: '#docs',
@@ -89,6 +93,7 @@
                                     ]
                                 });
 
+----------------------------
 
 ## Hack on Backpack
 
