@@ -20,24 +20,24 @@
                                     add: 
                                     [
                                         {
-                                        content: "Menu Item 1", 
-                                        events: { 
+                                          content: "Menu Item 1", 
+                                          events: { 
                                             'mouseenter': function() {
-                                            this.addClass('hover');},
+                                              this.addClass('hover');},
                                             'mouseleave': function() {
-                                            this.removeClass('hover');
+                                              this.removeClass('hover');
                                             } 
                                         }
                                         }, 
                                         {
-                                        content: "Menu Item 2",
-                                        events: {
+                                          content: "Menu Item 2",
+                                          events: {
                                             'mouseleave': function() {
-                                            console.log('mouseleave');}
+                                              console.log('mouseleave');}
                                         }                        
                                         },
                                         {
-                                        content: "Menu Item 3"            
+                                          content: "Menu Item 3"            
                                         }
                                     ]
                                 });
