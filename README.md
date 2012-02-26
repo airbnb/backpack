@@ -9,7 +9,7 @@
 
 ## Intro by Example
 
-1. Make a Menu
+### Make a Menu
 
     var menu = new Backpack.Menu({ 
                                   parent:   '#docs',
@@ -42,7 +42,7 @@
                                     ]
                                 });
 
-2. Make Tabs
+### Make Tabs
 
     var tabs = new Backpack.Tabs({
                                   parent: '#docs',
