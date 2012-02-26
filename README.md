@@ -44,7 +44,7 @@
 
 ## Make Tabs
 
-    var tabs = new Backpack.Tabs({  
+    var tabs = new Backpack.Tabs({
                                     parent: '#docs',
                                     show: true,
                                     before: '<h2>Backpack.Tabs</h2>',
@@ -52,19 +52,33 @@
                                       [
                                         {
                                           content: 'Tab 1',
-                                          tabContent: '<h2>Tab 1</h2>'
+                                          tabContent: 
+                                            '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
+                                            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
+                                            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
+                                            'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
+                                            'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
+                                            'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
                                         },
                                         {
                                           content: 'Tab 2',
-                                          tabContent: '<h2>Tab 2</h2>'
+                                          tabContent: 
+                                            '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
+                                            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
+                                            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
+                                            'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
+                                            'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
+                                            'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
                                         },
                                         {
                                           content: 'Tab 3',
-                                          tabContent: '<h2>Tab 3</h2>'
-                                        },
-                                        {
-                                          content: 'Tab 4',
-                                          tabContent: '<h2>Tab 4</h2>'
+                                          tabContent: 
+                                            '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
+                                            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
+                                            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
+                                            'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
+                                            'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
+                                            'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
                                         }
                                       ]
                                 });
