@@ -9,78 +9,78 @@
 
 ## Intro by Example
 
-### Make a Menu
+1. Make a Menu
 
     var menu = new Backpack.Menu({ 
-                                    parent:   '#docs',
-                                    show:     true,
-                                    addClass: 'press',
-                                    before:   "<h2>Backpack.Menu</h2>",
-                                    after:    "<br/><br/><br/>",
-                                    add: 
+                                  parent:   '#docs',
+                                  show:     true,
+                                  addClass: 'press',
+                                  before:   "<h2>Backpack.Menu</h2>",
+                                  after:    "<br/><br/><br/>",
+                                  add: 
                                     [
-                                        {
-                                          content: "Menu Item 1", 
-                                          events: { 
-                                            'mouseenter': function() {
-                                              this.addClass('hover');},
-                                            'mouseleave': function() {
-                                              this.removeClass('hover');
-                                            } 
-                                        }
-                                        }, 
-                                        {
-                                          content: "Menu Item 2",
-                                          events: {
-                                            'mouseleave': function() {
-                                              console.log('mouseleave');}
-                                        }                        
-                                        },
-                                        {
-                                          content: "Menu Item 3"            
-                                        }
+                                      {
+                                        content: "Menu Item 1", 
+                                        events: { 
+                                          'mouseenter': function() {
+                                            this.addClass('hover');},
+                                          'mouseleave': function() {
+                                            this.removeClass('hover');
+                                          } 
+                                      }
+                                      }, 
+                                      {
+                                        content: "Menu Item 2",
+                                        events: {
+                                          'mouseleave': function() {
+                                            console.log('mouseleave');}
+                                      }                        
+                                      },
+                                      {
+                                        content: "Menu Item 3"            
+                                      }
                                     ]
                                 });
 
-## Make Tabs
+2. Make Tabs
 
     var tabs = new Backpack.Tabs({
-                                    parent: '#docs',
-                                    show: true,
-                                    before: '<h2>Backpack.Tabs</h2>',
-                                    add: 
-                                      [
-                                        {
-                                          content: 'Tab 1',
-                                          tabContent: 
-                                            '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
-                                            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
-                                            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
-                                            'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
-                                            'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
-                                            'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
-                                        },
-                                        {
-                                          content: 'Tab 2',
-                                          tabContent: 
-                                            '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
-                                            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
-                                            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
-                                            'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
-                                            'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
-                                            'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
-                                        },
-                                        {
-                                          content: 'Tab 3',
-                                          tabContent: 
-                                            '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
-                                            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
-                                            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
-                                            'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
-                                            'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
-                                            'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
-                                        }
-                                      ]
+                                  parent: '#docs',
+                                  show: true,
+                                  before: '<h2>Backpack.Tabs</h2>',
+                                  add: 
+                                    [
+                                      {
+                                        content: 'Tab 1',
+                                        tabContent: 
+                                          '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
+                                          'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
+                                          'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
+                                          'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
+                                          'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
+                                          'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
+                                      },
+                                      {
+                                        content: 'Tab 2',
+                                        tabContent: 
+                                          '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
+                                          'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
+                                          'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
+                                          'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
+                                          'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
+                                          'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
+                                      },
+                                      {
+                                        content: 'Tab 3',
+                                        tabContent: 
+                                          '<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod' +
+                                          'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,' +
+                                          'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' +
+                                          'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse' +
+                                          'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non' +
+                                          'proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>'
+                                      }
+                                    ]
                                 });
 
 
