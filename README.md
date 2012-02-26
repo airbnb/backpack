@@ -7,9 +7,15 @@
                           | |                    _/ |       |
                           |_|                   |__/        |
 
-## Intro by Example
 
-### Make a Menu
+### Quick Start
+
+1. `git clone git@github.com:airbnb/backpack.js.git`
+1. `cd backpack.js && open example/index.html`
+
+### Intro by Example
+
+**Make a Menu**
 
     var menu = new Backpack.Menu({ 
                                   parent:   '#docs',
@@ -42,7 +48,7 @@
                                     ]
                                 });
 
-### Make Tabs
+**Make Tabs**
 
     var tabs = new Backpack.Tabs({
                                   parent: '#docs',

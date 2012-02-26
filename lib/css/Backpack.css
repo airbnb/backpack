@@ -214,10 +214,11 @@ background-color: #A89467;*/
 }
 
 .backpack-tab-active > a {
-  border: 1px solid #ddd;
-  border-bottom: transparent;
+  font-weight: bold;
   background-color: #fff;
   padding: 14px 24px 17px;
+  border: 1px solid #ddd;
+  border-bottom: transparent;
 }
 
 .backpack-tab-active > a:hover {
