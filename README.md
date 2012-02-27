@@ -6,8 +6,12 @@
     \____/ \__,_|\___|_|\_\ .__/ \__,_|\___|_|\_(_) |___/   |
                           | |                    _/ |       |
                           |_|                   |__/        |
+  
 
-## Visit the [Backpack.js Guide](http://airbnb.github.com/backpack.js/)
+  
+### Visit the [Backpack.js Guide](http://airbnb.github.com/backpack.js/)
+  
+  
 
 
 ## Quick Start
