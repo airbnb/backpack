@@ -1,11 +1,13 @@
     ______            _                     _      _        |
-    | ___ \          | |                   | |    (_)       |  A backpack full of UI components for your Backbone.js
-    | |_/ / __ _  ___| | ___ __   __ _  ___| | __  _ ___    |  projects. Grab your backpack and enjoy the Views. 
+    | ___ \          | |                   | |    (_)       |  A pack of UI components for Backbone projects.
+    | |_/ / __ _  ___| | ___ __   __ _  ___| | __  _ ___    |  Grab your backpack and enjoy the Views. 
     | ___ \/ _` |/ __| |/ / '_ \ / _` |/ __| |/ / | / __|   |
     | |_/ / (_| | (__|   <| |_) | (_| | (__|   < _| \__ \   |
     \____/ \__,_|\___|_|\_\ .__/ \__,_|\___|_|\_(_) |___/   |
                           | |                    _/ |       |
                           |_|                   |__/        |
+
+## Visit the [Backpack.js Guide](http://airbnb.github.com/backpack.js/)
 
 
 ## Quick Start
