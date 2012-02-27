@@ -20,11 +20,8 @@
       it('should have a Modal', function() {
         return expect(Backpack.Modal).toBeDefined();
       });
-      it('should have an Overlay', function() {
+      return it('should have an Overlay', function() {
         return expect(Backpack.Overlay).toBeDefined();
-      });
-      return it('should have a Button', function() {
-        return expect(Backpack.Button).toBeDefined();
       });
     });
   });
