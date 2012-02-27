@@ -34,6 +34,7 @@ class Backpack.Overlay extends Backpack.Component
   show: =>
     super()
     @$parent.addClass('overlay')
+    @
 
   unlock: =>
     @close() unless @_lockOverlay

@@ -5,26 +5,45 @@
     <title>Backpack.js User Guide</title>
     <link rel="stylesheet" href="./lib/css/Backpack.css" type="text/css" media="screen">
     <link rel="stylesheet" href="./assets/css/docs.css" type="text/css" media="screen">
-    <!-- <script type="text/javascript" src="http://use.typekit.com/khy0ojp.js"></script> -->
-    <!-- <script type="text/javascript">try{Typekit.load();}catch(e){}</script> -->
+    <link rel="stylesheet" href="./assets/css/prettify.css" type="text/css" media="screen">
+    <!--[if gte IE 9]>
+      <style type="text/css">
+        .gradient {
+           filter: none;
+        }
+      </style>
+    <![endif]-->
+    <script type="text/javascript" src="http://use.typekit.com/khy0ojp.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <script src="./assets/js/prettify.js" type="text/javascript"></script>
+    <script src="./vendor/jquery.js" type="text/javascript"></script>
+    <script src="./vendor/underscore.js" type="text/javascript"></script>
+    <script src="./vendor/backbone.js" type="text/javascript"></script>
+    <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
   </head>
   <body class='backpack'>
 
-      <aside id='sidebar'></aside>
+      <aside id='sidebar'>
+        <span class='logo'><img src='./assets/img/backpack-logo.png' height='100' /></span>
+      </aside>
 
       <section id='guideContainer'>
         <section id='guide'>
-          <section id='header' class='bottom-60'>
+          <section id='header'>
             <h1 class='big-h1'>Backpack.js</h1>
             <h2 class='big-h2'>Grab your backpack and enjoy the Views</h2>
-            <h3 class='big-h3'>Backpack.js is a lightweight Backbone.js extension that provides easy-to-use, extensible UI components</h3>
-            <button>Download Backpack.js</button>
-            <button>Fork on Github</button>
+            <h3 class='big-h3 bottom-60'>Backpack.js is a lightweight Backbone extension that provides easy-to-use, extensible UI components</h3>
           </section>
 
           <section class='bottom-60'>
-            <a id='About'>
-              <h3 class='title-h3'>About</h3>
+            <button type='button' class='round tk-league-gothic orange'>Download Backpack.js</button>
+            <button type='button' class='round tk-league-gothic'>Fork on Github</button>
+          </section>
+
+          <section class='bottom-60'>
+            <a id='Introduction'>
+              <h3 class='title-h3'>Introduction</h3>
             </a>
             <p>
               Backpack.js is a pack of UI components for Backbone.js apps that are built the Backbone way. This helps developers get their app up and running quickly and leads to a cleaner code base with more structure. Backpack.js has been built with a focus on the creation of components - CSS files have been included to help you get up and running, but feel free to modify styles as necessary.
@@ -43,6 +62,180 @@
             <a id='Overview'>
               <h3 class='title-h3'>Overview</h3>
             </a>
+
+            <!-- 
+              =======================================
+                  Backpack.Component
+              =======================================
+            -->
+            <section class='description clearfix'>
+              <a id='Component'>
+                <h4 class='title-h4'>Backpack.Component</h4>
+              </a>
+              <p>
+                Component is the base View which all Backpack components extend. It provides convenient helper methods for manipulating the component and it’s content, many of which follow a syntax similar to jQuery in that methods can be chained, or alternatively can be passed in upon initialization of the component.
+              </p>
+            </section>
+
+            <!-- 
+              =======================================
+                  Backpack.Tabs
+              =======================================
+            -->
+            <section class='description clearfix'>
+              <a id='Tabs'>
+                <h4 class='title-h4'>Backpack.Tabs</h4>
+              </a>
+              <p>
+                Tabs are a grouping of TabItems, responsible for automatically displaying the content associated with any given tab. Clicking on a TabItem automatically displays the content, and can also be extended to execute any number of given arbitrary functions.
+              </p>
+            </section>
+
+            <!-- 
+              =======================================
+                  Backpack.Menu
+              =======================================
+            -->
+            <section class='description clearfix'>
+              <a id='Menu'>
+                <h4 class='title-h4'>Backpack.Menu</h4>
+              </a>
+              <p>
+                Menu is a means of displaying many MenuItem objects. A MenuItem can consist of text, or any amount of arbitrary HTML (images, for example). When clicked, a MenuItem is capable of redirecting a user to a simple URL or executing any arbitrary function.
+              </p>
+
+              <div class='code menu-code'></div>
+
+              <div class='simple hide'>
+                <pre class="prettyprint linenums">
+var menu = new Backpack.Menu({
+      // the parent is the modal the
+      // example menu launches in
+      parent: this, 
+      show: true,
+      add: 
+        [
+          {
+            content: 'Menu Item 1',
+            // events can be something like this on click
+            events: '#Menu'
+          },
+          {
+            content: 'Backpack.js',
+            // events can also be a normal link on click
+            events: 'http://airbnb.github.com/backpack.js',
+            // bump adds a 'bump-right' class which
+            // floats the element right
+            bump: 'right'
+          },
+          {
+            content: 'Menu Item 2',
+            // events can also be a function on click
+            events: function() {
+                      return console.log('test');
+                    }           
+          },
+          {
+            content: 'Menu Item 3',
+            // or events can be a normal
+            // events hash
+            events: {
+              'mouseenter': function() {
+                console.log('mouseenter');},
+              'click': function() {
+                console.log('click');}
+            }                       
+          },
+        ]
+  });</pre>
+                <button class='round tk-league-gothic orange' onclick="javascript:eval(new Backpack.Modal({
+                                                      content: new Backpack.Menu({
+                                                                      parent: this,
+                                                                      show: true,
+                                                                      add: 
+                                                                        [
+                                                                          {
+                                                                            content: 'Menu Item 1', 
+                                                                            events: '#Menu'
+                                                                          },
+                                                                          {
+                                                                            content: 'Backpack.js',
+                                                                            events: 'http://airbnb.github.com/backpack.js',
+                                                                            bump: 'right'
+                                                                          },
+                                                                          {
+                                                                            content: 'Menu Item 2',
+                                                                            events: function() {
+                                                                                      return console.log('test');
+                                                                                    }           
+                                                                          },
+                                                                          {
+                                                                            content: 'Menu Item 3',
+                                                                            events: {
+                                                                              'mouseenter': function() {
+                                                                                console.log('mouseenter');},
+                                                                              'click': function() {
+                                                                                console.log('click');}
+                                                                            }                        
+                                                                          },
+                                                                        ]
+                                                                   }),
+                                                      show: true,
+                                                      color: 'rgba(0,0,0,0.7)',
+                                                      lockOverlay: false, 
+                                                      closable: true
+                                            }))">Run</button>
+              </div>
+            </section>
+
+            <!-- 
+              ---------------------------------------
+                  Backpack.Modal
+              ---------------------------------------
+            -->
+            <section class='description clearfix'>
+              <a id='Modal'>
+                <h4 class='title-h4'>Backpack.Modal</h4>
+              </a>
+              <p>
+                Depending on the properties a Modal object is initialized with, they can be easily configured to provide two different experiences - Popups are notifications presented in the center of a user’s screen, and Lightboxes are notifications presented in a similar manner, with the exception that the background content becomes dim, drawing attention to the middle Modal. 
+              </p>
+
+              <div class='code modal-code'></div>
+
+              <div class='popup hide'>
+                <pre class="prettyprint linenums">
+var popup = new Backpack.Modal({ 
+                  content: "This is a simple popup modal.",
+                  show: true
+            });</pre>
+                <button class='round tk-league-gothic orange' onclick="javascript:eval(new Backpack.Modal({ 
+                                                      content: 'This is a simple popup modal.',
+                                                      show: true
+                                            }))">Run</button>
+              </div>
+
+
+              <div class='lightbox hide'>
+                <pre class="prettyprint linenums">
+var lb = new Backpack.Modal({
+                content: 'This Modal is a bit fancier.',
+                show: true,
+                // set the overlay color
+                color: 'rgba(255,255,255,0.6)',
+                lockOverlay: true, 
+                // put a 'x' in the corner to close
+                closable: true
+         });</pre>
+                <button class='round tk-league-gothic orange' onclick="javascript:eval(new Backpack.Modal({
+                                                      content: 'This Modal is a bit fancier.',
+                                                      show: true,
+                                                      color: 'rgba(255,255,255,0.6)',
+                                                      lockOverlay: true, 
+                                                      closable: true
+                                            }))">Run</button>
+              </div>
+            </section>
           </section>
 
           <section class='bottom-60'>
@@ -56,13 +249,9 @@
         </section>
       </section>
 
-    <script src="./vendor/jquery.js"></script>
-    <script src="./vendor/underscore.js" type="text/javascript"></script>
-    <script src="./vendor/backbone.js" type="text/javascript"></script>
-    <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
-
     <script>
-      var menu = new Backpack.Menu({
+      $(function() {
+        var menu = new Backpack.Menu({
                       parent: '#sidebar',
                       addClass: 'backpack-list',
                       show: true,
@@ -70,8 +259,8 @@
                       add:
                         [
                           {
-                            content: 'About',
-                            events:  '#About'
+                            content: 'Introduction',
+                            events:  '#Introduction'
                           },
                           {
                             content: 'Overview',
@@ -90,6 +279,51 @@
                             events:  'http://github.com/airbnb/backpack.js'
                           }
                         ]
+            }),
+
+            modalTabs = new Backpack.Tabs({
+                              parent: '.modal-code',
+                              show: true,
+                              before: '<p>Examples</p>',
+                              add:
+                                [
+                                  {
+                                    content: 'popup',
+                                    tabContent: $('.popup').html()
+                                  },
+                                  {
+                                    content: 'lightbox',
+                                    tabContent: $('.lightbox').html()
+                                  }
+                                ]
+            }),
+
+            menuTabs = new Backpack.Tabs({
+                            parent: '.menu-code',
+                            show: true,
+                            before: '<p>Examples</p>',
+                            add:
+                              [
+                                {
+                                  content: 'Simple',
+                                  tabContent: $('.simple').html()
+                                }
+                              ]
+            })
+
+            
+            // hack to get prettyPrint to work with tabs
+            var tab, _i, _len;
+
+            for (_i = 0, _len = modalTabs.items.length; _i < _len; _i++) {
+              tab = modalTabs.items[_i];
+              o = _.once(window.prettyPrint);
+              tab.on('tab-click', function() {
+                return o();
+              });
+            }
+
+        prettyPrint();
       });
     </script>
 

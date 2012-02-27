@@ -12,6 +12,40 @@ p {
   margin-bottom: 15px;
 }
 
+.description {
+  position: relative;
+}
+
+.description > p {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.description > .code {
+}
+
+.logo {
+  display: block;
+  text-align: center;
+  margin: 40px 0 20px 0;
+}
+
+button,
+.button {
+  font-size: 2em;
+  padding: 0.35em 1em;
+}
+
+button.orange,
+a.button.orange {
+  margin-right: 10px;
+}
+
+.tk-league-gothic {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
 
 #sidebar {
   width: 200px;
@@ -32,19 +66,34 @@ p {
 }
 
 #guideContainer {
-  height: 1000px;
   margin-left: 200px;
   background-color: #f8f8f8;
 }
 
 #guide {
-  width: 840px;
-  height: 900px;
+  width: 580px;
+  height: 100%;
   margin: 0 auto;
 }
 
-#header {
+.backpack-tab-content {
+  padding: 2px;
+}
 
+.backpack-tab-content button {
+  font-size: 23px;
+  padding: 5px 25px;
+  margin: 10px;
+  float: right;
+}
+
+#header {
+  background: url('../img/backpack-logo.png') no-repeat 27px 20px;
+  width: 650px;
+  padding-top: 40px;
+  position: relative;
+  padding-left: 297px;
+  padding-bottom: 15px;
 }
 
 .big-h1 {
@@ -55,6 +104,13 @@ p {
 .big-h2 {
   font-size: 32px;
   color: #999;
+  margin-top: 20px;
+}
+
+.big-h3 {
+  color: #999;
+  font-weight: normal;
+  margin-top: 15px;
 }
 
 .title-h3 {
@@ -63,6 +119,55 @@ p {
   margin-bottom: 15px;
 }
 
+.title-h4 {
+  color: #333637;
+  font-size: 20px;
+  margin-top: 20px;
+  display: block;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 10px;
+}
+
 .bottom-60 {
   margin-bottom: 60px;
+}
+
+button.orange,
+a.button.orange {
+  color: #FFF;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+  background: #FF4519; /* Old browsers */
+  background: -moz-linear-gradient(top, #FF4519 0%, #dc3e19 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF4519), color-stop(100%,#dc3e19)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #FF4519 0%,#dc3e19 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #FF4519 0%,#dc3e19 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #FF4519 0%,#dc3e19 100%); /* IE10+ */
+  background: linear-gradient(top, #FF4519 0%,#dc3e19 100%); /* W3C */
+}
+
+button.orange:hover,
+button:focus,
+a.button.orange:hover,
+a.button.orange:focus {
+  background: #FF4519; /* Old browsers */
+  background: -moz-linear-gradient(top, #FF4519 0%, #ea3d19 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF4519), color-stop(100%,#ea3d19)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #FF4519 0%,#ea3d19 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #FF4519 0%,#ea3d19 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #FF4519 0%,#ea3d19 100%); /* IE10+ */
+  background: linear-gradient(top, #FF4519 0%,#ea3d19 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF4519', endColorstr='#ea3d19',GradientType=0 ); /* IE6-9 */
+}
+
+button.orange:active,
+a.button.orange:active {
+  color: #FFF;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+  background: #FF4519; /* Old browsers */
+  background: -moz-linear-gradient(top, #dc3e19 0%, #FF4519 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dc3e19), color-stop(100%,#FF4519)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #dc3e19 0%,#FF4519 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #dc3e19 0%,#FF4519 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #dc3e19 0%,#FF4519 100%); /* IE10+ */
+  background: linear-gradient(top, #dc3e19 0%,#FF4519 100%); /* W3C */
 }

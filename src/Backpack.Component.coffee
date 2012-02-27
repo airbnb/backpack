@@ -77,7 +77,7 @@ class Backpack.Component extends Backbone.View
   content: (content) =>
     return @ unless content?
     @_content = @setContent(content)
-    wrappedContent = @make('div', {class: 'content'}, @_content)
+    wrappedContent = @make('div', {class: 'content clearfix'}, @_content)
     @$el.append(wrappedContent)
     @
 
