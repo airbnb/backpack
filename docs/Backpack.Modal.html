@@ -19,7 +19,6 @@
     <span class="nx">@addClass</span><span class="p">(</span><span class="s">&#39;backpack-overlay&#39;</span><span class="p">)</span>
     <span class="nx">@append</span> <span class="nx">@template</span>
     <span class="k">super</span><span class="p">()</span>
-    <span class="nx">@$parent</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s">&#39;overlay&#39;</span><span class="p">)</span>
 
   <span class="nv">render: </span><span class="o">=&gt;</span>
     <span class="nx">@$</span><span class="p">(</span><span class="s">&#39;.backpack-overlay-container&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">@_content</span><span class="p">)</span>
@@ -30,6 +29,10 @@
     <span class="k">return</span> <span class="nx">@</span> <span class="nx">unless</span> <span class="nx">content</span><span class="o">?</span>
     <span class="vi">@_content = </span><span class="nx">@setContent</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
     <span class="nx">@</span>
+
+  <span class="nv">show: </span><span class="o">=&gt;</span>
+    <span class="k">super</span><span class="p">()</span>
+    <span class="nx">@$parent</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s">&#39;overlay&#39;</span><span class="p">)</span>
 
   <span class="nv">unlock: </span><span class="o">=&gt;</span>
     <span class="nx">@close</span><span class="p">()</span> <span class="nx">unless</span> <span class="nx">@_lockOverlay</span>
@@ -46,6 +49,11 @@
 
   <span class="nv">color: </span><span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="o">=&gt;</span>
     <span class="vi">@el.style.backgroundColor = </span><span class="nx">color</span>
+    <span class="nx">@</span>
+
+  <span class="nv">remove: </span><span class="o">=&gt;</span>
+    <span class="nx">@$parent</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s">&#39;overlay&#39;</span><span class="p">)</span>
+    <span class="k">super</span><span class="p">()</span>
     <span class="nx">@</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h2>Backpack.Modal</h2>             </td>             <td class="code">               <div class="highlight"><pre><span class="k">class</span> <span class="nx">Backpack</span><span class="p">.</span><span class="nx">Modal</span> <span class="k">extends</span> <span class="nx">Backpack</span><span class="p">.</span><span class="nx">Component</span>
 
   <span class="nv">events:</span>
@@ -92,7 +100,7 @@
 
   <span class="nv">remove: </span><span class="o">=&gt;</span>
     <span class="k">super</span><span class="p">()</span>
-    <span class="nx">@overlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+    <span class="nx">@overlay</span><span class="o">?</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
     <span class="nx">@</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>addButton: (button) =>
   return unless button?
   container = @make("div", {"class": "backpack-dialog-button-container"})
