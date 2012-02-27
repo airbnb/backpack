@@ -22,7 +22,7 @@ class Backpack.Tabs extends Backpack.Component
       # set of Tabs
       item = _.extend(item, {parent: @})
       if item.el
-        # the item is already a Backbone.View
+        # the item is already a View
         tab = item
       else
         tab = new Backpack.Tab(item)
@@ -42,6 +42,10 @@ class Backpack.Tabs extends Backpack.Component
     # and call @select when it is
     # triggered
     tab.on('tab-click', @select)
+    # subscribe to 'tab-exit' event
+    # and call @exit when it is
+    # triggered
+    tab.on('tab-exit', @exit)
     # add the tab
     @append(tab.show().el)
     @items.push(tab)
@@ -61,15 +65,20 @@ class Backpack.Tabs extends Backpack.Component
   #     @param {Tab} tab
   #     @return {Tabs}
   select: (tab) =>
-    # remove active class from the current @active
-    @items[@active].removeClass('backpack-tab-active')
-    # set new @active
+    # remove active class from the current @active tab
+    curActive = @items[@active]
+    curActive.trigger('tab-exit', curActive)
+    # set new @active tab
     @active = _.indexOf(@items, tab)
     tab.addClass('backpack-tab-active')
     # remove the previous active tab's tab content
     # and put the current active tab's content in
     @$el.next('.backpack-tab-content').remove()
     @after(tab.tabContent.show().el)
+    @
+
+  exit: (tab) =>
+    tab.removeClass('backpack-tab-active')
     @
 
 
