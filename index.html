@@ -500,6 +500,8 @@ cake watch:js       # Recompile CoffeeScript source files when
     <script>
       $(function() {
 
+        prettyPrint();
+
         var menu = new Backpack.Menu({
                       parent: '#sidebar',
                       addClass: 'backpack-list',
@@ -627,8 +629,6 @@ cake watch:js       # Recompile CoffeeScript source files when
             //     return o();
             //   });
             // }
-
-        prettyPrint();
       });
     </script>
 
