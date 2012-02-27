@@ -8,7 +8,7 @@
                           |_|                   |__/        |
   
 
-  
+
 ### Visit the [Backpack.js Guide](http://airbnb.github.com/backpack.js/)
   
   
@@ -18,10 +18,12 @@
 
 1. `git clone git@github.com:airbnb/backpack.js.git`
 1. `cd backpack.js && open example/index.html`
-
+  
+  
 ----------------------------
-
-
+  
+  
+  
 
 ## Some Examples
 
@@ -58,9 +60,12 @@
                                     ]
                                 });
 
+  
 
 ----------------------------
-
+  
+  
+  
 
 **Make Tabs**
 
@@ -102,10 +107,12 @@
                                       }
                                     ]
                                 });
+  
 
 ----------------------------
-
-
+  
+  
+  
 
 ## Hack on Backpack
 
@@ -113,7 +120,8 @@
 
 1. `git clone git@github.com:airbnb/backpack.js.git`
 1. `cd backpack.js && npm install`
-
+  
+  
 ### Cake Build Tools
 
 The Cakefile defines the following tasks:
@@ -124,9 +132,13 @@ The Cakefile defines the following tasks:
     cake docs           # Generate annotated source code with Docco
     cake watch          # Recompile CoffeeScript source files when modified to Backpack-bundle.js
     cake watch:js       # Recompile CoffeeScript source files when modified to individual .js files
-
+  
+  
 ### Testing
 
 Backpack.js tests are written using [jasmine](http://pivotal.github.com/jasmine/) with [sinon.js](https://github.com/cjohansen/Sinon.JS) and [jasmine-sinon](https://github.com/froots/jasmine-sinon).
 
 You can run the test suite with `cake test`.
+  
+  
+  
