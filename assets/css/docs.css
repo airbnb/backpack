@@ -21,6 +21,17 @@ pre {
   font-size: 14px;
 }
 
+footer {
+  color: #999;
+  text-align: center; 
+  padding: 100px 0 40px;
+}
+
+footer p {
+  font-size: 14px;
+  line-height: 1em;
+}
+
 .description {
   position: relative;
 }
@@ -58,8 +69,28 @@ pre {
   background-color: #F7F7F9;
   border: 1px solid #E1E1E7;
   display: inline-block;
-  padding: 2px 3px;
+  padding: 2px 5px;
   color: #229695;
+  -webkit-border-radius: 3px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+          border-radius: 3px;
+}
+
+pre.inline {
+  background-color: #F7F7F9;
+  border: 1px solid #E1E1E7;
+  display: inline;
+  padding: 2px 5px;
+  color: #229695;
+  -webkit-border-radius: 3px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+          border-radius: 3px;
 }
 
 button,
@@ -74,7 +105,6 @@ a.button {
   text-transform: uppercase;
 }
 
-
 #sidebar {
   width: 200px;
   height: 100%;
@@ -82,8 +112,7 @@ a.button {
   left: 0;
   position: fixed;
   padding: 0 15px;
-  overflow-x: auto;
-  overflow-y: scroll;
+  overflow: auto;
   background-color: #FFF;
   border-right: 1px solid #ddd;
   -webkit-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
