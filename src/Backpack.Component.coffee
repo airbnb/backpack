@@ -101,6 +101,11 @@ class Backpack.Component extends Backbone.View
     @addClass("bump-#{direction}")
     @
 
+  name: (name) =>
+    return @ unless name?
+    @name = @addClass(@slug(name))
+    @
+
   slug: (string) =>
     return @ unless string?
     string

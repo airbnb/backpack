@@ -36,9 +36,9 @@
             <h3 class='big-h3 bottom-60'>Backpack.js is a lightweight Backbone extension that provides easy-to-use, extensible UI components</h3>
           </section>
 
-          <section class='bottom-60'>
-            <button type='button' class='round tk-league-gothic orange'>Download Backpack.js</button>
-            <button type='button' class='round tk-league-gothic'>Fork on Github</button>
+          <section class='bottom-60 clearfix'>
+            <a href='https://github.com/airbnb/backpack.js/zipball/master' class='download button round tk-league-gothic orange'>Download Backpack.js</a>
+            <a href='https://github.com/airbnb/backpack.js' class='fork button round tk-league-gothic'>Fork on Github</a>
           </section>
 
           <section class='bottom-60'>
@@ -46,11 +46,14 @@
               <h3 class='title-h3'>Introduction</h3>
             </a>
             <p>
-              Backpack.js is a pack of UI components for Backbone.js apps that are built the Backbone way. This helps developers get their app up and running quickly and leads to a cleaner code base with more structure. Backpack.js has been built with a focus on the creation of components - CSS files have been included to help you get up and running, but feel free to modify styles as necessary.
+              Backpack.js is a pack of UI components for Backbone apps. You can get your app up and running quickly with a cleaner, more structured code base. Backpack.js has been built with a focus on the creation of components - CSS files have been included to help you get up and running, but feel free to modify styles as necessary.
             </p>
 
             <p>
-              After building the Airbnb Mobile web app with Backbone.js, we thought it would be nice to have a lightweight pack of components that we could drop in to any Backbone.js project. Backbone.js enabled us to move quickly while building the Airbnb mobile site. We made Backpack.js because we want to move faster.
+              After building the <a href='http://m.airbnb.com' target='_blank'>Airbnb mobile web app</a> with Backbone, we thought it would be nice to have a lightweight pack of components that we could drop in to any Backbone project.
+            </p>
+            <p>
+              Backbone enabled us to move quickly while building the Airbnb mobile web app. We made Backpack.js because we want to move faster.
             </p>
 
             <p>
@@ -68,13 +71,33 @@
                   Backpack.Component
               =======================================
             -->
-            <section class='description clearfix'>
+            <section class='component description clearfix'>
               <a id='Component'>
                 <h4 class='title-h4'>Backpack.Component</h4>
               </a>
               <p>
-                Component is the base View which all Backpack components extend. It provides convenient helper methods for manipulating the component and it’s content, many of which follow a syntax similar to jQuery in that methods can be chained, or alternatively can be passed in upon initialization of the component.
+                Component is the base View which all Backpack.js components extend. It provides convenient helper methods for manipulating the component and it’s content, many of which follow a syntax similar to jQuery in that methods can be chained, or alternatively can be passed in upon initialization of the component.
               </p>
+              <p>Component provides the following convenience methods to all components:</p>
+              <ul>
+                <li><pre>render</pre></li>
+                <li><pre>show</pre></li>
+                <li><pre>hide</pre></li>
+                <li><pre>close</pre></li>
+                <li><pre>remove</pre></li>
+                <li><pre>before</pre></li>
+                <li><pre>after</pre></li>
+                <li><pre>append</pre></li>
+                <li><pre>prepend</pre></li>
+                <li><pre>content</pre></li>
+                <li><pre>setContent</pre></li>
+                <li><pre>parent</pre></li>
+                <li><pre>addClass</pre></li>
+                <li><pre>removeClass</pre></li>
+                <li><pre>name</pre></li>
+                <li><pre>slug</pre></li>
+              </ul>
+
             </section>
 
             <!-- 
@@ -82,13 +105,40 @@
                   Backpack.Tabs
               =======================================
             -->
-            <section class='description clearfix'>
+            <section class='tabs description clearfix'>
               <a id='Tabs'>
                 <h4 class='title-h4'>Backpack.Tabs</h4>
               </a>
               <p>
                 Tabs are a grouping of TabItems, responsible for automatically displaying the content associated with any given tab. Clicking on a TabItem automatically displays the content, and can also be extended to execute any number of given arbitrary functions.
               </p>
+
+              <div class='code tab-code'></div>
+
+              <div class='tab hide'>
+                <pre class="prettyprint linenums">
+var tabs = new Backpack.Tabs({
+                show: true,
+                add: 
+                  [
+                    {
+                      content: 'Tab 1',
+                      tabContent: 'Some tab 1 content'
+                    }
+                  ]
+              });</pre>
+              </div>
+              <div class='tab2 hide'>
+                <pre class="prettyprint linenums">
+var tabs = new Backpack.Tabs({
+                show: true
+              });
+
+    tabs.add({
+            content: 'Tab 1'
+            tabContent: 'Some tab 1 content'
+    });</pre>
+              </div>
             </section>
 
             <!-- 
@@ -96,7 +146,7 @@
                   Backpack.Menu
               =======================================
             -->
-            <section class='description clearfix'>
+            <section class='menu description clearfix'>
               <a id='Menu'>
                 <h4 class='title-h4'>Backpack.Menu</h4>
               </a>
@@ -121,9 +171,9 @@ var menu = new Backpack.Menu({
             events: '#Menu'
           },
           {
-            content: 'Backpack.js',
+            content: 'Airbnb',
             // events can also be a normal link on click
-            events: 'http://airbnb.github.com/backpack.js',
+            events: 'http://airbnb.com',
             // bump adds a 'bump-right' class which
             // floats the element right
             bump: 'right'
@@ -159,8 +209,8 @@ var menu = new Backpack.Menu({
                                                                             events: '#Menu'
                                                                           },
                                                                           {
-                                                                            content: 'Backpack.js',
-                                                                            events: 'http://airbnb.github.com/backpack.js',
+                                                                            content: 'Airbnb',
+                                                                            events: 'http://airbnb.com',
                                                                             bump: 'right'
                                                                           },
                                                                           {
@@ -186,6 +236,158 @@ var menu = new Backpack.Menu({
                                                       closable: true
                                             }))">Run</button>
               </div>
+
+              <div class='press hide'>
+                <pre class="prettyprint linenums">
+var menu = new Backpack.Menu({
+      // the parent is the modal the
+      // example menu launches in
+      parent: this, 
+      show: true,
+      // add the press class
+      // for a fancier looking menu
+      addClass: 'press',
+      add: 
+        [
+          {
+            content: 'Menu Item 1',
+            // events can be something like this on click
+            events: '#Menu'
+          },
+          {
+            content: 'Menu Item 2',
+            // events can also be a function on click
+            events: function() {
+                      return console.log('test');
+                    }           
+          },
+          {
+            content: 'Menu Item 3',
+            // or events can be a normal
+            // events hash
+            events: {
+              'mouseenter': function() {
+                console.log('mouseenter');},
+              'click': function() {
+                console.log('click');}
+            }                       
+          },
+        ]
+  });</pre>
+                <button class='round tk-league-gothic orange' onclick="javascript:eval(new Backpack.Modal({
+                                                      content: new Backpack.Menu({
+                                                                      parent: this,
+                                                                      show: true,
+                                                                      addClass: 'press',
+                                                                      add: 
+                                                                        [
+                                                                          {
+                                                                            content: 'Menu Item 1',
+                                                                            // events can be something like this on click
+                                                                            events: '#Menu'
+                                                                          },
+                                                                          {
+                                                                            content: 'Menu Item 2',
+                                                                            // events can also be a function on click
+                                                                            events: function() {
+                                                                                      return console.log('test');
+                                                                                    }           
+                                                                          },
+                                                                          {
+                                                                            content: 'Menu Item 3',
+                                                                            // or events can be a normal
+                                                                            // events hash
+                                                                            events: {
+                                                                              'mouseenter': function() {
+                                                                                console.log('mouseenter');},
+                                                                              'click': function() {
+                                                                                console.log('click');}
+                                                                            }                       
+                                                                          },
+                                                                        ]
+                                                                   }),
+                                                      show: true,
+                                                      color: 'rgba(0,0,0,0.7)',
+                                                      lockOverlay: false, 
+                                                      closable: true
+                                            }))">Run</button>
+              </div>
+
+              <div class='list hide'>
+                <pre class="prettyprint linenums">
+var menu = new Backpack.Menu({
+      // the parent is the modal the
+      // example menu launches in
+      parent: this, 
+      show: true,
+      // add the press class
+      // for a fancier looking menu
+      addClass: 'backpack-list',
+      add: 
+        [
+          {
+            content: 'Menu Item 1',
+            // events can be something like this on click
+            events: '#Menu'
+          },
+          {
+            content: 'Menu Item 2',
+            // events can also be a function on click
+            events: function() {
+                      return console.log('test');
+                    }           
+          },
+          {
+            content: 'Menu Item 3',
+            // or events can be a normal
+            // events hash
+            events: {
+              'mouseenter': function() {
+                console.log('mouseenter');},
+              'click': function() {
+                console.log('click');}
+            }                       
+          },
+        ]
+  });</pre>
+                <button class='round tk-league-gothic orange' onclick="javascript:eval(new Backpack.Modal({
+                                                      content: new Backpack.Menu({
+                                                                      parent: this,
+                                                                      show: true,
+                                                                      addClass: 'backpack-list',
+                                                                      add: 
+                                                                        [
+                                                                          {
+                                                                            content: 'Menu Item 1',
+                                                                            // events can be something like this on click
+                                                                            events: '#Menu'
+                                                                          },
+                                                                          {
+                                                                            content: 'Menu Item 2',
+                                                                            // events can also be a function on click
+                                                                            events: function() {
+                                                                                      return console.log('test');
+                                                                                    }           
+                                                                          },
+                                                                          {
+                                                                            content: 'Menu Item 3',
+                                                                            // or events can be a normal
+                                                                            // events hash
+                                                                            events: {
+                                                                              'mouseenter': function() {
+                                                                                console.log('mouseenter');},
+                                                                              'click': function() {
+                                                                                console.log('click');}
+                                                                            }                       
+                                                                          },
+                                                                        ]
+                                                                   }),
+                                                      show: true,
+                                                      color: 'rgba(0,0,0,0.7)',
+                                                      lockOverlay: false, 
+                                                      closable: true
+                                            }))">Run</button>
+              </div>
             </section>
 
             <!-- 
@@ -193,7 +395,7 @@ var menu = new Backpack.Menu({
                   Backpack.Modal
               ---------------------------------------
             -->
-            <section class='description clearfix'>
+            <section class='modal description clearfix'>
               <a id='Modal'>
                 <h4 class='title-h4'>Backpack.Modal</h4>
               </a>
@@ -251,6 +453,7 @@ var lb = new Backpack.Modal({
 
     <script>
       $(function() {
+
         var menu = new Backpack.Menu({
                       parent: '#sidebar',
                       addClass: 'backpack-list',
@@ -264,7 +467,8 @@ var lb = new Backpack.Modal({
                           },
                           {
                             content: 'Overview',
-                            events:  '#Overview'
+                            events:  '#Overview',
+                            addClass: 'sidebar-overview'
                           },
                           {
                             content: 'Hack on Backpack',
@@ -284,15 +488,14 @@ var lb = new Backpack.Modal({
             modalTabs = new Backpack.Tabs({
                               parent: '.modal-code',
                               show: true,
-                              before: '<p>Examples</p>',
                               add:
                                 [
                                   {
-                                    content: 'popup',
+                                    content: 'Popup',
                                     tabContent: $('.popup').html()
                                   },
                                   {
-                                    content: 'lightbox',
+                                    content: 'Lightbox',
                                     tabContent: $('.lightbox').html()
                                   }
                                 ]
@@ -301,27 +504,83 @@ var lb = new Backpack.Modal({
             menuTabs = new Backpack.Tabs({
                             parent: '.menu-code',
                             show: true,
-                            before: '<p>Examples</p>',
                             add:
                               [
                                 {
                                   content: 'Simple',
                                   tabContent: $('.simple').html()
+                                },
+                                {
+                                  content: 'Press',
+                                  tabContent: $('.press').html()
+                                },
+                                {
+                                  content: 'List',
+                                  tabContent: $('.list').html()
                                 }
                               ]
-            })
+            }),
+
+            tabTabs = new Backpack.Tabs({
+                            parent: '.tab-code',
+                            show: true,
+                            add: 
+                              [
+                                {
+                                  content: 'Tab 1',
+                                  tabContent: $('.tab').html()
+                                },
+                                {
+                                  content: 'Tab 2',
+                                  tabContent: $('.tab2').html()
+                                }
+                              ]
+            }),
+
+           components = new Backpack.Menu({
+                          parent: '.sidebar-overview',
+                          addClass: 'backpack-list',
+                          show: true,
+                          add:
+                            [
+                              {
+                                content: 'Backpack.Component',
+                                events: '#Component'
+                              },
+                              {
+                                content: 'Backpack.Tabs',
+                                events: '#Tabs'
+                              },
+                              {
+                                content: 'Backpack.Menu',
+                                events: '#Menu'
+                              },
+                              {
+                                content: 'Backpack.Modal',
+                                events: '#Modal'
+                              }
+                            ]
+            });
 
             
             // hack to get prettyPrint to work with tabs
-            var tab, _i, _len;
+            // var tab, _i, _len;
 
-            for (_i = 0, _len = modalTabs.items.length; _i < _len; _i++) {
-              tab = modalTabs.items[_i];
-              o = _.once(window.prettyPrint);
-              tab.on('tab-click', function() {
-                return o();
-              });
-            }
+            // for (_i = 0, _len = modalTabs.items.length; _i < _len; _i++) {
+            //   tab = modalTabs.items[_i];
+            //   o = _.once(window.prettyPrint);
+            //   tab.on('tab-click', function() {
+            //     return o();
+            //   });
+            // }
+
+            // for (_i = 0, _len = menuTabs.items.length; _i < _len; _i++) {
+            //   tab = menuTabs.items[_i];
+            //   o = _.once(window.prettyPrint);
+            //   tab.on('tab-click', function() {
+            //     return o();
+            //   });
+            // }
 
         prettyPrint();
       });

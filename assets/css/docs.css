@@ -12,6 +12,15 @@ p {
   margin-bottom: 15px;
 }
 
+a {
+  color: #888;
+}
+
+pre {
+  font-family: monaco, monospace;
+  font-size: 14px;
+}
+
 .description {
   position: relative;
 }
@@ -30,15 +39,34 @@ p {
   margin: 40px 0 20px 0;
 }
 
-button,
-.button {
-  font-size: 2em;
-  padding: 0.35em 1em;
+.download, fork {
+  display: block;
+  float: left;
+  margin-right: 17px;
 }
 
-button.orange,
-a.button.orange {
-  margin-right: 10px;
+.component ul {
+  list-style: none;
+}
+
+.component li {
+  float: left;
+  margin: 4px 8px 4px 0;
+}
+
+.component pre {
+  background-color: #F7F7F9;
+  border: 1px solid #E1E1E7;
+  display: inline-block;
+  padding: 2px 3px;
+  color: #229695;
+}
+
+button,
+a.button {
+  font-size: 2em;
+  font-weight: 400;
+  padding: 0.35em 1em;
 }
 
 .tk-league-gothic {
@@ -65,6 +93,11 @@ a.button.orange {
           box-shadow: 1px 0 6px rgba(0,0,0,0.1);
 }
 
+#sidebar h4 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 #guideContainer {
   margin-left: 200px;
   background-color: #f8f8f8;
@@ -77,14 +110,50 @@ a.button.orange {
 }
 
 .backpack-tab-content {
-  padding: 2px;
+  padding: 15px 10px 0;
 }
 
 .backpack-tab-content button {
   font-size: 23px;
   padding: 5px 25px;
-  margin: 10px;
+  margin: 10px 0 10px 0;
   float: right;
+}
+
+#sidebar .backpack-list > li, 
+#sidebar .backpack-list .backpack-menu-item {
+  float: none;
+  border: none;
+  font-size: 14px;
+}
+
+
+#sidebar .backpack-list > li > a,
+#sidebar .backpack-list .backpack-menu-item a {
+  color: #444;
+  font-weight: normal;
+  padding: 10px 0;
+  display: block;
+  vertical-align: middle;
+  text-decoration: none;
+  border: none;
+  width: 100%;
+}
+
+#sidebar .backpack-list > li > ul {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 15px;
+} 
+
+#sidebar .backpack-menu-item > .backpack-list > .backpack-menu-item > a {
+  font-weight: normal;
+  color: #999;
+  padding: 5px 0;
+}
+
+.sidebar-overview > a {
+  border-bottom: 1px dotted #ddd !important;
 }
 
 #header {
@@ -122,14 +191,18 @@ a.button.orange {
 .title-h4 {
   color: #333637;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
   display: block;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px dotted rgba(0,0,0,0.1);
   padding-bottom: 10px;
 }
 
 .bottom-60 {
   margin-bottom: 60px;
+}
+
+.code p {
+  color: #999;
 }
 
 button.orange,
