@@ -36,11 +36,14 @@ class Backpack.Tabs extends Backpack.Component
   # -------------
   #     @param {Tab} tab
   #     @return {Tabs}
-  # 
   select: (tab) =>
+    # remove active class from the current @active
     @items[@active].removeClass('backpack-tab-active')
+    # set new @active
     @active = _.indexOf(@items, tab)
     tab.addClass('backpack-tab-active')
+    # remove the previous active tab's tab content
+    # and put the current active tab's content in
     @$el.next('.backpack-tab-content').remove()
     @after(tab.tabContent.show().el)
     @
