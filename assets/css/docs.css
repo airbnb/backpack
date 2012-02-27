@@ -32,6 +32,10 @@ footer p {
   line-height: 1em;
 }
 
+.center {
+  text-align: center;
+}
+
 .description {
   position: relative;
 }
@@ -41,16 +45,13 @@ footer p {
   margin-top: 20px;
 }
 
-.description > .code {
-}
-
 .logo {
   display: block;
   text-align: center;
   margin: 40px 0 20px 0;
 }
 
-.download, fork {
+.download, .fork {
   display: block;
   float: left;
   margin-right: 17px;
@@ -185,6 +186,12 @@ a.button {
   border-bottom: 1px dotted #ddd !important;
 }
 
+.sidebar-logo {
+  right: 68px;
+  position: absolute;
+  bottom: 18px;
+}
+
 #header {
   background: url('../img/backpack-logo.png') no-repeat 27px 20px;
   width: 650px;
@@ -224,6 +231,10 @@ a.button {
   display: block;
   border-bottom: 1px dotted rgba(0,0,0,0.1);
   padding-bottom: 10px;
+}
+
+.top-20 {
+  margin-top: 20px;
 }
 
 .bottom-60 {

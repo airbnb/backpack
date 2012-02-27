@@ -493,14 +493,13 @@ cake watch:js       # Recompile CoffeeScript source files when
           <p>With A Lovely Backpack Logo Design by <a href='http://www.dannyprew.com/'>Danny Prew</a></p>
           <p>Here's Backpack's <a href='https://github.com/airbnb/backpack.js/blob/master/LICENSE'>Apache 2.0 License</a></p>
           <br/>
-          <a href='http://airbnb.com/jobs'><img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png' /></a>
+          <a href='http://nerds.airbnb.com'><img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png' /></a>
         </footer>
       </section>
 
     <script>
       $(function() {
-
-        prettyPrint();
+        prettyPrint(); // thanks Google
 
         var menu = new Backpack.Menu({
                       parent: '#sidebar',
@@ -523,12 +522,13 @@ cake watch:js       # Recompile CoffeeScript source files when
                             events:  '#Contribute'
                           },
                           {
-                            content: 'Annotated Source',
-                            events:  'http://airbnb.github.com/backpack.js/docs/backpack.html'
-                          },
-                          {
                             content: 'Github',
                             events:  'http://github.com/airbnb/backpack.js'
+                          },
+                          {
+                            content: "<img height='25' src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png' />",
+                            events: "http://nerds.airbnb.com",
+                            addClass: 'sidebar-logo'
                           }
                         ]
             }),
