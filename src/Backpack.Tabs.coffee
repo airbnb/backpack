@@ -2,14 +2,11 @@ class Backpack.Tabs extends Backpack.Component
 
   tagName: 'ul'
 
-  items: []
-  active: 0
-
   initialize: ->
-    super()
     @addClass('backpack-tabs clearfix')
-    @contentArea = "<div class='backpack-tab-content-area'/>"
-    @after(@contentArea)
+    @items = []
+    @active = 0
+    super()
 
   add: =>
     for item in arguments
@@ -32,15 +29,20 @@ class Backpack.Tabs extends Backpack.Component
   setActive: =>
     active = @items[@active]
     active.addClass('backpack-tab-active')
+    @select(active)
     @
 
+  # select
+  # -------------
+  #     @param {Tab} tab
+  #     @return {Tabs}
+  # 
   select: (tab) =>
+    @items[@active].removeClass('backpack-tab-active')
     @active = _.indexOf(@items, tab)
-    @.$('.backpack-tab').removeClass('backpack-tab-active')
     tab.addClass('backpack-tab-active')
-    console.log tab.tabContent
-    $('backpack-tab-content-area').html(tab.tabContent.render().el)
-    console.log @active
+    @$el.next('.backpack-tab-content').remove()
+    @after(tab.tabContent.show().el)
     @
 
 
@@ -59,8 +61,8 @@ class Backpack.Tab extends Backpack.Component
     super()
     @addClass('backpack-tab')
     @tabContent = new Backpack.TabContent
-      content: @options.tabContent, 
-      parent: '.backpack-tab-content-area'
+      content: @options.tabContent
+      parent: @$parent
 
   render: =>
     @$el.html(@_content)
