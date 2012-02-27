@@ -10,9 +10,9 @@ class Backpack.Component extends Backbone.View
     @options = _.extend({}, @defaults, @options)
     for func, args of @options
       unless _.isArray(args)
-        @[func]?.call(@, args)
+        @[func]?.call?(@, args)
       else
-        @[func]?.apply(@, args)
+        @[func]?.apply?(@, args)
       null
 
   render: =>

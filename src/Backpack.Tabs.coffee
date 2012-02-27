@@ -4,32 +4,56 @@ class Backpack.Tabs extends Backpack.Component
 
   initialize: ->
     @addClass('backpack-tabs clearfix')
+    # @items is an array of tab items
     @items = []
-    @active = 0
+    # @active is the index of the current
+    # active tab in @items. Defaults to 0
+    @active = @options.active ? 0
     super()
 
+  # add
+  # -------------
+  #     @return {Tabs}
   add: =>
+    # iterate over each item in the
+    # arguments array
     for item in arguments
-      {content, events, el} = item
+      # set the item's parent to this 
+      # set of Tabs
       item = _.extend(item, {parent: @})
-      if el
+      if item.el
+        # the item is already a Backbone.View
         tab = item
       else
         tab = new Backpack.Tab(item)
+      # setup the added tab
       @setTab(tab)
+    # after all the tabs are added
+    # set the active tab
     @setActive()
     @
 
+  # setTab
+  # -------------
+  #     @param {Tab} tab
+  #     @return {Tabs}
   setTab: (tab) =>
+    # subscribe to 'tab-click' event
+    # and call @select when it is
+    # triggered
     tab.on('tab-click', @select)
+    # add the tab
     @append(tab.show().el)
     @items.push(tab)
     @
 
+  # setActive
+  # -------------
+  #     @return {Tabs}
   setActive: =>
-    active = @items[@active]
-    active.addClass('backpack-tab-active')
-    @select(active)
+    activeTab = @items[@active]
+    activeTab.addClass('backpack-tab-active')
+    @select(activeTab)
     @
 
   # select
@@ -65,7 +89,7 @@ class Backpack.Tab extends Backpack.Component
     @addClass('backpack-tab')
     @tabContent = new Backpack.TabContent
       content: @options.tabContent
-      parent: @$parent
+      parent:  @$parent
 
   render: =>
     @$el.html(@_content)
@@ -77,10 +101,13 @@ class Backpack.Tab extends Backpack.Component
     @_content = @template({ href: 'javascript:void(0);', content: content })
     @
 
-  # **Select** Emits a 'tab-click' event.
-  # Passes the selected tab object to
-  # those listening to that event.
+  # select
+  # -------------
+  #     @returns {Tab}
   select: =>
+    # Emits a 'tab-click' event.
+    # Passes the selected tab object to
+    # those listening to that event
     @trigger('tab-click', @)
     @
 
@@ -90,7 +117,7 @@ class Backpack.TabContent extends Backpack.Component
 
   initialize: ->
     super()
-    @addClass('backpack-tab-content')
+    @addClass('backpack-tab-content round-bottom')
 
   render: =>
     @$parent.html(@_content)

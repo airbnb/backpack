@@ -10,9 +10,9 @@
     <span class="vi">@options = </span><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">@defaults</span><span class="p">,</span> <span class="nx">@options</span><span class="p">)</span>
     <span class="k">for</span> <span class="nx">func</span><span class="p">,</span> <span class="nx">args</span> <span class="k">of</span> <span class="nx">@options</span>
       <span class="nx">unless</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span>
-        <span class="nx">@</span><span class="p">[</span><span class="nx">func</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">@</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+        <span class="nx">@</span><span class="p">[</span><span class="nx">func</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">call</span><span class="o">?</span><span class="p">(</span><span class="nx">@</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
       <span class="k">else</span>
-        <span class="nx">@</span><span class="p">[</span><span class="nx">func</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">@</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+        <span class="nx">@</span><span class="p">[</span><span class="nx">func</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">apply</span><span class="o">?</span><span class="p">(</span><span class="nx">@</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
       <span class="kc">null</span>
 
   <span class="nv">render: </span><span class="o">=&gt;</span>

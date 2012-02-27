@@ -209,6 +209,17 @@ background-color: #A89467;*/
   background-color: #f8f8f8;
 }
 
+.backpack-tabs > li:first {
+  margin-left: -1px;
+}
+
+.backpack-tab-content {
+  padding: 0 20px 25px;
+  margin: 0 0 50px 1px;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
+}
+
 .backpack-tab-active {
   margin-bottom: -2px;
 }
@@ -257,10 +268,14 @@ background-color: #A89467;*/
   top: 0;
   right: 0;
   padding: 0 6px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  color: #666;
+  color: #888;
   cursor: pointer;
+}
+
+.backpack-modal > .close:hover {
+  color: #333;
 }
 
 .backpack-modal > .content { 
