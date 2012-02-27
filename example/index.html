@@ -11,7 +11,10 @@
     <script src="../lib/Backpack-bundle.js" type="text/javascript"></script>
   </head>
   <body class='backpack'>
-    <section id='docs' style='width: 960px; margin: 0 auto;'></section>
+    <div class='container' style='width: 960px; margin: 0 auto;'>
+      <aside id='sidebar' style='float: left; width: 260px; padding-right: 40px;'></aside>
+      <section id='docs' style='width: 660px; float:left;'></section>
+    </div>
     <script>
       $(function(){
 
@@ -55,17 +58,43 @@
               github = new Backpack.MenuItem({ 
                             content: "Download on Github",
                             events:  "http://github.com/airbnb/backpack.js"
-                          });
+              });
 
           menu.add(github.bump('right'));
 
-
-
+          // ------------------------------------
+          //  Backpack.Menu List
+          // ------------------------------------
+          var listMenu = new Backpack.Menu({
+                            parent: "#sidebar",
+                            show: true,
+                            addClass: 'backpack-list',
+                            before: "<h2>Backpack.Menu List</h2>",
+                            after: "<br/><br/><br/>",
+                            add: 
+                              [
+                                {
+                                  content: "List Item 1"
+                                },
+                                {
+                                  content: "List Item 2"
+                                },
+                                {
+                                  content: "List Item 3"
+                                },
+                                {
+                                  content: "List Item 4"
+                                },
+                                {
+                                  content: "List Item 5"
+                                }
+                              ]
+              });
 
           /*============================================
            *  SECTION 2
            ============================================*/
-          var dialog = new Backpack.Menu({ 
+          var modalExamples = new Backpack.Menu({ 
                 parent: '#docs',
                 show: true,
                 before: "<h2>Backpack.Modal &amp; Backpack.Overlay</h2>",
@@ -77,7 +106,7 @@
           // ------------------------------------
           //  Backpack.Modal
           // ------------------------------------
-          dialog.add({ 
+          modalExamples.add({ 
               content: 'Modal'
             , events: 
                 function(){ 
@@ -91,7 +120,7 @@
           // ------------------------------------
           //  Backpack.Modal with an Overlay
           // ------------------------------------
-          dialog.add({ 
+          modalExamples.add({ 
             content: 'Modal + Overlay',
             events: {
               'hover': function() { console.log('hover') },
@@ -111,7 +140,7 @@
           // ------------------------------------
           //  Backpack.Modal with a locked Overlay
           // ------------------------------------
-          dialog.add({ 
+          modalExamples.add({ 
             content: 'Modal + Overlay 2',
             events: 
               function(){ 
@@ -124,7 +153,7 @@
           });
 
 
-          dialog.add({
+          modalExamples.add({
             content: "Handles Overflow",
               events: 
               function(){ 

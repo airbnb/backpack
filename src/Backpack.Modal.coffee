@@ -20,7 +20,6 @@ class Backpack.Overlay extends Backpack.Component
     @addClass('backpack-overlay')
     @append @template
     super()
-    @$parent.addClass('overlay')
 
   render: =>
     @$('.backpack-overlay-container').html(@_content)
@@ -31,6 +30,10 @@ class Backpack.Overlay extends Backpack.Component
     return @ unless content?
     @_content = @setContent(content)
     @
+
+  show: =>
+    super()
+    @$parent.addClass('overlay')
 
   unlock: =>
     @close() unless @_lockOverlay
@@ -47,6 +50,11 @@ class Backpack.Overlay extends Backpack.Component
 
   color: (color) =>
     @el.style.backgroundColor = color
+    @
+
+  remove: =>
+    @$parent.removeClass('overlay')
+    super()
     @
 
 
@@ -98,7 +106,7 @@ class Backpack.Modal extends Backpack.Component
 
   remove: =>
     super()
-    @overlay.remove()
+    @overlay?.remove()
     @
 
   # addButton: (button) =>
