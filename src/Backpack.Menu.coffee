@@ -9,14 +9,15 @@ class Backpack.Menu extends Backpack.Component
     @addClass('backpack-menu')
     @
 
-  add: (content, events, name) =>
-    if content.el?
-      menuItem = content
-    else
-      menuItem = new Backpack.MenuItem(content, events, name)
-    @$el.append(menuItem.render().el)
+  add: =>
+    for item in arguments
+      {content, events, el} = item
+      if el
+        menuItem = item
+      else
+        menuItem = new Backpack.MenuItem(item)
+      @append(menuItem.show().el)
     @
-
 
 
 # ## Backpack.MenuItem
@@ -29,28 +30,28 @@ class Backpack.MenuItem extends Backpack.Component
 
   initialize: ->
     @addClass 'backpack-menu-item'
+    super()
     {content, events} = @options
-    @setContent(content, events)
+    @content(content, events)
     @delegateEvents(@events)
     @
 
   render: =>
-    @$el.html(@content)
+    @$el.html(@_content)
     @
 
-  setContent: (content, events) =>
+  content: (content, events = {}) =>
     if content.el?
-      @content = content.el
+      @_content = content.el
       return @
     if _.isString(events)
-      @content = @template({ href: events, content: content })
+      @_content = @template({ href: events, content: content })
       return @
     if _.isFunction(events)
       @events  = {'click': events}
-      @content = @template({ href: 'javascript:void(0);', content: content })
+      @_content = @template({ href: 'javascript:void(0);', content: content })
       return @
       
     @events  = events
-    @content = @template({ href: 'javascript:void(0);', content: content })
-
+    @_content = @template({ href: 'javascript:void(0);', content: content })
     @

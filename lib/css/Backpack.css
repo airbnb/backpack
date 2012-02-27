@@ -1,17 +1,96 @@
-/*background-color: #9ED8D2;
-background-color: #A89467;*/
-
 .backpack {
   margin: 0;
   padding: 0;
   font-family: Helvetica, Arial, sans-serif;
 }
 
+.backpack-component {
+  -webkit-box-sizing: border-box; 
+     -moz-box-sizing: border-box; 
+          box-sizing: border-box;
+}
+
+
+/* --------------------
+ * Backpack Helpers
+ * --------------------
+ */
 .backpack .hide {
   opacity: 0;
   display: none;
   pointer-events: none;
   filter: alpha(opacity=0);
+}
+
+.backpack .bump-right {
+  float: right;
+}
+
+.backpack .bump-left {
+  float: left;
+}
+
+.backpack .bump-none {
+  float: none;
+}
+
+.backpack .clearfix {
+  zoom: 1;
+}
+
+.backpack .clearfix::after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+
+.backpack .round {
+  -webkit-border-radius: 4px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+          border-radius: 4px;
+}
+
+.backpack .round-top {
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+     -moz-border-radius-topleft: 4px;
+     -moz-border-radius-topright: 4px;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+}
+
+.backpack .round-bottom {
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+     -moz-border-radius-bottomleft: 4px;
+     -moz-border-radius-bottomright: 4px;
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+}
+
+.backpack .round-left {
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+     -moz-border-radius-topleft: 4px;
+     -moz-border-radius-bottomleft: 4px;
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+}
+
+.backpack .round-right {
+  -webkit-border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+     -moz-border-radius-topright: 4px;
+     -moz-border-radius-bottomright: 4px;
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
 }
 
 .backpack .press {
@@ -22,15 +101,9 @@ background-color: #A89467;*/
   background:-webkit-gradient(linear,center top,center bottom,from(#FEFEFE),to(#F0F0F0));
   background:-moz-linear-gradient(top,#FEFEFE,#F0F0F0);
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FEFEFE',endColorstr='#F0F0F0',GradientType=0);
-  -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-     -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-          box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.backpack-component {
-  -webkit-box-sizing: border-box; 
-     -moz-box-sizing: border-box; 
-          box-sizing: border-box;
+  -webkit-box-shadow: 0 2px 6px rgba(128,128,128,0.2);
+     -moz-box-shadow: 0 2px 6px rgba(128,128,128,0.2);
+          box-shadow: 0 2px 6px rgba(128,128,128,0.2);
 }
 
 /* --------------------
@@ -48,22 +121,33 @@ background-color: #A89467;*/
   border: 1px solid #DDD;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+       -o-border-radius: 4px;
           border-radius: 4px;
 }
 
-.backpack-menu li, .backpack-menu-item {
+.backpack-list {
+  border: none;
+  display: inline;
+  text-align: left;
+}
+
+.backpack-menu > li, 
+.backpack-menu-item {
   float: left;
   list-style: none;
 }
 
-.backpack-menu-item .logo {
-  float: left;
+.backpack-list > li, 
+.backpack-list .backpack-menu-item {
+  float: none;
+  border-top: 1px solid rgba(128,128,128,0.1);
 }
 
-.backpack-menu li a {
+.backpack-menu > li > a,
+.backpack-menu-item a {
   color: #999;
-  height: 55px;
-  padding: 0 25px;
+  padding: 20px 25px;
   display: table-cell;
   vertical-align: middle;
   text-decoration: none;
@@ -71,13 +155,111 @@ background-color: #A89467;*/
   border-top: 1px solid rgba(255,255,255,0.9);
 }
 
-.backpack-menu li:last-child a {
+.backpack-list > li > a,
+.backpack-list .backpack-menu-item a {
+  color: #999;
+  padding: 15px 10px;
+  display: table-cell;
+  vertical-align: middle;
+  text-decoration: none;
+  border: none;
+}
+
+.backpack-menu > li:first-child > a {
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-topleft: 4px; 
+  -moz-border-radius-bottomleft: 4px; 
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; 
+}
+
+.backpack-menu > li:last-child > a {
+  -webkit-border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-topright: 4px; 
+  -moz-border-radius-bottomright: 4px; 
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px; 
   border-right: none;
 }
 
-.backpack-menu li a:hover {
+.backpack-list > li:first-child {
+  border-top-color: transparent;
+}
+
+.backpack-menu > li > a:hover {
   opacity: 0.8;
   filter: alpha(opacity=0);
+}
+
+
+
+/* --------------------
+ * Backpack.Tabs
+ * Backpack.Tab
+ * --------------------
+ */
+.backpack-tabs {
+  padding: 0;
+  margin: 0;
+  display: block;
+  text-align: center;
+  border-bottom: 1px solid #DDD;
+}
+
+.backpack-tabs::before,
+.backpack-tabs::after {
+  display: table;
+  content: "";
+}
+
+.backpack-tabs > a,
+.backpack-tab {
+  float: left;
+  list-style: none;
+  border: 1px solid transparent;
+}
+
+.backpack-tab > a {
+  color: #999;
+  padding: 15px 25px;
+  display: table-cell;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+.backpack-tab > a:hover {
+  text-decoration: none;
+  background-color: #f8f8f8;
+}
+
+.backpack-tabs > li:first {
+  margin-left: -1px;
+}
+
+.backpack-tab-content {
+  padding: 0 20px 25px;
+  margin: 0 0 50px 1px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-top-color: transparent;
+}
+
+.backpack-tab-active {
+  margin-bottom: -2px;
+}
+
+.backpack-tab-active > a {
+  font-weight: bold;
+  background-color: #fff;
+  padding: 14px 24px 17px;
+  border: 1px solid #ddd;
+  border-bottom: transparent;
+}
+
+.backpack-tab-active > a:hover {
+  background-color: #fff;
 }
 
 
@@ -87,37 +269,46 @@ background-color: #A89467;*/
  * Backpack.Modal
  * --------------------
  */
-.backpack-dialog, .backpack-modal {
-  z-index: 2;
+.backpack-modal {
   position: relative;
-  padding: 20px;
-  min-width: 50px;
-  max-width: 450px;
-  margin: 15px auto;
+  text-align: left;
+  color: #333;
+  margin: 20px 0;
+  padding: 10px 23px;
+  font-size: 15px;
+  min-width: 400px;
   border: 1px solid #DDD;
   background-color: #FFF;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
   -webkit-box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.backpack-dialog .close, .backpack-modal .close {
+.backpack-modal > .close {
   display: block;
   position: absolute;
-  right: 2px;
   top: 0;
+  right: 0;
   padding: 0 6px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  color: #666;
+  color: #888;
   cursor: pointer;
 }
 
-.backpack-dialog .backpack-dialog-button-container,
-.backpack-modal .backpack-dialog-button-container {
+.backpack-modal > .close:hover {
+  color: #333;
+}
+
+.backpack-modal > .content { 
+  clear: both;
+  margin: 0;
+}
+
+.backpack-modal > .backpack-dialog-button-container {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -126,23 +317,130 @@ background-color: #A89467;*/
   text-align: right;
 }
 
-.backpack-modal {
-  z-index: 3;
-  -webkit-box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
-     -moz-box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
-          box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
-}
-
 
 /* --------------------
  * Backpack.Overlay
  * --------------------
  */
+
+.backpack.overlay {
+  overflow: hidden;
+}
+
 .backpack-overlay {
-  z-index: 1;
+  overflow-x: auto;
+  overflow-y: scroll;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+}
+
+.backpack-overlay-outer {
+  display: table;
   height: 100%;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.backpack-overlay-inner {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.backpack-overlay-container {
+  display: inline-block;
+  outline: none;
+  text-align: left;
+}
+
+.backpack-overlay-border {
+  margin: 20px 0;
+}
+
+/* --------------------
+ * Backpack Button
+ * --------------------
+ */
+button,
+a.button {
+  color: #888;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 0.5em 0.8em;
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  -webkit-user-select:none;
+     -moz-user-select:none;
+      -ms-user-select:none;
+       -o-user-select:none;
+          user-select:none;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),
+                      inset 0 0 3px rgba(255,255,255,0.8),
+                      inset 0 0 2px 0.5px rgba(0,0,0,0.7),
+                          0 1px 2px 0.5px rgba(0,0,0,0.2);
+     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),
+                      inset 0 0 3px rgba(255,255,255,0.8),
+                      inset 0 0 2px 0.5px rgba(0,0,0,0.7),
+                          0 1px 2px 0.5px rgba(0,0,0,0.2);
+      -ms-box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),
+                      inset 0 0 3px rgba(255,255,255,0.8),
+                      inset 0 0 2px 0.5px rgba(0,0,0,0.7),
+                          0 1px 2px 0.5px rgba(0,0,0,0.2);
+       -o-box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),
+                      inset 0 0 3px rgba(255,255,255,0.8),
+                      inset 0 0 2px 0.5px rgba(0,0,0,0.7),
+                          0 1px 2px 0.5px rgba(0,0,0,0.2);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),
+                      inset 0 0 3px rgba(255,255,255,0.8),
+                      inset 0 0 2px 0.5px rgba(0,0,0,0.7),
+                          0 1px 2px 0.5px rgba(0,0,0,0.2);
+  background: #eeeeee; /* Old browsers */
+  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* IE10+ */
+  background: linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+  -webkit-transition-duration: 0.2s;
+     -moz-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+}
+
+button:hover,
+button:focus,
+a.button:hover,
+a.button:focus {
+  background: #eeeeee; /* Old browsers */
+  background: -moz-linear-gradient(top, #eeeeee 0%, #d4d4d4 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#d4d4d4)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #eeeeee 0%,#d4d4d4 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #eeeeee 0%,#d4d4d4 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #eeeeee 0%,#d4d4d4 100%); /* IE10+ */
+  background: linear-gradient(top, #eeeeee 0%,#d4d4d4 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#d4d4d4',GradientType=0 ); /* IE6-9 */
+}
+
+button:active,
+a.button:active {
+  background: #eeeeee; /* Old browsers */
+  background: -moz-linear-gradient(top, #cccccc 0%, #eeeeee 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cccccc), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #cccccc 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #cccccc 0%,#eeeeee 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #cccccc 0%,#eeeeee 100%); /* IE10+ */
+  background: linear-gradient(top, #cccccc 0%,#eeeeee 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+}
 }

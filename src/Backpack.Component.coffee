@@ -4,18 +4,15 @@ class Backpack.Component extends Backbone.View
   className: 'backpack-component'
 
   options:
-    'class':    ''
-    '_content': ''
     'parent': 'body'
-    'hide':    true
 
   initialize: ->
     @options = _.extend({}, @defaults, @options)
     for func, args of @options
       unless _.isArray(args)
-        @[func]?.call(@, args)
+        @[func]?.call?(@, args)
       else
-        @[func]?.apply(@, args)
+        @[func]?.apply?(@, args)
       null
 
   render: =>
@@ -23,6 +20,7 @@ class Backpack.Component extends Backbone.View
     @
 
   show: =>
+    @render()
     @delegateEvents(@events)
     @$el.removeClass('hide')
     @
@@ -35,6 +33,11 @@ class Backpack.Component extends Backbone.View
   close: =>
     @hide()
     @remove()
+    @
+
+  remove: =>
+    @undelegateEvents()
+    super()
     @
 
   before: (content) =>
@@ -74,17 +77,13 @@ class Backpack.Component extends Backbone.View
   content: (content) =>
     return @ unless content?
     @_content = @setContent(content)
-    wrappedContent = @make('div', {class: 'content'}, @_content)
+    wrappedContent = @make('div', {class: 'content clearfix'}, @_content)
     @$el.append(wrappedContent)
     @
 
   parent: (parent) =>
     return @ unless parent?
     @$parent = $(parent)
-    @
-
-  class: (klass) =>
-    @addClass(klass)
     @
 
   addClass: (klass) =>
@@ -95,6 +94,11 @@ class Backpack.Component extends Backbone.View
   removeClass: (klass) =>
     return @ unless klass?
     @$el.removeClass(klass)
+    @
+
+  bump: (direction) =>
+    return @ unless direction?
+    @addClass("bump-#{direction}")
     @
 
   slug: (string) =>

@@ -6,13 +6,15 @@ package = "Backpack"
 
 src_path    = "./src"
 lib_path    = "./lib"
-spec_path   = "./spec"
 js_path     = "#{lib_path}/js"
 bndl_path   = "#{lib_path}/#{package}-bundle.js"
 min_path    = "#{lib_path}/#{package}-bundle.min.js"
 nm_path     = "./node_modules"
 bin_path    = "#{nm_path}/.bin"
-
+spec_path   = "./spec"
+spec_lib_path = "#{spec_path}/lib"
+spec_src_path = "#{spec_path}/src"
+spec_bndl_path = "#{spec_lib_path}/#{package}Spec-bundle.js"
 
 
 run = (command, callback) ->
@@ -39,9 +41,8 @@ watchBundle = (callback) ->
   # recompiles and joins /src_path to /lib_path
   run "#{bin_path}/coffee -j #{bndl_path} -wco #{lib_path} #{src_path}", callback
 
-watchTest = (callback) ->
-  # use ./test/mocha.opts for options
-  run "#{bin_path}/jasmine-node --autotest --color --coffee #{spec_path}", callback
+watchSpecBundle = (callback) ->
+  run "#{bin_path}/coffee -j #{spec_bndl_path} -wco #{spec_path} #{spec_src_path}", callback
 
 bundle = (callback) ->
   # creates /lib_path/Backpack-bundle.js
@@ -52,11 +53,10 @@ minify = (callback) ->
   run "#{bin_path}/uglifyjs  -o #{min_path} #{bndl_path}", callback
 
 test = (callback) ->
-  # use ./test/mocha.opts for options
   run "open #{spec_path}/SpecRunner.html", callback
 
 docs = (callback) ->
-  run "#{bin_path}/docco #{src_path}/*.coffee"
+  run "#{bin_path}/docco #{src_path}/*.coffee", callback
 
 
 # ----------------------------------
@@ -66,20 +66,17 @@ docs = (callback) ->
 task 'compile', 'Compile CoffeeScript source files', ->
   compile()
 
-task 'bundle', "Creates /lib_path/Backpack-bundle.js & /lib_path/js/*.js", ->
-  bundle(compile)
+task 'build', "Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js & /lib_path/js/*.js", ->
+  compile(bundle(minify))
 
-task 'build', "Creates /lib_path/Backpack-bundle.js & /lib_path/Backpack-bundle.min.js", ->
-  bundle(minify)
-
-task 'watch:js', "Recompile CoffeeScript source files when modified to individual .js files", ->
-  watchJS()
-
-task 'watch:bundle', "Recompile CoffeeScript source files when modified to Backage-bundle.js", ->
-  watchBundle()
-
-task 'test', "Run tests", ->
-  bundle(test)
+task 'test', "Opens Jasmine SpecRunner. Watches BackpackSpec-Bundle.js for changes", ->
+  bundle(test(watchSpecBundle))
 
 task 'docs', 'Generate annotated source code with Docco', ->
   docs()
+
+task 'watch', "Recompile CoffeeScript source files when modified to Backpack-bundle.js", ->
+  watchBundle()
+
+task 'watch:js', "Recompile CoffeeScript source files when modified to individual .js files", ->
+  watchJS()

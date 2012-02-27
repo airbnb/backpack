@@ -1,4 +1,4 @@
-describe 'Backpack', ->
+describe 'BackpackSpec', ->
 
   it 'should be defined', ->
     expect(Backpack).toBeDefined()
@@ -20,11 +20,5 @@ describe 'Backpack', ->
     it 'should have a Modal', ->
       expect(Backpack.Modal).toBeDefined()
 
-    it 'should have a Dialog', ->
-      expect(Backpack.Dialog).toBeDefined()
-
     it 'should have an Overlay', ->
       expect(Backpack.Overlay).toBeDefined()
-
-    it 'should have a Button', ->
-      expect(Backpack.Button).toBeDefined()

@@ -14,10 +14,6 @@ describe "Backpack.Component", ->
       hasClass = @component.$el.hasClass('backpack-component')
       expect(hasClass).toBeTruthy()
 
-    it "should have a 'hide' class", ->
-      hasClass = @component.$el.hasClass('hide')
-      expect(hasClass).toBeTruthy()
-
     it "should define @$parent", ->
       expect(@component.$parent).toBeDefined()
 
@@ -25,12 +21,9 @@ describe "Backpack.Component", ->
 
       beforeEach ->
         @options = @component.options
-    
-      it "should have a blank default name", ->
-        expect(@options.class).toEqual('')
 
       it "should have a blank default content", ->
-        expect(@options._content).toEqual('')
+        expect(@options._content).toBeUndefined()
 
       it "should have 'body' as a default $parent", ->
         expect(@options.parent).toEqual('body')
@@ -137,6 +130,7 @@ describe "Backpack.Component", ->
   describe "#show", ->
 
     it "should remove the hide class from the component", ->
+      @component.hide()
       expect(@component.$el.hasClass('hide')).toBeTruthy()
       @component.show()
       expect(@component.$el.hasClass('hide')).toBeFalsy()
