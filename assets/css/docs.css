@@ -1,6 +1,68 @@
-section {
-  width: 940px;
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.4em;
+  margin-bottom: 15px;
+}
+
+
+#sidebar {
+  width: 200px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  padding: 0 15px;
+  overflow-x: auto;
+  overflow-y: scroll;
+  background-color: #FFF;
+  border-right: 1px solid #ddd;
+  -webkit-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
+     -moz-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
+      -ms-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
+       -o-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
+          box-shadow: 1px 0 6px rgba(0,0,0,0.1);
+}
+
+#guideContainer {
+  height: 1000px;
+  margin-left: 200px;
+  background-color: #f8f8f8;
+}
+
+#guide {
+  width: 840px;
+  height: 900px;
   margin: 0 auto;
-  margin-bottom: 40px;
-  clear: both;
+}
+
+#header {
+
+}
+
+.big-h1 {
+  font-size: 80px;
+  color: #444;
+}
+
+.big-h2 {
+  font-size: 32px;
+  color: #999;
+}
+
+.title-h3 {
+  color: #333637;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.bottom-60 {
+  margin-bottom: 60px;
 }

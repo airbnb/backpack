@@ -9,7 +9,7 @@
   
 
 
-### Visit the [Backpack.js Guide](http://airbnb.github.com/backpack.js/)
+### Visit the [Backpack.js User Guide](http://airbnb.github.com/backpack.js/)
   
   
 
@@ -19,7 +19,7 @@
 1. `git clone git@github.com:airbnb/backpack.js.git`
 1. `cd backpack.js && open example/index.html`
   
-  
+
 ----------------------------
   
   

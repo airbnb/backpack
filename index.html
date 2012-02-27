@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Backpack.js User Guide</title>
+    <link rel="stylesheet" href="./lib/css/Backpack.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./assets/css/docs.css" type="text/css" media="screen">
+    <!-- <script type="text/javascript" src="http://use.typekit.com/khy0ojp.js"></script> -->
+    <!-- <script type="text/javascript">try{Typekit.load();}catch(e){}</script> -->
+  </head>
+  <body class='backpack'>
+
+      <aside id='sidebar'></aside>
+
+      <section id='guideContainer'>
+        <section id='guide'>
+          <section id='header' class='bottom-60'>
+            <h1 class='big-h1'>Backpack.js</h1>
+            <h2 class='big-h2'>Grab your backpack and enjoy the Views</h2>
+            <h3 class='big-h3'>Backpack.js is a lightweight Backbone.js extension that provides easy-to-use, extensible UI components</h3>
+            <button>Download Backpack.js</button>
+            <button>Fork on Github</button>
+          </section>
+
+          <section class='bottom-60'>
+            <a id='About'>
+              <h3 class='title-h3'>About</h3>
+            </a>
+            <p>
+              Backpack.js is a pack of UI components for Backbone.js apps that are built the Backbone way. This helps developers get their app up and running quickly and leads to a cleaner code base with more structure. Backpack.js has been built with a focus on the creation of components - CSS files have been included to help you get up and running, but feel free to modify styles as necessary.
+            </p>
+
+            <p>
+              After building the Airbnb Mobile web app with Backbone.js, we thought it would be nice to have a lightweight pack of components that we could drop in to any Backbone.js project. Backbone.js enabled us to move quickly while building the Airbnb mobile site. We made Backpack.js because we want to move faster.
+            </p>
+
+            <p>
+              This initial release is the result of our work abstracting components that we initially imagined and built for the Airbnb mobile site. We’ve decided to open this initial release to the community to gather feedback and welcome any contributions.
+            </p>
+          </section>
+
+          <section class='bottom-60'>
+            <a id='Overview'>
+              <h3 class='title-h3'>Overview</h3>
+            </a>
+          </section>
+
+          <section class='bottom-60'>
+            <a id='Contribute'>
+              <h3 class='title-h3'>Hack on Backpack</h3>
+            </a>
+            <p>
+              Backpack.js is still it’s infancy. We’re open sourcing our progress thus far with the hope to continue to build Backpack.js along with the Backbone community. Our ultimate goal is to enable easier web application development through the use of simple, decoupled, reusable components.
+            </p>
+          </section>
+        </section>
+      </section>
+
+    <script src="./vendor/jquery.js"></script>
+    <script src="./vendor/underscore.js" type="text/javascript"></script>
+    <script src="./vendor/backbone.js" type="text/javascript"></script>
+    <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
+
+    <script>
+      var menu = new Backpack.Menu({
+                      parent: '#sidebar',
+                      addClass: 'backpack-list',
+                      show: true,
+                      before: "<a href='#'><h4>Backpack.js (0.0.1)</h4></a>",
+                      add:
+                        [
+                          {
+                            content: 'About',
+                            events:  '#About'
+                          },
+                          {
+                            content: 'Overview',
+                            events:  '#Overview'
+                          },
+                          {
+                            content: 'Hack on Backpack',
+                            events:  '#Contribute'
+                          },
+                          {
+                            content: 'Annotated Source',
+                            events:  'http://airbnb.github.com/backpack.js/docs/backpack.html'
+                          },
+                          {
+                            content: 'Github',
+                            events:  'http://github.com/airbnb/backpack.js'
+                          }
+                        ]
+      });
+    </script>
+
+  </body>
+</html>
