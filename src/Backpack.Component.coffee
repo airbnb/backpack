@@ -107,34 +107,3 @@ class Backpack.Component extends Backbone.View
       .toLowerCase()
       .replace(/\ +/g, "-")
       .replace(/[^a-z0-9-]/g, "")
-
-
-class Backpack.Clickable extends Backpack.Component
-
-  template: _.template("<a href='<%= href %>'><%= content %></a>")
-
-  initialize: ->
-    {content, events} = @options
-    @content(content, events)
-    @delegateEvents(@events)
-    @
-
-  render: =>
-    @$el.html(@_content)
-    @
-
-  content: (content, events = {}) =>
-    if content.el?
-      @_content = content.el
-      return @
-    if _.isString(events)
-      @_content = @template({ href: events, content: content })
-      return @
-    if _.isFunction(events)
-      @events  = {'click': events}
-      @_content = @template({ href: 'javascript:void(0);', content: content })
-      return @
-      
-    @events  = events
-    @_content = @template({ href: 'javascript:void(0);', content: content })
-    @
