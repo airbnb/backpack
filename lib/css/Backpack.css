@@ -328,18 +328,22 @@
  */
 
 .backpack.overlay {
-  overflow: hidden;
+  overflow: auto;
 }
 
 .backpack-overlay {
-  overflow-x: auto;
-  overflow-y: scroll;
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   z-index: 9;
+  -webkit-transition-duration: 0.2s;
+     -moz-transition-duration: 0.2s;
+      -ms-transition-duration: 0.2s;
+       -o-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .backpack-overlay-outer {
@@ -419,6 +423,8 @@ a.button {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
   -webkit-transition-duration: 0.2s;
      -moz-transition-duration: 0.2s;
+      -ms-transition-duration: 0.2s;
+       -o-transition-duration: 0.2s;
           transition-duration: 0.2s;
 }
 

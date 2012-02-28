@@ -140,7 +140,7 @@ a.button {
 }
 
 .backpack-tab-content {
-  padding: 15px 10px 0;
+  padding: 10px 10px 0;
 }
 
 .backpack-tab-content button {
@@ -193,7 +193,7 @@ a.button {
 }
 
 #header {
-  background: url('../img/backpack-logo.png') no-repeat 27px 20px;
+  background: url('../img/backpack-logo.png') no-repeat 40px 35px;
   width: 650px;
   padding-top: 40px;
   position: relative;
@@ -218,6 +218,10 @@ a.button {
   margin-top: 15px;
 }
 
+.github-social {
+  margin: 20px 0 40px;
+}
+
 .title-h3 {
   color: #333637;
   font-size: 30px;
@@ -239,6 +243,10 @@ a.button {
 
 .bottom-60 {
   margin-bottom: 60px;
+}
+
+.padding-20 {
+  padding: 20px;
 }
 
 .code p {

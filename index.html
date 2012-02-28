@@ -33,7 +33,15 @@
           <section id='header'>
             <h1 class='big-h1'>Backpack.js</h1>
             <h2 class='big-h2'>Grab your backpack and enjoy the Views</h2>
-            <h3 class='big-h3 bottom-60'>Backpack.js is a lightweight Backbone extension that provides easy-to-use, extensible UI components</h3>
+            <h3 class='big-h3'>Backpack.js is a lightweight Backbone extension that provides easy-to-use, extensible UI components</h3>
+            <div class='github-social'>
+              <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=airbnb&repo=backpack.js&type=watch&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="30px"></iframe>
+              <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=airbnb&repo=backpack.js&type=fork&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="30px"></iframe>
+              <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=airbnb&repo=backpack.js&type=follow"
+  allowtransparency="true" frameborder="0" scrolling="0" width="111px" height="30px"></iframe>
+            </div>
           </section>
 
           <section class='bottom-60 clearfix'>
@@ -46,7 +54,7 @@
               <h3 class='title-h3'>Introduction</h3>
             </a>
             <p>
-              Backpack.js is a lightweight Backbone extension that provides easy-to-use, extensible UI components, and was built by a couple of Airbnb Engineers.
+              Backpack.js is a lightweight Backbone extension that provides easy-to-use, extensible UI components, and was built by a couple of <a href='http://www.airbnb.com/jobs'>Airbnb Engineers</a>.
             </p>
             <p>
               Backpack.js has been built with a focus on the creation of components - CSS files have been included to help you get up and running, but feel free to modify styles as necessary.
@@ -410,10 +418,13 @@ var menu = new Backpack.Menu({
 var popup = new Backpack.Modal({ 
                   content: "This is a simple popup modal.",
                   show: true
+                  // add some special css sauce
+                  addClass: 'padding-20'
             });</pre>
                 <button class='round tk-league-gothic orange' onclick="javascript:eval(new Backpack.Modal({ 
-                                                      content: 'This is a simple popup modal.',
-                                                      show: true
+                                                      content: 'This is a simple popup modal.<br/><br/>It just pops up and gets in the way.',
+                                                      show: true,
+                                                      addClass: 'padding-20'
                                             }))">Run</button>
               </div>
 
@@ -424,17 +435,20 @@ var lb = new Backpack.Modal({
                 content: 'This Modal is a bit fancier.',
                 show: true,
                 // set the overlay color
-                color: 'rgba(255,255,255,0.6)',
+                color: 'rgba(0,0,0,0.7)',
                 lockOverlay: true, 
                 // put a 'x' in the corner to close
-                closable: true
+                closable: true,
+                // add some special css sauce
+                addClass: 'padding-20'
          });</pre>
                 <button class='round tk-league-gothic orange' onclick="javascript:eval(new Backpack.Modal({
-                                                      content: 'This Modal is a bit fancier.',
+                                                      content: 'This Modal is a bit fancier.<br/><br/>It has a classy overlay in the background. This says, hey look at me, I am a Modal.<br/><br/>Sometimes that is just want you need.',
                                                       show: true,
-                                                      color: 'rgba(255,255,255,0.6)',
+                                                      color: 'rgba(0,0,0,0.7)',
                                                       lockOverlay: true, 
-                                                      closable: true
+                                                      closable: true,
+                                                      addClass: 'padding-20'
                                             }))">Run</button>
               </div>
             </section>
@@ -493,6 +507,9 @@ cake watch:js       # Recompile CoffeeScript source files when
           <p>With A Lovely Backpack Logo Design by <a href='http://www.dannyprew.com/'>Danny Prew</a></p>
           <p>Here's Backpack's <a href='https://github.com/airbnb/backpack.js/blob/master/LICENSE'>Apache 2.0 License</a></p>
           <br/>
+          <div>
+            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=airbnb&repo=backpack.js&type=follow&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe></div><br/>
           <a href='http://nerds.airbnb.com'><img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png' /></a>
         </footer>
       </section>
