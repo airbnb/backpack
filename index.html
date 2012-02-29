@@ -26,7 +26,7 @@
   <body class='backpack'>
 
       <aside id='sidebar'>
-        <span class='logo'><img src='./assets/img/backpack-logo.png' height='100' /></span>
+        <a href='#' class='logo'><img src='./assets/img/backpack-icon.png' height='70' /></a>
       </aside>
 
       <section id='guideContainer'>
@@ -512,14 +512,18 @@ var lightbox = new Backpack.Modal({
             </p>
             <div class='code'>
               <br/>
-              <p>Getting Started</p>
-            <pre class='prettyprint linenums'>
+              <a id='Started'>
+                <p>Getting Started</p>
+              </a>
+              <pre class='prettyprint linenums'>
 git clone git@github.com:airbnb/backpack.js.git
 cd backpack.js && npm install</pre>
 
               <br/><br/>
 
-              <p>Cake Build Tools</p>
+              <a id='Cake'>
+                <p>Cake Build Tools</p>
+              </a>
               <pre class='prettyprint'>
 cake compile        # Compile CoffeeScript source files
 
@@ -541,11 +545,12 @@ cake watch:js       # Recompile CoffeeScript source files when
 
               <br/><br/>
 
-              <p>Testing</p>
-            </div>
+              <a id='Test'>
+                <p>Testing</p>
+              </a>
+
               <div>
-                Backpack.js tests are written using <a href=''>jasmine</a> with 
-                <a href=''>sinon.js</a> and <a href=''>jasmine-sinon</a>.
+                Backpack.js tests are written using <a href=''>jasmine</a> with <a href=''>sinon.js</a> and <a href=''>jasmine-sinon</a>.
               </div>
 
               <br/>
@@ -553,34 +558,37 @@ cake watch:js       # Recompile CoffeeScript source files when
               <div>
                 You can run the test suite with <pre class='inline'>cake test</pre>.
               </div>
-          </section>
-        </section>
 
-        <footer>
-          <p>
-            Backpack.js was born at <a href='http://airbnb.com/jobs'>Airbnb HQ
-            </a> in sunny San Francisco, CA
-          </p>
-          <p>
-            With A Lovely Backpack Logo Design by 
-            <a href='http://www.dannyprew.com/'>Danny Prew</a>
-          </p>
-          <p>
-            Here's Backpack's 
-            <a href='https://github.com/airbnb/backpack.js/blob/master/LICENSE'>
-            Apache 2.0 License</a>
-          </p>
-          <br/>
-          <div>
-            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=airbnb&repo=backpack.js&type=follow&count=true&size=large"
-                    allowtransparency="true" frameborder="0" scrolling="0" 
-                    width="170px" height="30px"></iframe>
-          </div>
-          <br/>
-          <a href='http://nerds.airbnb.com'>
-            <img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png' />
-          </a>
-        </footer>
+            </div>
+          </section>
+
+          <footer>
+            <p>
+              Backpack.js was born at <a href='http://airbnb.com/jobs'>Airbnb HQ
+              </a> in sunny San Francisco, CA
+            </p>
+            <p>
+              With A Lovely Backpack Logo Design by 
+              <a href='http://www.dannyprew.com/'>Danny Prew</a>
+            </p>
+            <p>
+              Here's Backpack's 
+              <a href='https://github.com/airbnb/backpack.js/blob/master/LICENSE'>
+              Apache 2.0 License</a>
+            </p>
+            <br/>
+            <div>
+              <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=airbnb&repo=backpack.js&type=follow&count=true&size=large"
+                      allowtransparency="true" frameborder="0" scrolling="0" 
+                      width="170px" height="30px"></iframe>
+            </div>
+            <br/>
+            <a href='http://nerds.airbnb.com'>
+              <img src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png' />
+            </a>
+          </footer>
+
+        </section>
       </section>
 
     <script>
@@ -591,7 +599,6 @@ cake watch:js       # Recompile CoffeeScript source files when
                       parent: '#sidebar',
                       addClass: 'backpack-list',
                       show: true,
-                      before: "<a href='#'><h4>Backpack.js (0.0.1)</h4></a>",
                       add:
                         [
                           {
@@ -605,7 +612,8 @@ cake watch:js       # Recompile CoffeeScript source files when
                           },
                           {
                             content: 'Hack on Backpack',
-                            events:  '#Contribute'
+                            events:  '#Contribute',
+                            addClass: 'sidebar-contribute'
                           },
                           {
                             content: 'Github',
@@ -674,30 +682,52 @@ cake watch:js       # Recompile CoffeeScript source files when
                               ]
             }),
 
-           components = new Backpack.Menu({
+            components = new Backpack.Menu({
                           parent: '.sidebar-overview',
                           addClass: 'backpack-list',
                           show: true,
                           add:
                             [
                               {
-                                content: 'Backpack.Component',
+                                content: '- Backpack.Component',
                                 events: '#Component'
                               },
                               {
-                                content: 'Backpack.Tabs',
+                                content: '- Backpack.Tabs',
                                 events: '#Tabs'
                               },
                               {
-                                content: 'Backpack.Menu',
+                                content: '- Backpack.Menu',
                                 events: '#Menu'
                               },
                               {
-                                content: 'Backpack.Modal',
+                                content: '- Backpack.Modal',
                                 events: '#Modal'
                               }
                             ]
-            });
+            }),
+
+            contribute = new Backpack.Menu({
+              parent: '.sidebar-contribute',
+              addClass: 'backpack-list',
+              show: true,
+              add:
+                [
+                  {
+                    content: '- Getting Started',
+                    events: '#Started'
+                  },
+                  {
+                    content: '- Cake Build Tools',
+                    events: '#Cake'
+                  },
+                  {
+                    content: '- Jasmine Tests',
+                    events: '#Test'
+                  }
+                ]
+            })
+           ;
       });
     </script>
 

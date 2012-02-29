@@ -48,7 +48,7 @@ footer p {
 .logo {
   display: block;
   text-align: center;
-  margin: 40px 0 20px 0;
+  margin: 40px 0 70px 0;
 }
 
 .chrome {
@@ -162,7 +162,7 @@ a.button {
 #guide {
   width: 580px;
   height: 100%;
-  margin: 0 auto;
+  margin: 0 0 0 80px;
 }
 
 .backpack-tabs {
@@ -219,10 +219,12 @@ a.button {
 #sidebar .backpack-menu-item > .backpack-list > .backpack-menu-item > a {
   font-weight: normal;
   color: #999;
-  padding: 5px 0;
+  padding: 3px;
+  font-size: 12px;
 }
 
-.sidebar-overview > a {
+.sidebar-overview > a,
+.sidebar-contribute > a {
   border-bottom: 1px dotted #ddd !important;
 }
 
