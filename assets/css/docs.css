@@ -219,7 +219,7 @@ a.button {
 #sidebar .backpack-menu-item > .backpack-list > .backpack-menu-item > a {
   font-weight: normal;
   color: #999;
-  padding: 4px;
+  padding: 3px;
   font-size: 12px;
 }
 
@@ -227,6 +227,7 @@ a.button {
 .sidebar-contribute > a {
   border-bottom: 1px dotted #ddd !important;
   margin-bottom: 10px !important;
+  padding-bottom: 7px !important;
 }
 
 .sidebar-logo {
