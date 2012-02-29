@@ -175,6 +175,10 @@ a.button {
   padding: 10px 10px 0;
 }
 
+.code {
+  padding: 20px 20px 0;
+}
+
 .tab-code .backpack-tab-content {
   padding-bottom: 10px;
 }
