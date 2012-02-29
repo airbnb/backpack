@@ -244,7 +244,7 @@
 
 .backpack-tab-content {
   padding: 0 20px 25px;
-  margin: 0 0 50px 1px;
+  margin: 0 0 50px 0;
   border: 1px solid #ddd;
   background-color: #fff;
   border-top-color: transparent;
@@ -255,7 +255,6 @@
 }
 
 .backpack-tab-active > a {
-  font-weight: bold;
   background-color: #fff;
   padding: 14px 24px 17px;
   border: 1px solid #ddd;

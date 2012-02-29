@@ -476,7 +476,7 @@ cd backpack.js && npm install</pre>
               <br/><br/>
 
               <p>Cake Build Tools</p>
-              <pre class='prettyprint linenums'>
+              <pre class='prettyprint'>
 cake compile        # Compile CoffeeScript source files
 
 cake build          # Creates /lib_path/Backpack-bundle.js & 
@@ -558,6 +558,7 @@ cake watch:js       # Recompile CoffeeScript source files when
             modalTabs = new Backpack.Tabs({
                               parent: '.modal-code',
                               show: true,
+                              addClass: 'round-top chrome',
                               add:
                                 [
                                   {
@@ -574,6 +575,7 @@ cake watch:js       # Recompile CoffeeScript source files when
             menuTabs = new Backpack.Tabs({
                             parent: '.menu-code',
                             show: true,
+                            addClass: 'round-top chrome',
                             add:
                               [
                                 {
@@ -594,6 +596,7 @@ cake watch:js       # Recompile CoffeeScript source files when
             tabTabs = new Backpack.Tabs({
                             parent: '.tab-code',
                             show: true,
+                            addClass: 'round-top chrome',
                             add: 
                               [
                                 {
