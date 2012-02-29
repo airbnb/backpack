@@ -215,6 +215,10 @@ var menu = new Backpack.Menu({
                                                       content: new Backpack.Menu({
                                                                       parent: this,
                                                                       show: true,
+                                                                      css: 
+                                                                        {
+                                                                          'width': '960px'
+                                                                        },
                                                                       add: 
                                                                         [
                                                                           {
@@ -223,7 +227,9 @@ var menu = new Backpack.Menu({
                                                                           },
                                                                           {
                                                                             content: 'Airbnb',
-                                                                            events: 'http://airbnb.com',
+                                                                            events: function() { 
+                                                                                      return alert('http://www.airbnb.com')
+                                                                                    },
                                                                             bump: 'right'
                                                                           },
                                                                           {
@@ -246,7 +252,14 @@ var menu = new Backpack.Menu({
                                                       show: true,
                                                       color: 'rgba(0,0,0,0.7)',
                                                       lockOverlay: false, 
-                                                      closable: true
+                                                      closable: true,
+                                                      css: 
+                                                                        {
+                                                                          'background-color': '#eee',
+                                                                          'border': 'none',
+                                                                          'box-shadow': 'none',
+                                                                          'padding': '60px 40px 100px'
+                                                                        },
                                             }))">Run</button>
               </div>
 

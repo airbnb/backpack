@@ -96,6 +96,11 @@ class Backpack.Component extends Backbone.View
     @$el.removeClass(klass)
     @
 
+  css: (css) =>
+    return @ unless css?
+    @$el.css(css)
+    @
+
   bump: (direction) =>
     return @ unless direction?
     @addClass("bump-#{direction}")
