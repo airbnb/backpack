@@ -142,11 +142,11 @@ a.button {
   overflow: auto;
   background-color: #FFF;
   border-right: 1px solid #ddd;
-  -webkit-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
-     -moz-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
-      -ms-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
-       -o-box-shadow: 1px 0 6px rgba(0,0,0,0.1);
-          box-shadow: 1px 0 6px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 1px 0 7px rgba(0,0,0,0.3);
+     -moz-box-shadow: inset 1px 0 7px rgba(0,0,0,0.3);
+      -ms-box-shadow: inset 1px 0 7px rgba(0,0,0,0.3);
+       -o-box-shadow: inset 1px 0 7px rgba(0,0,0,0.3);
+          box-shadow: inset 1px 0 7px rgba(0,0,0,0.3);
 }
 
 #sidebar h4 {
@@ -219,13 +219,14 @@ a.button {
 #sidebar .backpack-menu-item > .backpack-list > .backpack-menu-item > a {
   font-weight: normal;
   color: #999;
-  padding: 3px;
+  padding: 4px;
   font-size: 12px;
 }
 
 .sidebar-overview > a,
 .sidebar-contribute > a {
   border-bottom: 1px dotted #ddd !important;
+  margin-bottom: 10px !important;
 }
 
 .sidebar-logo {
