@@ -22,14 +22,11 @@ class Backpack.Overlay extends Backpack.Component
     super()
 
   render: =>
-    console.log @_content
     @.$('.backpack-overlay-container').html(@_content)
-    console.log @.$('.backpack-overlay-container')
     @$parent.prepend(@el)
     @
 
   content: (content) =>
-    console.log content
     return @ unless content?
     @_content = @setContent(content)
     @

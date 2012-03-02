@@ -20,11 +20,6 @@ class Backpack.Menu extends Backpack.Component
       @append(menuItem.show().el)
     @
 
-  show: =>
-    super()
-    console.log 'menu show'
-    @
-
 
 # ## Backpack.MenuItem
 
