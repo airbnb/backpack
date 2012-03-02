@@ -1,0 +1,12 @@
+example/
+docs/
+assets/
+spec/
+src/
+vendor/
+
+.npmignore
+.gitignore
+
+Cakefile
+README.md
