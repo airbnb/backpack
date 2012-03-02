@@ -1,7 +1,7 @@
 describe "Backpack.Overlay", ->
 
   beforeEach ->
-    @overlay = new Backpack.Overlay
+    @overlay = new Backpack.Overlay({hide: true})
 
   afterEach ->
     @overlay.remove()
@@ -50,7 +50,7 @@ describe "Backpack.Overlay", ->
         expect(@events.click).toBeDefined()
 
       it "should call unlock on click", ->
-        overlay = new Backpack.Overlay
+        overlay = new Backpack.Overlay({ hide: true })
         spy = sinon.spy(overlay, 'unlock')
         overlay.render().show()
         overlay.$el.trigger('click')

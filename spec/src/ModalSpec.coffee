@@ -1,7 +1,7 @@
 describe "Backpack.Modal", ->
 
   beforeEach ->
-    @Modal = new Backpack.Modal()
+    @Modal = new Backpack.Modal({ hide: true })
 
   afterEach ->
     @Modal.remove()
@@ -62,8 +62,8 @@ describe "Backpack.Modal", ->
     describe "options._lockOverlay", ->
 
       it "should set lockOverlay based on arguments", ->
-        Modal1 = new Backpack.Modal({ lockOverlay: true })
-        Modal2 = new Backpack.Modal({ lockOverlay: false })
+        Modal1 = new Backpack.Modal({ lockOverlay: true, hide: true })
+        Modal2 = new Backpack.Modal({ lockOverlay: false, hide: true })
         expect(Modal1.overlay._lockOverlay).toBeTruthy()
         expect(Modal2.overlay._lockOverlay).toBeFalsy()
         Modal1.remove()
@@ -72,7 +72,7 @@ describe "Backpack.Modal", ->
 describe "it has an overlay", ->
 
   beforeEach ->
-    @oModal = new Backpack.Modal
+    @oModal = new Backpack.Modal({ hide: true })
 
   afterEach ->
    @oModal.remove()
@@ -107,7 +107,7 @@ describe "it has an overlay", ->
   describe "options._lockOverlay is false", ->
 
     it "should trigger 'overlay-close' when the overlay is clicked", ->
-      Modal = new Backpack.Modal({ lockOverlay: false })
+      Modal = new Backpack.Modal({ lockOverlay: false, hide: true })
       spy = sinon.spy(Modal.overlay, 'trigger')
       Modal.render().show()
       Modal.overlay.$el.trigger('click')

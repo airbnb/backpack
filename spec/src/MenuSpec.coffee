@@ -1,7 +1,7 @@
 describe 'Backpack.Menu', ->
 
   beforeEach ->
-    @menu = new Backpack.Menu
+    @menu = new Backpack.Menu({ hide: true })
 
 
   describe 'instantiation', ->    

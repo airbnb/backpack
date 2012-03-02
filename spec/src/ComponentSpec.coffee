@@ -1,7 +1,7 @@
 describe "Backpack.Component", ->
 
   beforeEach ->
-    @component = new Backpack.Component
+    @component = new Backpack.Component({hide: true})
 
 
   describe "#initialize", ->
@@ -32,10 +32,11 @@ describe "Backpack.Component", ->
         options = (new Backpack.Component { 
                   name: 'test'
                 , parent: '#test'
-                , content: 'test' }).options
+                , hide: true
+                , content: '' }).options
         expect(options.name).toEqual('test')
         expect(options.parent).toEqual('#test')
-        expect(options.content).toEqual('test')
+        expect(options.content).toEqual('')
 
     describe "events", ->
 
@@ -246,18 +247,18 @@ describe "Backpack.Component", ->
   describe "#content", ->
     
     it "should do nothing if passed nothing", ->
-      testContent = 'test'
+      testContent = ''
       @component.content(testContent)
       @component.content()
       expect(@component._content).toEqual(testContent)
 
     it "should return content if content isn't a View", ->
-      testContent = 'test'
+      testContent = ''
       @component.content(testContent)
       expect(@component._content).toEqual(testContent)
 
     it "should return content.render().el if it's a View", ->
-      testContent = new Backbone.View
+      testContent = new Backbone.View({ hide: true })
       spy = sinon.spy(testContent, 'render')
       @component.content(testContent)
       expect(spy).toHaveBeenCalled()
@@ -271,5 +272,5 @@ describe "Backpack.Component", ->
 
     it "should call #setContent", ->
       spy = sinon.spy(@component, 'setContent')
-      @component.content('test')
+      @component.content('')
       expect(spy).toHaveBeenCalled()

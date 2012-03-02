@@ -28,7 +28,9 @@
 
   describe("Backpack.Component", function() {
     beforeEach(function() {
-      return this.component = new Backpack.Component;
+      return this.component = new Backpack.Component({
+        hide: true
+      });
     });
     describe("#initialize", function() {
       it("should create a <div>", function() {
@@ -59,11 +61,12 @@
           options = (new Backpack.Component({
             name: 'test',
             parent: '#test',
-            content: 'test'
+            hide: true,
+            content: ''
           })).options;
           expect(options.name).toEqual('test');
           expect(options.parent).toEqual('#test');
-          return expect(options.content).toEqual('test');
+          return expect(options.content).toEqual('');
         });
       });
       return describe("events", function() {
@@ -289,20 +292,22 @@
     return describe("#content", function() {
       it("should do nothing if passed nothing", function() {
         var testContent;
-        testContent = 'test';
+        testContent = '';
         this.component.content(testContent);
         this.component.content();
         return expect(this.component._content).toEqual(testContent);
       });
       it("should return content if content isn't a View", function() {
         var testContent;
-        testContent = 'test';
+        testContent = '';
         this.component.content(testContent);
         return expect(this.component._content).toEqual(testContent);
       });
       it("should return content.render().el if it's a View", function() {
         var spy, testContent;
-        testContent = new Backbone.View;
+        testContent = new Backbone.View({
+          hide: true
+        });
         spy = sinon.spy(testContent, 'render');
         this.component.content(testContent);
         expect(spy).toHaveBeenCalled();
@@ -320,7 +325,7 @@
       return it("should call #setContent", function() {
         var spy;
         spy = sinon.spy(this.component, 'setContent');
-        this.component.content('test');
+        this.component.content('');
         return expect(spy).toHaveBeenCalled();
       });
     });
@@ -343,7 +348,9 @@
 
   describe('Backpack.Menu', function() {
     beforeEach(function() {
-      return this.menu = new Backpack.Menu;
+      return this.menu = new Backpack.Menu({
+        hide: true
+      });
     });
     return describe('instantiation', function() {
       return it('should create a <ul>', function() {
@@ -354,7 +361,9 @@
 
   describe("Backpack.Modal", function() {
     beforeEach(function() {
-      return this.Modal = new Backpack.Modal();
+      return this.Modal = new Backpack.Modal({
+        hide: true
+      });
     });
     afterEach(function() {
       return this.Modal.remove();
@@ -418,10 +427,12 @@
         return it("should set lockOverlay based on arguments", function() {
           var Modal1, Modal2;
           Modal1 = new Backpack.Modal({
-            lockOverlay: true
+            lockOverlay: true,
+            hide: true
           });
           Modal2 = new Backpack.Modal({
-            lockOverlay: false
+            lockOverlay: false,
+            hide: true
           });
           expect(Modal1.overlay._lockOverlay).toBeTruthy();
           expect(Modal2.overlay._lockOverlay).toBeFalsy();
@@ -434,7 +445,9 @@
 
   describe("it has an overlay", function() {
     beforeEach(function() {
-      return this.oModal = new Backpack.Modal;
+      return this.oModal = new Backpack.Modal({
+        hide: true
+      });
     });
     afterEach(function() {
       return this.oModal.remove();
@@ -473,7 +486,8 @@
       return it("should trigger 'overlay-close' when the overlay is clicked", function() {
         var Modal, spy;
         Modal = new Backpack.Modal({
-          lockOverlay: false
+          lockOverlay: false,
+          hide: true
         });
         spy = sinon.spy(Modal.overlay, 'trigger');
         Modal.render().show();
@@ -486,7 +500,9 @@
 
   describe("Backpack.Overlay", function() {
     beforeEach(function() {
-      return this.overlay = new Backpack.Overlay;
+      return this.overlay = new Backpack.Overlay({
+        hide: true
+      });
     });
     afterEach(function() {
       return this.overlay.remove();
@@ -537,7 +553,9 @@
         });
         return it("should call unlock on click", function() {
           var overlay, spy;
-          overlay = new Backpack.Overlay;
+          overlay = new Backpack.Overlay({
+            hide: true
+          });
           spy = sinon.spy(overlay, 'unlock');
           overlay.render().show();
           overlay.$el.trigger('click');
