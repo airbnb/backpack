@@ -484,4 +484,105 @@
     });
   });
 
+  describe("Backpack.Overlay", function() {
+    beforeEach(function() {
+      return this.overlay = new Backpack.Overlay;
+    });
+    afterEach(function() {
+      return this.overlay.remove();
+    });
+    describe("#initialize", function() {
+      it("should create a <div>", function() {
+        var nodeName;
+        nodeName = this.overlay.el.nodeName;
+        return expect(nodeName).toEqual('DIV');
+      });
+      it("should have a 'backpack-component' class", function() {
+        var hasClass;
+        hasClass = this.overlay.$el.hasClass('backpack-component');
+        return expect(hasClass).toBeTruthy();
+      });
+      it("should have a 'backpack-overlay' class", function() {
+        var hasClass;
+        hasClass = this.overlay.$el.hasClass('backpack-overlay');
+        return expect(hasClass).toBeTruthy();
+      });
+      describe("options", function() {
+        beforeEach(function() {
+          return this.options = this.overlay.options;
+        });
+        it("should have a blank default content", function() {
+          return expect(this.options._content).toBeUndefined();
+        });
+        it("should have 'body' as a default parent", function() {
+          return expect(this.options.parent).toEqual('body');
+        });
+        it("should have false as a default lockOverlay", function() {
+          return expect(this.options.lockOverlay).toBeFalsy();
+        });
+        return it("should have rgba(0,0,0,0.7) as a default color", function() {
+          expect(this.options.color).toEqual("rgba(0,0,0,0.7)");
+          return expect(this.options.lockOverlay).toBeFalsy();
+        });
+      });
+      return describe("events", function() {
+        beforeEach(function() {
+          return this.events = this.overlay.events;
+        });
+        it("should have events defined", function() {
+          return expect(this.events).toBeDefined();
+        });
+        it("should have a click event", function() {
+          return expect(this.events.click).toBeDefined();
+        });
+        return it("should call unlock on click", function() {
+          var overlay, spy;
+          overlay = new Backpack.Overlay;
+          spy = sinon.spy(overlay, 'unlock');
+          overlay.render().show();
+          overlay.$el.trigger('click');
+          expect(spy).toHaveBeenCalled();
+          return overlay.unlock.restore();
+        });
+      });
+    });
+    describe("#render", function() {
+      return it("should call parent's prepend", function() {
+        var spy;
+        spy = sinon.spy(this.overlay.$parent, 'prepend');
+        this.overlay.render();
+        expect(spy).toHaveBeenCalled();
+        return this.overlay.$parent.prepend.restore();
+      });
+    });
+    describe("#unlock", function() {
+      return it("should call #close if lockOverlay is false", function() {
+        var spy;
+        spy = sinon.spy(this.overlay, 'close');
+        this.overlay.render().unlock();
+        expect(spy).toHaveBeenCalled();
+        return this.overlay.close.restore();
+      });
+    });
+    describe("#close", function() {
+      return it("should trigger 'overlay-close'", function() {
+        var spy;
+        spy = sinon.spy(this.overlay, 'trigger');
+        this.overlay.render().close();
+        expect(spy).toHaveBeenCalledWith('overlay-close');
+        return this.overlay.trigger.restore();
+      });
+    });
+    return describe("#lockOverlay", function() {
+      return it("should set lockOverlay appropriately", function() {
+        this.overlay.lockOverlay(false);
+        expect(this.overlay._lockOverlay).toBeFalsy();
+        this.overlay.lockOverlay();
+        expect(this.overlay._lockOverlay).toBeFalsy();
+        this.overlay.lockOverlay(true);
+        return expect(this.overlay._lockOverlay).toBeTruthy();
+      });
+    });
+  });
+
 }).call(this);

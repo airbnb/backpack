@@ -1,4 +1,5 @@
-# support server + browser
+"use strict"
+
 root = exports ? this
 
 Backpack = root.Backpack = 

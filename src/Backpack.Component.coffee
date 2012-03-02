@@ -41,38 +41,24 @@ class Backpack.Component extends Backbone.View
     @
 
   before: (content) =>
-    return @ unless content?
     content = @setContent(content)
     @$el.before(content)
     @
   
   after: (content) =>
-    return @ unless content?
     content = @setContent(content)
     @$el.after(content)
     @
 
   append: (content) =>
-    return @ unless content?
     content = @setContent(content)
     @$el.append(content)
     @
 
   prepend: (content) =>
-    return @ unless content?
     content = @setContent(content)
     @$el.prepend(content)
     @
-
-  setContent: (content) =>
-    return @ unless content?
-    if content.el?
-      if content.render?
-        content = content.render().el
-      else
-        content = content.el
-    else
-      content = content
 
   content: (content) =>
     return @ unless content?
@@ -87,29 +73,30 @@ class Backpack.Component extends Backbone.View
     @
 
   addClass: (klass) =>
-    return @ unless klass?
     @$el.addClass(klass)
     @
   
   removeClass: (klass) =>
-    return @ unless klass?
     @$el.removeClass(klass)
     @
 
   css: (css) =>
-    return @ unless css?
     @$el.css(css)
     @
 
-  bump: (direction) =>
-    return @ unless direction?
-    @addClass("bump-#{direction}")
-    @
-
   name: (name) =>
-    return @ unless name?
     @name = @addClass(@slug(name))
     @
+
+  setContent: (content) =>
+    return @ unless content?
+    if content.el?
+      if content.render?
+        content = content.render().el
+      else
+        content = content.el
+    else
+      content = content
 
   slug: (string) =>
     return @ unless string?
