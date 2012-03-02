@@ -5,7 +5,7 @@ class Backpack.Component extends Backbone.View
 
   options:
     'parent': 'body'
-    'show': true
+    'hide': true
 
   initialize: ->
     @options = _.extend({}, @defaults, @options)

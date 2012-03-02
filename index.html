@@ -253,7 +253,7 @@ var menu = new Backpack.Menu({
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
-                            parent: this, 
+                            parent: this,
                             show: true,
                             add: [{
                                 content: 'Menu Item 1',
@@ -598,6 +598,7 @@ cake watch:js       # Recompile CoffeeScript source files when
         var menu = new Backpack.Menu({
                       parent: '#sidebar',
                       addClass: 'backpack-list',
+                      show: true,
                       add:
                         [
                           {
@@ -629,6 +630,7 @@ cake watch:js       # Recompile CoffeeScript source files when
             modalTabs = new Backpack.Tabs({
                               parent: '.modal-code',
                               addClass: 'round-top chrome',
+                              show: true,
                               add:
                                 [
                                   {
@@ -645,6 +647,7 @@ cake watch:js       # Recompile CoffeeScript source files when
             menuTabs = new Backpack.Tabs({
                             parent: '.menu-code',
                             addClass: 'round-top chrome',
+                            show: true,
                             add:
                               [
                                 {
@@ -665,6 +668,7 @@ cake watch:js       # Recompile CoffeeScript source files when
             tabTabs = new Backpack.Tabs({
                             parent: '.tab-code',
                             addClass: 'round-top chrome',
+                            show: true,
                             add: 
                               [
                                 {
@@ -681,6 +685,7 @@ cake watch:js       # Recompile CoffeeScript source files when
             components = new Backpack.Menu({
                           parent: '.sidebar-overview',
                           addClass: 'backpack-list',
+                          show: true,
                           add:
                             [
                               {
@@ -705,6 +710,7 @@ cake watch:js       # Recompile CoffeeScript source files when
             contribute = new Backpack.Menu({
               parent: '.sidebar-contribute',
               addClass: 'backpack-list',
+              show: true,
               add:
                 [
                   {

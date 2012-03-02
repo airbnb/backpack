@@ -4,6 +4,7 @@ class Backpack.Menu extends Backpack.Component
 
   tagName: 'ul'
 
+
   initialize: ->
     super()
     @addClass('backpack-menu')
@@ -17,6 +18,11 @@ class Backpack.Menu extends Backpack.Component
       else
         menuItem = new Backpack.MenuItem(item)
       @append(menuItem.show().el)
+    @
+
+  show: =>
+    super()
+    console.log 'menu show'
     @
 
 
