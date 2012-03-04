@@ -20,8 +20,11 @@
       it('should have a Modal', function() {
         return expect(Backpack.Modal).toBeDefined();
       });
-      return it('should have an Overlay', function() {
+      it('should have an Overlay', function() {
         return expect(Backpack.Overlay).toBeDefined();
+      });
+      return it('should have a Layout', function() {
+        return expect(Backpack.Layout).toBeDefined();
       });
     });
   });
@@ -343,6 +346,48 @@
     });
     return it('should have Backbone', function() {
       return expect(Backpack).toBeDefined();
+    });
+  });
+
+  describe('LayoutSpec', function() {
+    beforeEach(function() {
+      return this.Layout = new Backpack.Layout;
+    });
+    afterEach(function() {
+      return this.Layout.remove();
+    });
+    describe('#initialize', function() {
+      it('should create a section', function() {
+        var nodeName;
+        nodeName = this.Layout.el.nodeName;
+        return expect(nodeName).toEqual('DIV');
+      });
+      it("should have a 'backpack-component' class", function() {
+        var hasClass;
+        hasClass = this.Layout.$el.hasClass('backpack-component');
+        return expect(hasClass).toBeTruthy();
+      });
+      it("should have a 'backpack-layout' class", function() {
+        var hasClass;
+        hasClass = this.Layout.$el.hasClass('backpack-layout');
+        return expect(hasClass).toBeTruthy();
+      });
+      return describe('defaults', function() {
+        return it('should have 1 for default _cols', function() {
+          return expect(this.Layout._cols).toEqual(1);
+        });
+      });
+    });
+    return describe('#cols', function() {
+      it('should set @_cols', function() {
+        this.Layout.cols(4);
+        return expect(this.Layout._cols).toEqual(4);
+      });
+      return it('should return if count is not a number', function() {
+        this.Layout.cols(4);
+        this.Layout.cols('3');
+        return expect(this.Layout._cols).toEqual(4);
+      });
     });
   });
 

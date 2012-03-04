@@ -12,8 +12,7 @@ class Backpack.Menu extends Backpack.Component
 
   add: =>
     for item in arguments
-      {content, events, el} = item
-      if el
+      if item.el
         menuItem = item
       else
         menuItem = new Backpack.MenuItem(item)

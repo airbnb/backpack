@@ -22,3 +22,6 @@ describe 'BackpackSpec', ->
 
     it 'should have an Overlay', ->
       expect(Backpack.Overlay).toBeDefined()
+
+    it 'should have a Layout', ->
+      expect(Backpack.Layout).toBeDefined()

@@ -146,6 +146,23 @@
 
             <!-- 
               =======================================
+                  Backpack.Layout
+              =======================================
+            -->
+            <section class='layout description clearfix'>
+              <a id='Layout'>
+                <h4 class='title-h4'>Backpack.Layout</h4>
+              </a>
+              <p>
+                Think of Layout as a grid helper for component placement.
+              </p>
+
+              <div class='code layout-code'></div>
+
+            </section>
+
+            <!-- 
+              =======================================
                   Backpack.Tabs
               =======================================
             -->
@@ -596,138 +613,142 @@ cake watch:js       # Recompile CoffeeScript source files when
         prettyPrint(); // thanks Google
 
         var menu = new Backpack.Menu({
-                      parent: '#sidebar',
-                      addClass: 'backpack-list',
-                      show: true,
-                      add:
-                        [
-                          {
-                            content: 'Introduction',
-                            events:  '#Introduction'
-                          },
-                          {
-                            content: 'Overview',
-                            events:  '#Overview',
-                            addClass: 'sidebar-overview'
-                          },
-                          {
-                            content: 'Hack on Backpack',
-                            events:  '#Contribute',
-                            addClass: 'sidebar-contribute'
-                          },
-                          {
-                            content: 'Github',
-                            events:  'http://github.com/airbnb/backpack.js'
-                          },
-                          {
-                            content: "<img height='25' src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png' />",
-                            events: "http://nerds.airbnb.com",
-                            addClass: 'sidebar-logo'
-                          }
-                        ]
+              parent: '#sidebar',
+              addClass: 'backpack-list',
+              show: true,
+              add: [{
+                  content: 'Introduction',
+                  events:  '#Introduction'
+              },{
+                  content: 'Overview',
+                  events:  '#Overview',
+                  addClass: 'sidebar-overview'
+              },{
+                  content: 'Hack on Backpack',
+                  events:  '#Contribute',
+                  addClass: 'sidebar-contribute'
+              },{
+                  content: 'Github',
+                  events:  'http://github.com/airbnb/backpack.js'
+              },{
+                  content: "<img height='25' src='http://a1.muscache.com/s/1318028912/images/logos/106x40.png' />",
+                  events: "http://nerds.airbnb.com",
+                  addClass: 'sidebar-logo'
+              }]
             }),
+
 
             modalTabs = new Backpack.Tabs({
-                              parent: '.modal-code',
-                              addClass: 'round-top chrome',
-                              show: true,
-                              add:
-                                [
-                                  {
-                                    content: 'Popup',
-                                    tabContent: $('.popup').html()
-                                  },
-                                  {
-                                    content: 'Lightbox',
-                                    tabContent: $('.lightbox').html()
-                                  }
-                                ]
+              parent: '.modal-code',
+              addClass: 'round-top chrome',
+              show: true,
+              add: [{
+                  content: 'Popup',
+                  tabContent: $('.popup').html()
+              },{
+                  content: 'Lightbox',
+                  tabContent: $('.lightbox').html()
+              }]
             }),
+
 
             menuTabs = new Backpack.Tabs({
-                            parent: '.menu-code',
-                            addClass: 'round-top chrome',
-                            show: true,
-                            add:
-                              [
-                                {
-                                  content: 'Simple',
-                                  tabContent: $('.simple').html()
-                                },
-                                {
-                                  content: 'Press',
-                                  tabContent: $('.press').html()
-                                },
-                                {
-                                  content: 'List',
-                                  tabContent: $('.list').html()
-                                }
-                              ]
+              parent: '.menu-code',
+              addClass: 'round-top chrome',
+              show: true,
+              add: [{
+                  content: 'Simple',
+                  tabContent: $('.simple').html()
+              },{
+                  content: 'Press',
+                  tabContent: $('.press').html()
+              },{
+                  content: 'List',
+                  tabContent: $('.list').html()
+              }]
             }),
+
 
             tabTabs = new Backpack.Tabs({
-                            parent: '.tab-code',
-                            addClass: 'round-top chrome',
-                            show: true,
-                            add: 
-                              [
-                                {
-                                  content: 'Tab 1',
-                                  tabContent: $('.tab').html()
-                                },
-                                {
-                                  content: 'Tab 2',
-                                  tabContent: $('.tab2').html()
-                                }
-                              ]
+              parent: '.tab-code',
+              addClass: 'round-top chrome',
+              show: true,
+              add: [{
+                  content: 'Tab 1',
+                  tabContent: $('.tab').html()
+              },{
+                  content: 'Tab 2',
+                  tabContent: $('.tab2').html()
+              }]
             }),
 
+
             components = new Backpack.Menu({
-                          parent: '.sidebar-overview',
-                          addClass: 'backpack-list',
-                          show: true,
-                          add:
-                            [
-                              {
-                                content: '- Backpack.Component',
-                                events: '#Component'
-                              },
-                              {
-                                content: '- Backpack.Tabs',
-                                events: '#Tabs'
-                              },
-                              {
-                                content: '- Backpack.Menu',
-                                events: '#Menu'
-                              },
-                              {
-                                content: '- Backpack.Modal',
-                                events: '#Modal'
-                              }
-                            ]
+              parent: '.sidebar-overview',
+              addClass: 'backpack-list',
+              show: true,
+              add: [{
+                  content: '- Backpack.Component',
+                  events: '#Component'
+              },{
+                  content: '- Backpack.Layout',
+                  events: '#Layout'
+              },{
+                  content: '- Backpack.Tabs',
+                  events: '#Tabs'
+              },{
+                  content: '- Backpack.Menu',
+                  events: '#Menu'
+              },{
+                  content: '- Backpack.Modal',
+                  events: '#Modal'
+              }]
             }),
+
 
             contribute = new Backpack.Menu({
               parent: '.sidebar-contribute',
               addClass: 'backpack-list',
               show: true,
-              add:
-                [
-                  {
-                    content: '- Getting Started',
-                    events: '#Started'
-                  },
-                  {
-                    content: '- Cake Build Tools',
-                    events: '#Cake'
-                  },
-                  {
-                    content: '- Jasmine Tests',
-                    events: '#Test'
-                  }
-                ]
-            })
-           ;
+              add: [{
+                  content: '- Getting Started',
+                  events: '#Started'
+              },{
+                  content: '- Cake Build Tools',
+                  events: '#Cake'
+              },{
+                  content: '- Jasmine Tests',
+                  events: '#Test'
+              }]
+            }),
+
+
+            layout = new Backpack.Layout({
+              parent: '.layout-code',
+              show: true,
+              gutter: 20,
+              columns: 5,
+              add: [{
+                  span: 2,
+                  content: new Backpack.Component({
+                    name: 'test component',
+                    show: true,
+                    css: {
+                      'background-color': 'red',
+                      'padding': '20px'
+                    }
+                  })
+              },{
+                  span: 3,
+                  content: new Backpack.Component({
+                    show: true,
+                    css: {
+                      'background-color': 'blue',
+                      'padding': '20px'
+                    }
+                  })
+              }]
+            });
       });
     </script>
 
