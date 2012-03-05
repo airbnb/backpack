@@ -26,11 +26,7 @@ class Backpack.Layout extends Backpack.Component
 
   columnWidth: =>
     parentWidth = @$parent.width()
-    console.log parentWidth
-    console.log 'cols', @_cols
-    console.log 'gutter', @_gutter
     availableWidth = parentWidth - (@_cols * (@_gutter))
-    console.log 'availableWidth', availableWidth
     @_colWidth = (availableWidth / @_cols)
     console.log 'colWidth', @_colWidth
     @

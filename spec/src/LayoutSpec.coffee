@@ -25,16 +25,8 @@ describe 'LayoutSpec', ->
       it 'should have 1 for default _cols', ->
         expect(@Layout._cols).toEqual(1)
 
-      # it 'should set @_colWidth', ->
-      #   expect(@Layout._colWidth).toBeDefined()
-
   describe '#cols', ->
 
     it 'should set @_cols', ->
-      @Layout.cols(4)
-      expect(@Layout._cols).toEqual(4)
-
-    it 'should return if count is not a number', ->
-      @Layout.cols(4)
-      @Layout.cols('3')
+      @Layout.columns(4)
       expect(@Layout._cols).toEqual(4)

@@ -379,13 +379,8 @@
       });
     });
     return describe('#cols', function() {
-      it('should set @_cols', function() {
-        this.Layout.cols(4);
-        return expect(this.Layout._cols).toEqual(4);
-      });
-      return it('should return if count is not a number', function() {
-        this.Layout.cols(4);
-        this.Layout.cols('3');
+      return it('should set @_cols', function() {
+        this.Layout.columns(4);
         return expect(this.Layout._cols).toEqual(4);
       });
     });
