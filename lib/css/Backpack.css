@@ -311,6 +311,16 @@
   margin: 0;
 }
 
+.backpack-modal > .title {
+  color: #333;
+  font-weight: bold;
+  display: block;
+  font-weight: 1.4em;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
 .backpack-modal > .backpack-dialog-button-container {
   position: absolute;
   bottom: 0;

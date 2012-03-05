@@ -91,9 +91,19 @@ class Backpack.Modal extends Backpack.Component
     @overlay?.remove()
     @
 
+  remove: =>
+    super()
+    @overlay?.remove()
+    @
+
+  title: (title) =>
+    @_title = title
+    @prepend("<span class='title'>#{title}</span>")
+    @
+
   closable: =>
     return @ unless !!arguments[0]
-    @$el.prepend("<span class='close'>&times;</span>")
+    @prepend("<span class='close'>&times;</span>")
     @
 
   newOverlay: =>
@@ -103,11 +113,6 @@ class Backpack.Modal extends Backpack.Component
       color:       @options.color
       show:        true
     @overlay.on('overlay-close', @close)
-    @
-
-  remove: =>
-    super()
-    @overlay?.remove()
     @
 
   # addButton: (button) =>

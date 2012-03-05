@@ -146,23 +146,6 @@
 
             <!-- 
               =======================================
-                  Backpack.Layout
-              =======================================
-            -->
-            <section class='layout description clearfix'>
-              <a id='Layout'>
-                <h4 class='title-h4'>Backpack.Layout</h4>
-              </a>
-              <p>
-                Think of Layout as a grid helper for component placement.
-              </p>
-
-              <div class='code layout-code'></div>
-
-            </section>
-
-            <!-- 
-              =======================================
                   Backpack.Tabs
               =======================================
             -->
@@ -306,8 +289,9 @@ var menu = new Backpack.Menu({
                                 'border': 'none',
                                 'box-shadow': 'none',
                                 'width': '960px',
-                                'padding': '60px 40px 100px'
-                          }
+                                'padding': '20px 40px 40px'
+                          },
+                          title: 'Simple Menu'
                         }))">Run</button>
               </div>
 
@@ -381,8 +365,9 @@ var menu = new Backpack.Menu({
                                 'border': 'none',
                                 'box-shadow': 'none',
                                 'width': '960px',
-                                'padding': '60px 40px 100px'
-                          }
+                                'padding': '20px 40px 40px'
+                          },
+                          title: 'Menu with Press Class'
                 }))">Run</button>
               </div>
 
@@ -454,7 +439,8 @@ var menu = new Backpack.Menu({
                           show: true,
                           color: 'rgba(0,0,0,0.7)',
                           lockOverlay: false, 
-                          closable: true
+                          closable: true,
+                          title: 'List Style Menu'
                 }))">Run</button>
               </div>
             </section>
@@ -484,13 +470,15 @@ var menu = new Backpack.Menu({
 var popup = new Backpack.Modal({ 
       content:  'This is a simple popup modal.',
       addClass: 'padding-20',
-      show:     true
+      show:     true,
+      title:    'Simple Popup Modal'
 });</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({ 
                                                       content: 'This is a simple popup modal.<br/><br/>It just pops up and gets in the way.',
                                                       show: true,
-                                                      addClass: 'padding-20'
+                                                      addClass: 'padding-20',
+                                                      title: 'Simple Popup Modal'
                                             }))">Run</button>
               </div>
 
@@ -503,7 +491,8 @@ var lightbox = new Backpack.Modal({
       color:    'rgba(0,0,0,0.7)',
       show:     true,
       closable: true,
-      lockOverlay: true, 
+      lockOverlay: true,
+      title: 'Lightbox Modal'
 });</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
@@ -512,11 +501,101 @@ var lightbox = new Backpack.Modal({
                                                       color: 'rgba(0,0,0,0.7)',
                                                       lockOverlay: true, 
                                                       closable: true,
-                                                      addClass: 'padding-20'
+                                                      addClass: 'padding-20',
+                                                      title: 'Lightbox Modal'
                                             }))">Run</button>
               </div>
             </section>
+
+            <!-- 
+              =======================================
+                  Backpack.Layout
+              =======================================
+            -->
+            <section class='layout description clearfix'>
+              <a id='Layout'>
+                <h4 class='title-h4'>Backpack.Layout</h4>
+              </a>
+              <p>
+                Layout is a simple grid helper for component placement.
+                Set the number of columns and gutter size and Layout
+                will figure out the sizing of everything. No need to 
+                worry about class names. 
+              </p>
+
+              <div class='code layout-code'></div>
+
+              <div class='basic hide'>
+                <pre class='prettyprint linenums'>
+var basic = new Backpack.Layout({
+      parent: '.layout-code',
+      show: true,
+      gutter: 20,
+      columns: 3
+});
+
+basic.add([{
+          span: 2,
+          content: new Backpack.Component({
+            name: 'test component',
+            show: true,
+            css: {
+              'background-color': 'lightgrey',
+              'padding': '20px'
+            }
+          })
+      },{
+          span: 1,
+          content: new Backpack.Component({
+            show: true,
+            css: {
+              'background-color': 'lightgrey',
+              'padding': '20px'
+            }
+          })
+        }
+]);</pre>
+                <button class='round tk-league-gothic orange' 
+                        onclick="javascript:eval(new Backpack.Modal({
+                                                      content: new Backpack.Layout({
+                                                        parent: $(this).parent(),
+                                                        show: true,
+                                                        gutter: 20,
+                                                        columns: 3,
+                                                        add: [{
+                                                            span: 2,
+                                                            content: new Backpack.Component({
+                                                              name: 'test component',
+                                                              show: true,
+                                                              css: {
+                                                                'background-color': 'lightgrey',
+                                                                'padding': '20px'
+                                                              }
+                                                            })
+                                                        },{
+                                                            span: 1,
+                                                            content: new Backpack.Component({
+                                                              show: true,
+                                                              css: {
+                                                                'background-color': 'lightgrey',
+                                                                'padding': '20px'
+                                                              }
+                                                            })
+                                                        }]
+                                                      }),
+                                                      show: true,
+                                                      color: 'rgba(0,0,0,0.7)',
+                                                      lockOverlay: true, 
+                                                      closable: true,
+                                                      addClass: 'padding-20',
+                                                      title: '3-columns'
+                                            }))">Run</button>
+                
+              </div>
+
+            </section>
           </section>
+
 
           <section class='bottom-60'>
             <a id='Contribute'>
@@ -682,6 +761,16 @@ cake watch:js       # Recompile CoffeeScript source files when
               }]
             }),
 
+            layoutTabs = new Backpack.Tabs({
+              parent: '.layout-code',
+              addClass: 'round-top chrome',
+              show: true,
+              add: [{
+                  content: 'Basics',
+                  tabContent: $('.basic').html()
+              }]
+            }),
+
 
             components = new Backpack.Menu({
               parent: '.sidebar-overview',
@@ -691,9 +780,6 @@ cake watch:js       # Recompile CoffeeScript source files when
                   content: '- Backpack.Component',
                   events: '#Component'
               },{
-                  content: '- Backpack.Layout',
-                  events: '#Layout'
-              },{
                   content: '- Backpack.Tabs',
                   events: '#Tabs'
               },{
@@ -702,6 +788,9 @@ cake watch:js       # Recompile CoffeeScript source files when
               },{
                   content: '- Backpack.Modal',
                   events: '#Modal'
+              },{
+                  content: '- Backpack.Layout',
+                  events: '#Layout'
               }]
             }),
 
@@ -719,34 +808,6 @@ cake watch:js       # Recompile CoffeeScript source files when
               },{
                   content: '- Jasmine Tests',
                   events: '#Test'
-              }]
-            }),
-
-
-            layout = new Backpack.Layout({
-              parent: '.layout-code',
-              show: true,
-              gutter: 20,
-              columns: 3,
-              add: [{
-                  span: 2,
-                  content: new Backpack.Component({
-                    name: 'test component',
-                    show: true,
-                    css: {
-                      'background-color': 'red',
-                      'padding': '20px'
-                    }
-                  })
-              },{
-                  span: 1,
-                  content: new Backpack.Component({
-                    show: true,
-                    css: {
-                      'background-color': 'blue',
-                      'padding': '20px'
-                    }
-                  })
               }]
             });
       });

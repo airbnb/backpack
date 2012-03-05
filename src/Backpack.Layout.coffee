@@ -7,7 +7,7 @@ class Backpack.Layout extends Backpack.Component
     'gutter': '30'
 
   initialize: ->
-    @addClass('backpack-layout')
+    @addClass('backpack-layout clearfix')
     super()
     @
 
@@ -15,6 +15,8 @@ class Backpack.Layout extends Backpack.Component
     @columnWidth()
     for item in arguments
       {content, span} = item
+      span = @_remaining unless span
+      @_remaining = @_remaining - span
       element = @setContent(content)
       element = @wrap(element, span)
       @append(element)
@@ -26,9 +28,8 @@ class Backpack.Layout extends Backpack.Component
 
   columnWidth: =>
     parentWidth = @$parent.width()
-    availableWidth = parentWidth - (@_cols * (@_gutter))
+    availableWidth = parentWidth - (@_cols * @_gutter)
     @_colWidth = (availableWidth / @_cols)
-    console.log 'colWidth', @_colWidth
     @
 
   gutter: (width) =>
@@ -37,4 +38,4 @@ class Backpack.Layout extends Backpack.Component
     @
 
   wrap: (el, span) =>
-    wrapped = @make('div', { style: "float: left; width: #{@_colWidth * span}px; margin-left: #{ @_gutter }px" }, el)
+    wrapped = @make('div', { style: "float: left; width: #{@_colWidth * span}px; margin-left: #{@_gutter}px" }, el)
