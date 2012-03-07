@@ -4,7 +4,6 @@ class Backpack.Tabs extends Backpack.Component
 
   initialize: ->
     @addClass('backpack-tabs clearfix')
-    @items = []
     @active = @options.active ? 0
     super()
 
@@ -23,19 +22,19 @@ class Backpack.Tabs extends Backpack.Component
     tab.on('tab-click', @select)
     tab.on('tab-exit', @exit)
     @append(tab.show().el)
-    @items.push(tab)
+    @_items.push(tab)
     @
 
   setActive: =>
-    activeTab = @items[@active]
+    activeTab = @_items[@active]
     activeTab.addClass('backpack-tab-active')
     @select(activeTab)
     @
 
   select: (tab) =>
-    curActive = @items[@active]
+    curActive = @_items[@active]
     curActive.trigger('tab-exit', curActive)
-    @active = _.indexOf(@items, tab)
+    @active = _.indexOf(@_items, tab)
     tab.addClass('backpack-tab-active')
     @$el.next('.backpack-tab-content').remove()
     @after(tab.tabContent.show().el)

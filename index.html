@@ -497,7 +497,7 @@ var lightbox = new Backpack.Modal({
                   Backpack.Layout
               =======================================
             -->
-            <section class='layout description clearfix'>
+            <section class='layout description clearfix hide'>
               <a id='Layout'>
                 <h4 class='title-h4'>Backpack.Layout</h4>
               </a>
@@ -536,25 +536,28 @@ var basic = new Backpack.Layout({
                                                         add: [{
                                                             content: new Backpack.Component({
                                                               name: 'test component',
+                                                              visible: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
                                                               }
-                                                            }).show()
+                                                            })
                                                         },{
                                                             content: new Backpack.Component({
+                                                              visible: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
                                                               }
-                                                            }).show()
+                                                            })
                                                         },{
                                                             content: new Backpack.Component({
+                                                              visible: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
                                                               }
-                                                            }).show()
+                                                            })
                                                         }]
                                                       }),
                                                       color: 'rgba(0,0,0,0.7)',
@@ -734,15 +737,15 @@ cake watch:js       # Recompile CoffeeScript source files when
               }]
             }),
 
-            layoutTabs = new Backpack.Tabs({
-              parent: '.layout-code',
-              addClass: 'round-top chrome',
-              show: true,
-              add: [{
-                  content: 'Basic',
-                  tabContent: $('.basic').html()
-              }]
-            }),
+            // layoutTabs = new Backpack.Tabs({
+            //   parent: '.layout-code',
+            //   addClass: 'round-top chrome',
+            //   show: true,
+            //   add: [{
+            //       content: 'Basic',
+            //       tabContent: $('.basic').html()
+            //   }]
+            // }),
 
 
             components = new Backpack.Menu({
@@ -761,10 +764,12 @@ cake watch:js       # Recompile CoffeeScript source files when
               },{
                   content: '- Backpack.Modal',
                   events: '#Modal'
-              },{
-                  content: '- Backpack.Layout',
-                  events: '#Layout'
-              }]
+              }
+              // ,{
+              //     content: '- Backpack.Layout',
+              //     events: '#Layout'
+              // }
+              ]
             }),
 
 

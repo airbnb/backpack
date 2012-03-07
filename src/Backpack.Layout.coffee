@@ -5,6 +5,7 @@ class Backpack.Layout extends Backpack.Component
   defaults:
     'columns': 1
     'gutter': '30'
+    'visible': true
 
   initialize: ->
     @addClass('backpack-layout clearfix')

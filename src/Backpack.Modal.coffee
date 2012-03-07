@@ -111,7 +111,7 @@ class Backpack.Modal extends Backpack.Component
       lockOverlay: @options.lockOverlay
       content:     @el
       color:       @options.color
-      show:        true
+      visible:        true
     @overlay.on('overlay-close', @close)
     @
 

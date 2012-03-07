@@ -5,11 +5,13 @@ class Backpack.Component extends Backbone.View
 
   options:
     'parent': 'body'
-    'hide': true
+    'visible': false
 
   initialize: ->
-    @_items = []
-    @options = _.extend({}, @defaults, @options)
+    @_items    = []
+    @_rendered = false
+    @options   = _.extend({}, @defaults, @options)
+
     for func, args of @options
       unless _.isArray(args)
         @[func]?.call?(@, args)
@@ -22,26 +24,24 @@ class Backpack.Component extends Backbone.View
     @_rendered = true
     @
 
-  items: =>
-    for item in arguments
-      @_items.push(item)
+  visible: (show) =>
+    if show
+      @show()
+    else 
+      @hide()
     @
-
-  getItems: =>
-    @_items
-
-  isRendered: =>
-    @_rendered
 
   show: =>
     @render() unless @isRendered()
     @delegateEvents(@events)
     @$el.removeClass('hide')
+    @_visible = true
     @
 
   hide: =>
     @$el.addClass('hide')
     @undelegateEvents()
+    @_visible = false
     @
 
   close: =>
@@ -101,6 +101,27 @@ class Backpack.Component extends Backbone.View
   name: (name) =>
     @name = @addClass(@slug(name))
     @
+
+  items: =>
+    for item in arguments
+      @_items.push(item)
+    @
+
+  getItems: =>
+    @_items
+
+  isRendered: =>
+    @_rendered
+
+  layout: (layout) =>
+    @_layout = layout
+    @
+
+  hasLayout: =>
+    !!@_layout
+
+  getLayout: =>
+    @_layout
 
   setContent: (content) =>
     return @ unless content?
