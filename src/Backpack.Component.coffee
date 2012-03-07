@@ -8,6 +8,7 @@ class Backpack.Component extends Backbone.View
     'hide': true
 
   initialize: ->
+    @_items = []
     @options = _.extend({}, @defaults, @options)
     for func, args of @options
       unless _.isArray(args)
@@ -19,6 +20,14 @@ class Backpack.Component extends Backbone.View
   render: =>
     @$parent.append(@el)
     @
+
+  items: =>
+    for item in arguments
+      @_items.push(item)
+    @
+
+  getItems: =>
+    @_items
 
   show: =>
     @render()

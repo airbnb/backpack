@@ -12,11 +12,15 @@ class Backpack.Layout extends Backpack.Component
     @
 
   add: =>
+    @columns(arguments.length)
     @columnWidth()
+
     for item in arguments
-      {content, span} = item
-      span = @_remaining unless span
-      @_remaining = @_remaining - span
+      if _.isFunction(item)
+        content = item
+      else
+        {content, span} = item
+      span or= 1
       element = @setContent(content)
       element = @wrap(element, span)
       @append(element)
@@ -38,4 +42,5 @@ class Backpack.Layout extends Backpack.Component
     @
 
   wrap: (el, span) =>
-    wrapped = @make('div', { style: "float: left; width: #{@_colWidth * span}px; margin-left: #{@_gutter}px" }, el)
+    style = "float: left; width: #{@_colWidth*span}px; margin-left: #{@_gutter}px"
+    wrapped = @make('div', {style}, el)

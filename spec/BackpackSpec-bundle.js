@@ -49,6 +49,9 @@
       it("should define @$parent", function() {
         return expect(this.component.$parent).toBeDefined();
       });
+      it("should have no items (children)", function() {
+        return expect(this.component._items.length).toEqual(0);
+      });
       describe("options", function() {
         beforeEach(function() {
           return this.options = this.component.options;
@@ -292,7 +295,7 @@
         return expect(this.component.content).toEqual(testContent);
       });
     });
-    return describe("#content", function() {
+    describe("#content", function() {
       it("should do nothing if passed nothing", function() {
         var testContent;
         testContent = '';
@@ -330,6 +333,17 @@
         spy = sinon.spy(this.component, 'setContent');
         this.component.content('');
         return expect(spy).toHaveBeenCalled();
+      });
+    });
+    return describe("#getItems", function() {
+      return it("should return the component's items", function() {
+        var item;
+        this.component.items('testy', {
+          test: 'test'
+        });
+        item = this.component.getItems();
+        expect(item[0]).toBe('testy');
+        return expect(item[1]['test']).toBe('test');
       });
     });
   });

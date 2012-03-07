@@ -17,6 +17,9 @@ describe "Backpack.Component", ->
     it "should define @$parent", ->
       expect(@component.$parent).toBeDefined()
 
+    it "should have no items (children)", ->
+      expect(@component._items.length).toEqual(0)
+
     describe "options", ->
 
       beforeEach ->
@@ -274,3 +277,11 @@ describe "Backpack.Component", ->
       spy = sinon.spy(@component, 'setContent')
       @component.content('')
       expect(spy).toHaveBeenCalled()
+
+  describe "#getItems", ->
+
+    it "should return the component's items", ->
+      @component.items('testy', {test: 'test'})
+      item = @component.getItems()
+      expect(item[0]).toBe('testy')
+      expect(item[1]['test']).toBe('test')

@@ -520,50 +520,38 @@ var lightbox = new Backpack.Modal({
                 Layout is a simple grid helper for component placement.
                 Set the number of columns and gutter size and Layout
                 will figure out the sizing of everything. No need to 
-                worry about class names. 
+                worry about class names or calculating widths. 
               </p>
 
               <div class='code layout-code'></div>
 
               <div class='basic hide'>
                 <pre class='prettyprint linenums'>
-var basic = new Backpack.Layout({
-      parent: '.layout-code',
+var testComponent = new Backpack.Component({
+      name: 'test component',
       show: true,
-      gutter: 20,
-      columns: 3
-});
+      css: {
+        'background-color': 'lightgrey',
+        'padding': '20px'
+      }
+    });
 
-basic.add([{
-          span: 2,
-          content: new Backpack.Component({
-            name: 'test component',
-            show: true,
-            css: {
-              'background-color': 'lightgrey',
-              'padding': '20px'
-            }
-          })
-      },{
-          span: 1,
-          content: new Backpack.Component({
-            show: true,
-            css: {
-              'background-color': 'lightgrey',
-              'padding': '20px'
-            }
-          })
-        }
-]);</pre>
+var basic = new Backpack.Layout({
+      show: true,
+      add: [{
+            content: testComponent
+        },{
+            content: testComponent
+        },{
+            content: testComponent
+      }]
+});</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: new Backpack.Layout({
                                                         parent: $(this).parent(),
                                                         show: true,
-                                                        gutter: 20,
-                                                        columns: 3,
                                                         add: [{
-                                                            span: 2,
                                                             content: new Backpack.Component({
                                                               name: 'test component',
                                                               show: true,
@@ -573,7 +561,14 @@ basic.add([{
                                                               }
                                                             })
                                                         },{
-                                                            span: 1,
+                                                            content: new Backpack.Component({
+                                                              show: true,
+                                                              css: {
+                                                                'background-color': 'lightgrey',
+                                                                'padding': '20px'
+                                                              }
+                                                            })
+                                                        },{
                                                             content: new Backpack.Component({
                                                               show: true,
                                                               css: {
@@ -585,7 +580,7 @@ basic.add([{
                                                       }),
                                                       show: true,
                                                       color: 'rgba(0,0,0,0.7)',
-                                                      lockOverlay: true, 
+                                                      lockOverlay: false,
                                                       closable: true,
                                                       addClass: 'padding-20',
                                                       title: '3-columns'
@@ -766,7 +761,7 @@ cake watch:js       # Recompile CoffeeScript source files when
               addClass: 'round-top chrome',
               show: true,
               add: [{
-                  content: 'Basics',
+                  content: 'Basic',
                   tabContent: $('.basic').html()
               }]
             }),
