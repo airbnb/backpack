@@ -12,12 +12,12 @@ class Backpack.Overlay extends Backpack.Component
     'click': 'unlock'
     'click .backpack-overlay-container': (e) -> e.stopPropagation()
 
-  defaults:
+  config:
+    'type':       'overlay'
+    'color':      'rgba(0,0,0,0.7)'
     'lockOverlay': false
-    'color': 'rgba(0,0,0,0.7)'
 
   initialize: ->
-    @addClass('backpack-overlay')
     @append @template
     super()
 
@@ -66,12 +66,12 @@ class Backpack.Modal extends Backpack.Component
   events:
     'click .close': 'close'
 
-  defaults:
+  config:
+    'type':       'modal'
     'closable':    true 
     'lockOverlay': true
 
   initialize: ->
-    @addClass('backpack-modal')
     super()
     @newOverlay()
     @
@@ -111,15 +111,5 @@ class Backpack.Modal extends Backpack.Component
       lockOverlay: @options.lockOverlay
       content:     @el
       color:       @options.color
-      visible:        true
     @overlay.on('overlay-close', @close)
     @
-
-  # addButton: (button) =>
-  #   return unless button?
-  #   container = @make("div", {"class": "backpack-dialog-button-container"})
-  #   $(container).append(button.setParent(container).render().show())
-  #   button.on('button-close', @close)
-  #   @$el.append(container)
-  #   @
-

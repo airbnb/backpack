@@ -3,14 +3,16 @@ class Backpack.Component extends Backbone.View
   tagName: 'div'
   className: 'backpack-component'
 
-  options:
+  defaults:
     'parent': 'body'
-    'visible': false
+    'type':   'component'
+    'content': null
+    'visible': true
 
   initialize: ->
     @_items    = []
     @_rendered = false
-    @options   = _.extend({}, @defaults, @options)
+    @options   = _.extend({}, @defaults, @config, @options)
 
     for func, args of @options
       unless _.isArray(args)
@@ -23,6 +25,14 @@ class Backpack.Component extends Backbone.View
     @$parent.append(@el)
     @_rendered = true
     @
+
+  type: (type) =>
+    @_type = @slug("#{Backpack.Prefix} #{type}")
+    @addClass(@_type)
+    @
+
+  getType: =>
+    @_type
 
   visible: (show) =>
     if show

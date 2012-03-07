@@ -30,18 +30,6 @@
   opacity: 0;
 }
 
-.backpack .bump-right {
-  float: right;
-}
-
-.backpack .bump-left {
-  float: left;
-}
-
-.backpack .bump-none {
-  float: none;
-}
-
 .backpack .clearfix {
   zoom: 1;
 }

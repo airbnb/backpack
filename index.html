@@ -172,11 +172,11 @@ var tabs = new Backpack.Tabs({
         content:    'Tab 2',
         tabContent: 'Some tab 2 content'
       }]
-}).show();</pre>
+});</pre>
               </div>
               <div class='tab2 hide'>
                 <pre class="prettyprint linenums">
-var tabs = new Backpack.Tabs({}).show();
+var tabs = new Backpack.Tabs({});
 
 tabs.add({
   content:    'Tab 1',
@@ -245,7 +245,7 @@ var menu = new Backpack.Menu({
                   }
           }                       
       }]
-}).show();</pre>
+});</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
@@ -274,7 +274,7 @@ var menu = new Backpack.Menu({
                                   }
                                 }                       
                             }]
-                          }).show(),
+                          }),
                           color: 'rgba(0,0,0,0.7)',
                           lockOverlay: false, 
                           closable: true,
@@ -286,7 +286,7 @@ var menu = new Backpack.Menu({
                                 'padding': '20px 40px 40px'
                           },
                           title: 'Simple Menu'
-                        }).show())">Run</button>
+                        }))">Run</button>
               </div>
 
               <div class='press hide'>
@@ -319,7 +319,7 @@ var menu = new Backpack.Menu({
                   }
           }                       
       }]
-}).show();</pre>
+});</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
@@ -347,7 +347,7 @@ var menu = new Backpack.Menu({
                                                 }                       
                                               },
                                             ]
-                                       }).show(),
+                                       }),
                           color: 'rgba(0,0,0,0.7)',
                           lockOverlay: false, 
                           closable: true,
@@ -359,7 +359,7 @@ var menu = new Backpack.Menu({
                                 'padding': '20px 40px 40px'
                           },
                           title: 'Menu with Press Class'
-                }).show())">Run</button>
+                }))">Run</button>
               </div>
 
               <div class='list hide'>
@@ -392,7 +392,7 @@ var menu = new Backpack.Menu({
                   }
           }                       
       }]
-}).show();</pre>
+});</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
@@ -424,12 +424,12 @@ var menu = new Backpack.Menu({
                                                 }                       
                                               },
                                             ]
-                                       }).show(),
+                                       }),
                           color: 'rgba(0,0,0,0.7)',
                           lockOverlay: false, 
                           closable: true,
                           title: 'List Style Menu'
-                }).show())">Run</button>
+                }))">Run</button>
               </div>
             </section>
 
@@ -459,14 +459,13 @@ var popup = new Backpack.Modal({
       content:  'This is a simple popup modal.',
       addClass: 'padding-20',
       title:    'Simple Popup Modal'
-}).show();</pre>
+});</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({ 
                                                       content: 'This is a simple popup modal.<br/><br/>It just pops up and gets in the way.',
-                                                      show: true,
                                                       addClass: 'padding-20',
                                                       title: 'Simple Popup Modal'
-                                            }).show())">Run</button>
+                                            }))">Run</button>
               </div>
 
 
@@ -479,7 +478,7 @@ var lightbox = new Backpack.Modal({
       closable: true,
       lockOverlay: true,
       title: 'Lightbox Modal'
-}).show();</pre>
+});</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: 'This Modal is a bit fancier.<br/><br/>It has a classy overlay in the background. This says, hey look at me, I am a Modal.<br/><br/>Sometimes that is just want you need.',
@@ -488,7 +487,7 @@ var lightbox = new Backpack.Modal({
                                                       closable: true,
                                                       addClass: 'padding-20',
                                                       title: 'Lightbox Modal'
-                                            }).show())">Run</button>
+                                            }))">Run</button>
               </div>
             </section>
 
@@ -518,7 +517,7 @@ var testComponent = new Backpack.Component({
         'background-color': 'lightgrey',
         'padding': '20px'
       }
-    }).show();
+    });
 
 var basic = new Backpack.Layout({
       add: [{
@@ -528,7 +527,7 @@ var basic = new Backpack.Layout({
         },{
             content: testComponent
       }]
-}).show();</pre>
+});</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: new Backpack.Layout({
@@ -536,7 +535,6 @@ var basic = new Backpack.Layout({
                                                         add: [{
                                                             content: new Backpack.Component({
                                                               name: 'test component',
-                                                              visible: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
@@ -544,7 +542,6 @@ var basic = new Backpack.Layout({
                                                             })
                                                         },{
                                                             content: new Backpack.Component({
-                                                              visible: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
@@ -552,7 +549,6 @@ var basic = new Backpack.Layout({
                                                             })
                                                         },{
                                                             content: new Backpack.Component({
-                                                              visible: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
@@ -565,7 +561,7 @@ var basic = new Backpack.Layout({
                                                       closable: true,
                                                       addClass: 'padding-20',
                                                       title: '3-columns'
-                                            }).show())">Run</button>
+                                            }))">Run</button>
                 
               </div>
 
@@ -670,7 +666,6 @@ cake watch:js       # Recompile CoffeeScript source files when
         var menu = new Backpack.Menu({
               parent: '#sidebar',
               addClass: 'backpack-list',
-              show: true,
               add: [{
                   content: 'Introduction',
                   events:  '#Introduction'
@@ -696,7 +691,6 @@ cake watch:js       # Recompile CoffeeScript source files when
             modalTabs = new Backpack.Tabs({
               parent: '.modal-code',
               addClass: 'round-top chrome',
-              show: true,
               add: [{
                   content: 'Popup',
                   tabContent: $('.popup').html()
@@ -710,7 +704,6 @@ cake watch:js       # Recompile CoffeeScript source files when
             menuTabs = new Backpack.Tabs({
               parent: '.menu-code',
               addClass: 'round-top chrome',
-              show: true,
               add: [{
                   content: 'Simple',
                   tabContent: $('.simple').html()
@@ -751,7 +744,6 @@ cake watch:js       # Recompile CoffeeScript source files when
             components = new Backpack.Menu({
               parent: '.sidebar-overview',
               addClass: 'backpack-list',
-              show: true,
               add: [{
                   content: '- Backpack.Component',
                   events: '#Component'
@@ -776,7 +768,6 @@ cake watch:js       # Recompile CoffeeScript source files when
             contribute = new Backpack.Menu({
               parent: '.sidebar-contribute',
               addClass: 'backpack-list',
-              show: true,
               add: [{
                   content: '- Getting Started',
                   events: '#Started'

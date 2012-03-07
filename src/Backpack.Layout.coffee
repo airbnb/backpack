@@ -2,13 +2,14 @@ class Backpack.Layout extends Backpack.Component
 
   tagName: 'div'
 
-  defaults:
+  config:
+    'type': 'layout'
     'columns': 1
     'gutter': '30'
     'visible': true
 
   initialize: ->
-    @addClass('backpack-layout clearfix')
+    @addClass('clearfix')
     super()
     @
 

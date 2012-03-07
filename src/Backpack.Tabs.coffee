@@ -2,8 +2,11 @@ class Backpack.Tabs extends Backpack.Component
 
   tagName: 'ul'
 
+  config:
+    'type': 'tabs'
+
   initialize: ->
-    @addClass('backpack-tabs clearfix')
+    @addClass('clearfix')
     @active = @options.active ? 0
     super()
 
@@ -56,9 +59,11 @@ class Backpack.Tab extends Backpack.Component
   events:
     'click': 'select'
 
+  config:
+    'type': 'tab'
+
   initialize: ->
     super()
-    @addClass('backpack-tab')
     @tabContent = new Backpack.TabContent
       content: @options.tabContent
       parent:  @$parent
@@ -81,9 +86,11 @@ class Backpack.Tab extends Backpack.Component
 
 class Backpack.TabContent extends Backpack.Component
 
+  config:
+    'type': 'tab-content'
+
   initialize: ->
     super()
-    @addClass('backpack-tab-content round-bottom')
 
   render: =>
     @$parent.html(@_content)
