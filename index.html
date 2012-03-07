@@ -165,7 +165,6 @@
               <div class='tab hide'>
                 <pre class="prettyprint linenums">
 var tabs = new Backpack.Tabs({
-      show: true,
       add: [{
         content:    'Tab 1',
         tabContent: 'Some tab 1 content'
@@ -173,13 +172,11 @@ var tabs = new Backpack.Tabs({
         content:    'Tab 2',
         tabContent: 'Some tab 2 content'
       }]
-});</pre>
+}).show();</pre>
               </div>
               <div class='tab2 hide'>
                 <pre class="prettyprint linenums">
-var tabs = new Backpack.Tabs({ 
-      show: true
-});
+var tabs = new Backpack.Tabs({}).show();
 
 tabs.add({
   content:    'Tab 1',
@@ -223,7 +220,6 @@ tabs.add({
                 <pre class="prettyprint linenums">
 var menu = new Backpack.Menu({
       parent: this, 
-      show:   true,
       add: [{
           content: 'Menu Item 1',
           events:  '#Menu'
@@ -249,12 +245,11 @@ var menu = new Backpack.Menu({
                   }
           }                       
       }]
-});</pre>
+}).show();</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                             parent: this,
-                            show: true,
                             add: [{
                                 content: 'Menu Item 1',
                                 events: '#Menu'
@@ -279,8 +274,7 @@ var menu = new Backpack.Menu({
                                   }
                                 }                       
                             }]
-                          }),
-                          show: true,
+                          }).show(),
                           color: 'rgba(0,0,0,0.7)',
                           lockOverlay: false, 
                           closable: true,
@@ -292,14 +286,13 @@ var menu = new Backpack.Menu({
                                 'padding': '20px 40px 40px'
                           },
                           title: 'Simple Menu'
-                        }))">Run</button>
+                        }).show())">Run</button>
               </div>
 
               <div class='press hide'>
                 <pre class="prettyprint linenums">
 var menu = new Backpack.Menu({
       parent: this, 
-      show:   true,
       addClass: 'press',
       add: [{
           content: 'Menu Item 1',
@@ -326,12 +319,11 @@ var menu = new Backpack.Menu({
                   }
           }                       
       }]
-});</pre>
+}).show();</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                                           parent: this,
-                                          show: true,
                                           addClass: 'press',
                                           add: 
                                             [
@@ -355,8 +347,7 @@ var menu = new Backpack.Menu({
                                                 }                       
                                               },
                                             ]
-                                       }),
-                          show: true,
+                                       }).show(),
                           color: 'rgba(0,0,0,0.7)',
                           lockOverlay: false, 
                           closable: true,
@@ -368,14 +359,13 @@ var menu = new Backpack.Menu({
                                 'padding': '20px 40px 40px'
                           },
                           title: 'Menu with Press Class'
-                }))">Run</button>
+                }).show())">Run</button>
               </div>
 
               <div class='list hide'>
                 <pre class="prettyprint linenums">
 var menu = new Backpack.Menu({
       parent: this, 
-      show:   true,
       addClass: 'backpack-list',
       add: [{
           content: 'Menu Item 1',
@@ -402,12 +392,11 @@ var menu = new Backpack.Menu({
                   }
           }                       
       }]
-});</pre>
+}).show();</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                                           parent: this,
-                                          show: true,
                                           addClass: 'backpack-list',
                                           add: 
                                             [
@@ -435,13 +424,12 @@ var menu = new Backpack.Menu({
                                                 }                       
                                               },
                                             ]
-                                       }),
-                          show: true,
+                                       }).show(),
                           color: 'rgba(0,0,0,0.7)',
                           lockOverlay: false, 
                           closable: true,
                           title: 'List Style Menu'
-                }))">Run</button>
+                }).show())">Run</button>
               </div>
             </section>
 
@@ -470,16 +458,15 @@ var menu = new Backpack.Menu({
 var popup = new Backpack.Modal({ 
       content:  'This is a simple popup modal.',
       addClass: 'padding-20',
-      show:     true,
       title:    'Simple Popup Modal'
-});</pre>
+}).show();</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({ 
                                                       content: 'This is a simple popup modal.<br/><br/>It just pops up and gets in the way.',
                                                       show: true,
                                                       addClass: 'padding-20',
                                                       title: 'Simple Popup Modal'
-                                            }))">Run</button>
+                                            }).show())">Run</button>
               </div>
 
 
@@ -489,21 +476,19 @@ var lightbox = new Backpack.Modal({
       content:  'This Modal is a bit fancier.',
       addClass: 'padding-20',
       color:    'rgba(0,0,0,0.7)',
-      show:     true,
       closable: true,
       lockOverlay: true,
       title: 'Lightbox Modal'
-});</pre>
+}).show();</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: 'This Modal is a bit fancier.<br/><br/>It has a classy overlay in the background. This says, hey look at me, I am a Modal.<br/><br/>Sometimes that is just want you need.',
-                                                      show: true,
                                                       color: 'rgba(0,0,0,0.7)',
                                                       lockOverlay: true, 
                                                       closable: true,
                                                       addClass: 'padding-20',
                                                       title: 'Lightbox Modal'
-                                            }))">Run</button>
+                                            }).show())">Run</button>
               </div>
             </section>
 
@@ -529,15 +514,13 @@ var lightbox = new Backpack.Modal({
                 <pre class='prettyprint linenums'>
 var testComponent = new Backpack.Component({
       name: 'test component',
-      show: true,
       css: {
         'background-color': 'lightgrey',
         'padding': '20px'
       }
-    });
+    }).show();
 
 var basic = new Backpack.Layout({
-      show: true,
       add: [{
             content: testComponent
         },{
@@ -545,46 +528,41 @@ var basic = new Backpack.Layout({
         },{
             content: testComponent
       }]
-});</pre>
+}).show();</pre>
                 <button class='round tk-league-gothic orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: new Backpack.Layout({
                                                         parent: $(this).parent(),
-                                                        show: true,
                                                         add: [{
                                                             content: new Backpack.Component({
                                                               name: 'test component',
-                                                              show: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
                                                               }
-                                                            })
+                                                            }).show()
                                                         },{
                                                             content: new Backpack.Component({
-                                                              show: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
                                                               }
-                                                            })
+                                                            }).show()
                                                         },{
                                                             content: new Backpack.Component({
-                                                              show: true,
                                                               css: {
                                                                 'background-color': 'lightgrey',
                                                                 'padding': '20px'
                                                               }
-                                                            })
+                                                            }).show()
                                                         }]
                                                       }),
-                                                      show: true,
                                                       color: 'rgba(0,0,0,0.7)',
                                                       lockOverlay: false,
                                                       closable: true,
                                                       addClass: 'padding-20',
                                                       title: '3-columns'
-                                            }))">Run</button>
+                                            }).show())">Run</button>
                 
               </div>
 

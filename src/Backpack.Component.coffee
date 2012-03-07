@@ -19,6 +19,7 @@ class Backpack.Component extends Backbone.View
 
   render: =>
     @$parent.append(@el)
+    @_rendered = true
     @
 
   items: =>
@@ -29,8 +30,11 @@ class Backpack.Component extends Backbone.View
   getItems: =>
     @_items
 
+  isRendered: =>
+    @_rendered
+
   show: =>
-    @render()
+    @render() unless @isRendered()
     @delegateEvents(@events)
     @$el.removeClass('hide')
     @
