@@ -363,43 +363,6 @@
     });
   });
 
-  describe('LayoutSpec', function() {
-    beforeEach(function() {
-      return this.Layout = new Backpack.Layout;
-    });
-    afterEach(function() {
-      return this.Layout.remove();
-    });
-    describe('#initialize', function() {
-      it('should create a section', function() {
-        var nodeName;
-        nodeName = this.Layout.el.nodeName;
-        return expect(nodeName).toEqual('DIV');
-      });
-      it("should have a 'backpack-component' class", function() {
-        var hasClass;
-        hasClass = this.Layout.$el.hasClass('backpack-component');
-        return expect(hasClass).toBeTruthy();
-      });
-      it("should have a 'backpack-layout' class", function() {
-        var hasClass;
-        hasClass = this.Layout.$el.hasClass('backpack-layout');
-        return expect(hasClass).toBeTruthy();
-      });
-      return describe('defaults', function() {
-        return it('should have 1 for default _cols', function() {
-          return expect(this.Layout._cols).toEqual(1);
-        });
-      });
-    });
-    return describe('#cols', function() {
-      return it('should set @_cols', function() {
-        this.Layout.columns(4);
-        return expect(this.Layout._cols).toEqual(4);
-      });
-    });
-  });
-
   describe('Backpack.Menu', function() {
     beforeEach(function() {
       return this.menu = new Backpack.Menu({
@@ -508,14 +471,11 @@
     });
     describe("#show", function() {
       return it("should render and show it's overlay", function() {
-        var spyRender, spyShow;
+        var spyShow;
         spyShow = sinon.spy(this.oModal.overlay, 'show');
-        spyRender = sinon.spy(this.oModal.overlay, 'render');
         this.oModal.show();
         expect(spyShow).toHaveBeenCalled();
-        expect(spyRender).toHaveBeenCalled();
-        this.oModal.overlay.show.restore();
-        return this.oModal.overlay.render.restore();
+        return this.oModal.overlay.show.restore();
       });
     });
     describe("#hide", function() {
@@ -548,6 +508,43 @@
         Modal.overlay.$el.trigger('click');
         expect(spy).toHaveBeenCalledWith('overlay-close');
         return Modal.remove();
+      });
+    });
+  });
+
+  describe('LayoutSpec', function() {
+    beforeEach(function() {
+      return this.Layout = new Backpack.Layout;
+    });
+    afterEach(function() {
+      return this.Layout.remove();
+    });
+    describe('#initialize', function() {
+      it('should create a section', function() {
+        var nodeName;
+        nodeName = this.Layout.el.nodeName;
+        return expect(nodeName).toEqual('DIV');
+      });
+      it("should have a 'backpack-component' class", function() {
+        var hasClass;
+        hasClass = this.Layout.$el.hasClass('backpack-component');
+        return expect(hasClass).toBeTruthy();
+      });
+      it("should have a 'backpack-layout' class", function() {
+        var hasClass;
+        hasClass = this.Layout.$el.hasClass('backpack-layout');
+        return expect(hasClass).toBeTruthy();
+      });
+      return describe('defaults', function() {
+        return it('should have 1 for default _cols', function() {
+          return expect(this.Layout._cols).toEqual(1);
+        });
+      });
+    });
+    return describe('#cols', function() {
+      return it('should set @_cols', function() {
+        this.Layout.columns(4);
+        return expect(this.Layout._cols).toEqual(4);
       });
     });
   });

@@ -60,16 +60,17 @@ class Backpack.Tab extends Backpack.Component
     'click': 'select'
 
   config:
-    'type':       'tab'
-    'renderType': 'html'
-    'renderEl':   @_content
-
+    'type': 'tab'
 
   initialize: ->
     super()
     @tabContent = new Backpack.TabContent
       content: @options.tabContent
       parent:  @$parent
+
+  render: =>
+    @$el.html(@_content)
+    @
 
   content: (content) =>
     return @ unless content?
@@ -86,9 +87,11 @@ class Backpack.Tab extends Backpack.Component
 class Backpack.TabContent extends Backpack.Component
 
   config:
-    'type':       'tab-content'
-    'renderType': 'html'
-    'renderEl':   @_content
+    'type': 'tab-content'
 
   initialize: ->
     super()
+
+  render: =>
+    @$parent.html(@_content)
+    @

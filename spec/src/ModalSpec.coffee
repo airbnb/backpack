@@ -81,12 +81,9 @@ describe "it has an overlay", ->
 
     it "should render and show it's overlay", ->
       spyShow = sinon.spy(@oModal.overlay, 'show')
-      spyRender = sinon.spy(@oModal.overlay, 'render')
       @oModal.show()
       expect(spyShow).toHaveBeenCalled()
-      expect(spyRender).toHaveBeenCalled()
       @oModal.overlay.show.restore()
-      @oModal.overlay.render.restore()
 
   describe "#hide", ->
 

@@ -13,9 +13,9 @@ class Backpack.Overlay extends Backpack.Component
     'click .backpack-overlay-container': (e) -> e.stopPropagation()
 
   config:
-    'type':        'overlay'
-    'color':       'rgba(0,0,0,0.7)'
-    'renderType':  'prepend'
+    'type': 'overlay'
+    'color': 'rgba(0,0,0,0.7)'
+    'renderType': 'prepend'
     'lockOverlay': false
 
   initialize: ->
@@ -68,8 +68,8 @@ class Backpack.Modal extends Backpack.Component
     'click .close': 'close'
 
   config:
-    'type':       'modal'
-    'closable':    true 
+    'type': 'modal'
+    'closable': true
     'lockOverlay': true
 
   initialize: ->
