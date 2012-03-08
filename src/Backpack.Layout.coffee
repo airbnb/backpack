@@ -3,10 +3,9 @@ class Backpack.Layout extends Backpack.Component
   tagName: 'div'
 
   config:
-    'type': 'layout'
+    'type':    'layout'
     'columns': 1
-    'gutter': '30'
-    'visible': true
+    'gutter':  '30'
 
   initialize: ->
     @addClass('clearfix')

@@ -4,16 +4,17 @@ class Backpack.Component extends Backbone.View
   className: 'backpack-component'
 
   defaults:
-    'parent': 'body'
-    'type':   'component'
+    'parent':     'body'
+    'type':       'component'
+    'renderType': 'append'
     'content': null
     'visible': true
 
   initialize: ->
     @_items    = []
     @_rendered = false
+    @_renderTypes = ['append', 'prepend', 'html']
     @options   = _.extend({}, @defaults, @config, @options)
-
     for func, args of @options
       unless _.isArray(args)
         @[func]?.call?(@, args)
@@ -22,9 +23,23 @@ class Backpack.Component extends Backbone.View
       null
 
   render: =>
-    @$parent.append(@el)
+    @$parent[@_renderType].call(@$parent, @getRenderEl())
     @_rendered = true
     @
+
+  renderType: (type) =>
+    hasType = _.include(@_renderTypes, type)
+    return @ unless hasType
+    @_renderType = type
+    @
+
+  renderEl: (el) =>
+    @_renderEl = el
+    @
+
+  getRenderEl: =>
+    return @_renderEl if @_renderEl?
+    return @el
 
   type: (type) =>
     @_type = @slug("#{Backpack.Prefix} #{type}")
@@ -32,7 +47,7 @@ class Backpack.Component extends Backbone.View
     @
 
   getType: =>
-    @_type
+    return @_type
 
   visible: (show) =>
     if show
@@ -118,7 +133,7 @@ class Backpack.Component extends Backbone.View
     @
 
   getItems: =>
-    @_items
+    return @_items
 
   isRendered: =>
     @_rendered
@@ -131,7 +146,7 @@ class Backpack.Component extends Backbone.View
     !!@_layout
 
   getLayout: =>
-    @_layout
+    return @_layout
 
   setContent: (content) =>
     return @ unless content?
