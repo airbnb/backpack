@@ -21,6 +21,7 @@
     <script src="./vendor/jquery.js" type="text/javascript"></script>
     <script src="./vendor/underscore.js" type="text/javascript"></script>
     <script src="./vendor/backbone.js" type="text/javascript"></script>
+    <script src="./vendor/swipe.js" type="text/javascript"></script>
     <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
   </head>
   <body class='backpack'>
@@ -496,7 +497,7 @@ var lightbox = new Backpack.Modal({
                   Backpack.Layout
               =======================================
             -->
-            <section class='layout description clearfix hide'>
+            <section class='layout description clearfix'>
               <a id='Layout'>
                 <h4 class='title-h4'>Backpack.Layout</h4>
               </a>
@@ -566,7 +567,26 @@ var basic = new Backpack.Layout({
               </div>
 
             </section>
-          </section>
+
+
+          <section class='bottom-60'>
+            <a id='Make'>
+              <h3 class='title-h3'>How To Make a Component</h3>
+            </a>
+            <p>
+              In this tutorial, we'll make a Swipe.js component.
+            </p>
+
+            <div class='swipe-code'></div>
+
+            <div style='text-align:center;padding-top:20px;'>
+              
+              <button class='round tk-league-gothic' onclick='s.prev()'>prev</button> 
+              <button class='round tk-league-gothic orange' onclick='s.next()'>next</button>
+
+            </div>
+
+        </section>
 
 
           <section class='bottom-60'>
@@ -663,6 +683,28 @@ cake watch:js       # Recompile CoffeeScript source files when
       $(function() {
         prettyPrint(); // thanks Google
 
+        window.mySwipe = new Backpack.Swipe({
+          parent: '.swipe-code',
+          content: ["<img width='500' src='assets/img/swipe/1.jpg'/>",
+                    "<img width='500' src='assets/img/swipe/2.jpg'/>",
+                    "<img width='500' src='assets/img/swipe/3.jpg'/>",
+                    "<img width='500' src='assets/img/swipe/4.jpg'/>",
+                    "<img width='500' src='assets/img/swipe/5.jpg'/>"],
+          speed: 400,
+          continuous: true,
+          disableScroll: false,
+          callback: function(index, elem) {},
+          transitionEnd: function(index, elem) {}
+        });
+
+        // window.mySwipe = new Swipe(document.getElementById('slider'), {
+        //   speed: 400,
+        //   continuous: true,
+        //   disableScroll: false,
+        //   callback: function(index, elem) {},
+        //   transitionEnd: function(index, elem) {}
+        // });
+
         var menu = new Backpack.Menu({
               parent: '#sidebar',
               addClass: 'backpack-list',
@@ -673,6 +715,9 @@ cake watch:js       # Recompile CoffeeScript source files when
                   content: 'Overview',
                   events:  '#Overview',
                   addClass: 'sidebar-overview'
+              },{
+                  content: 'How To Make a Component',
+                  events:  '#Make'
               },{
                   content: 'Hack on Backpack',
                   events:  '#Contribute',
@@ -730,15 +775,15 @@ cake watch:js       # Recompile CoffeeScript source files when
               }]
             }),
 
-            // layoutTabs = new Backpack.Tabs({
-            //   parent: '.layout-code',
-            //   addClass: 'round-top chrome',
-            //   show: true,
-            //   add: [{
-            //       content: 'Basic',
-            //       tabContent: $('.basic').html()
-            //   }]
-            // }),
+            layoutTabs = new Backpack.Tabs({
+              parent: '.layout-code',
+              addClass: 'round-top chrome',
+              show: true,
+              add: [{
+                  content: 'Basic',
+                  tabContent: $('.basic').html()
+              }]
+            }),
 
 
             components = new Backpack.Menu({
@@ -757,10 +802,10 @@ cake watch:js       # Recompile CoffeeScript source files when
                   content: '- Backpack.Modal',
                   events: '#Modal'
               }
-              // ,{
-              //     content: '- Backpack.Layout',
-              //     events: '#Layout'
-              // }
+              ,{
+                  content: '- Backpack.Layout',
+                  events: '#Layout'
+              }
               ]
             }),
 

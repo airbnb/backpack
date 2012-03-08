@@ -16,14 +16,16 @@ class Backpack.Component extends Backbone.View
     @_renderTypes = ['append', 'prepend', 'html']
     @options   = _.extend({}, @defaults, @config, @options)
     for func, args of @options
-      unless _.isArray(args)
-        @[func]?.call?(@, args)
-      else
-        @[func]?.apply?(@, args)
+      if @[func]?
+        unless _.isArray(args)
+          @[func].call?(@, args)
+        else
+          @[func].apply?(@, args)
       null
 
   render: =>
-    @$parent[@_renderType].call(@$parent, @getRenderEl())
+    func = @$parent[@_renderType]
+    func.call(@$parent, @getRenderEl())
     @_rendered = true
     @
 

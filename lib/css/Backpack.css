@@ -381,6 +381,23 @@
 
 
 /* --------------------
+ * Backpack Swipe
+ * --------------------
+ */
+.swipe-active {
+  overflow:hidden;
+  position:relative;
+}
+.swipe-active > * {
+  display:block;
+  visibility:hidden;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+
+/* --------------------
  * Backpack Button
  * --------------------
  */
