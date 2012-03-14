@@ -6,8 +6,9 @@
           box-sizing: border-box;
 }
 
+
 p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.4em;
   margin-bottom: 15px;
 }
@@ -28,7 +29,7 @@ footer {
 }
 
 footer p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1em;
 }
 
@@ -41,7 +42,7 @@ footer p {
 }
 
 .description > p {
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 20px;
 }
 
