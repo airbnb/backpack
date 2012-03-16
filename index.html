@@ -15,14 +15,6 @@
     <!-- TypeKit -->
     <script type="text/javascript" src="http://use.typekit.com/khy0ojp.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
-    <!-- Dependencies -->
-    <script src="./assets/js/prettify.js" type="text/javascript"></script>
-    <script src="./vendor/jquery.js" type="text/javascript"></script>
-    <script src="./vendor/underscore.js" type="text/javascript"></script>
-    <script src="./vendor/backbone.js" type="text/javascript"></script>
-    <script src="./vendor/swipe.js" type="text/javascript"></script>
-    <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
   </head>
   <body class='backpack tk-proxima-nova-alt'>
 
@@ -33,10 +25,10 @@
       <section id='guideContainer'>
         <section id='guide'>
           <section id='header'>
-            <h1 class='big-h1'>Backpack.js</h1>
-            <h2 class='big-h2'>Grab your backpack and enjoy the Views</h2>
-            <h3 class='big-h3'>Backpack.js is a lightweight Backbone extension that provides easy-to-use, extensible UI components</h3>
-            <div class='github-social'>
+            <h1 class='big-h1 w310'>Backpack.js</h1>
+            <h2 class='big-h2 w310'>Grab your backpack and enjoy the Views</h2>
+            <h3 class='big-h3 w310'>Backpack.js is a lightweight Backbone extension for composing and structuring UI components</h3>
+            <div class='github-social w310'>
               <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=airbnb&repo=backpack.js&type=watch&count=true"
                       allowtransparency="true" frameborder="0" scrolling="0" 
                       width="90px" height="30px"></iframe>
@@ -57,12 +49,14 @@
 
           <section class='bottom-60 clearfix'>
             <a href='https://github.com/airbnb/backpack.js/zipball/master' 
-               class='download button round tk-league-gothic orange'>
+               class='download button round tk-proxima-nova-alt-ext-cond
+ orange'>
                   Download Backpack.js
             </a>
             <a href='https://github.com/airbnb/backpack.js' 
-               class='fork button round tk-league-gothic'>
-                  Hosted on Github
+               class='fork button round tk-proxima-nova-alt-ext-cond
+'>
+                  Fork on Github
             </a>
           </section>
 
@@ -71,29 +65,28 @@
               <h3 class='title-h3'>Introduction</h3>
             </a>
             <p>
-              Backpack.js is a lightweight Backbone extension that provides 
-              easy-to-use, extensible UI components, and was built by a couple 
+              Backpack.js is a lightweight Backbone extension for composing and 
+              structuring UI components, and was built by a couple 
               of <a href='http://www.airbnb.com/jobs'>Airbnb Engineers</a>.
             </p>
             <p>
-              Backpack.js has been built with a focus on the creation of 
-              components - CSS files have been included to help you get up and 
-              running, but feel free to modify styles as necessary.
+              Backpack's focus is to be a helper for storing and structuring
+              decoupled, extensible UI components. Think of it as a roll-your-own 
+              YUI or jQuery UI, with components built with Backbone.Views. It's a 
+              micro-library that you build on as you go.
             </p>
-
             <p>
-              After building the <a href='http://m.airbnb.com' target='_blank'>
-              Airbnb mobile web app</a> with Backbone, we thought it would be 
-              nice to have a lightweight pack of components that we could drop 
-              in to any Backbone project.
+              Your Backpack will come with some common UI components that you can
+              easily extend. As you build out your app, you'll start throwing
+              more components in your backpack. Then you just pull out the components 
+              you need when you need them.
             </p>
-
             <p>
               This initial release is the result of our work abstracting 
-              components that we initially imagined and built for the Airbnb 
-              mobile site. We would like to open this initial release to the 
-              community to hear what you guys think and welcome any 
-              contributions.
+              components that we built for the Airbnb mobile site. 
+              We would like to open this initial release to the 
+              community to hear your thoughts and welcome
+              contributions and ideas for its future.
             </p>
           </section>
 
@@ -101,6 +94,24 @@
             <a id='Overview'>
               <h3 class='title-h3'>Overview</h3>
             </a>
+
+            <!-- 
+              =======================================
+                  Backpack
+              =======================================
+            -->
+            <section class='component description clearfix'>
+              <a id='BP'>
+                <h4 class='title-h4'>Backpack</h4>
+              </a>
+              <p>
+                Backpack is the global namespace everything gets attached too.
+                Backpack also comes equiped with a ham radio. It extends Backbone.Events, 
+                so you have a global dispatcher/observer at your disposal.
+              </p>
+
+            </section>
+
 
             <!-- 
               =======================================
@@ -123,6 +134,7 @@
                 Component provides the following convenience methods to 
                 all components:
               </p>
+
               <ul>
                 <li><pre>render</pre></li>
                 <li><pre>show</pre></li>
@@ -142,6 +154,126 @@
                 <li><pre>name</pre></li>
                 <li><pre>slug</pre></li>
               </ul>
+
+              <!-- <table>
+                <thead class='chrome'>
+                  <td>Method</td>
+                  <td>Options</td>
+                  <td>Defaults</td>
+                  <td>Description</td>
+                </thead>
+                <tr>
+                  <td><pre>render</pre></td>
+                  <td>true | false</td>
+                  <td>true</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td><pre>show</pre></td>
+                  <td>true | false</td>
+                  <td>true</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td><pre>hide</pre></td>
+                  <td>true | false</td>
+                  <td>false</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td><pre>close</pre></td>
+                  <td>true | false</td>
+                  <td>false</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td><pre>remove</pre></td>
+                  <td>true | false</td>
+                  <td>false</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td><pre>before</pre></td>
+                  <td>string | View</td>
+                  <td><em>noop</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>after</pre></td>
+                  <td>string | View</td>
+                  <td><em>noop</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>append</pre></td>
+                  <td>string | View</td>
+                  <td><em>noop</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>prepend</pre></td>
+                  <td>string | View</td>
+                  <td><em>noop</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>content</pre></td>
+                  <td>string | View</td>
+                  <td><em>noop</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>setContent</pre></td>
+                  <td>string | View</td>
+                  <td><em>noop</em></td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td><pre>parent</pre></td>
+                  <td>selector</td>
+                  <td><em>'body'</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>addClass</pre></td>
+                  <td>string</td>
+                  <td><em>noop</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>removeClass</pre></td>
+                  <td>string</td>
+                  <td><em>noop</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>name</pre></td>
+                  <td>string</td>
+                  <td><em>noop</em></td>
+                  <td><strong>@returns</strong> <em>this</em></td>
+                </tr>
+
+                <tr>
+                  <td><pre>slug</pre></td>
+                  <td>string | html | View</td>
+                  <td><em>noop</em></td>
+                  <td>Replaces spaces with dashes<br/> <strong>@returns</strong> {string}</td>
+                </tr>
+              </table> -->
 
             </section>
 
@@ -247,7 +379,7 @@ var menu = new Backpack.Menu({
           }                       
       }]
 });</pre>
-                <button class='round tk-league-gothic orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                             parent: this,
@@ -321,7 +453,7 @@ var menu = new Backpack.Menu({
           }                       
       }]
 });</pre>
-                <button class='round tk-league-gothic orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                                           parent: this,
@@ -394,7 +526,7 @@ var menu = new Backpack.Menu({
           }                       
       }]
 });</pre>
-                <button class='round tk-league-gothic orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                                           parent: this,
@@ -461,7 +593,7 @@ var popup = new Backpack.Modal({
       addClass: 'padding-20',
       title:    'Simple Popup Modal'
 });</pre>
-                <button class='round tk-league-gothic orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange' 
                         onclick="javascript:eval(new Backpack.Modal({ 
                                                       content: 'This is a simple popup modal.<br/><br/>It just pops up and gets in the way.',
                                                       addClass: 'padding-20',
@@ -480,7 +612,7 @@ var lightbox = new Backpack.Modal({
       lockOverlay: true,
       title: 'Lightbox Modal'
 });</pre>
-                <button class='round tk-league-gothic orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: 'This Modal is a bit fancier.<br/><br/>It has a classy overlay in the background. This says, hey look at me, I am a Modal.<br/><br/>Sometimes that is just want you need.',
                                                       color: 'rgba(0,0,0,0.7)',
@@ -529,7 +661,7 @@ var basic = new Backpack.Layout({
             content: testComponent
       }]
 });</pre>
-                <button class='round tk-league-gothic orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange' 
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: new Backpack.Layout({
                                                         parent: $(this).parent(),
@@ -571,22 +703,68 @@ var basic = new Backpack.Layout({
 
           <section class='bottom-60'>
             <a id='Make'>
-              <h3 class='title-h3'>How To Make a Component</h3>
+              <h3 class='title-h3'>Swipe.js Example Component</h3>
             </a>
             <p>
-              In this tutorial, we'll make a Swipe.js component.
+              It's easy to create components from existing libraries. Here's 
+              an example of how to create a Backpack component out of the Swipe.js library.
             </p>
 
             <div class='swipe-code'></div>
 
+            <div class='gallery hide'>
+              <pre class='prettyprint linenums'>
+window.mySwipe = new Backpack.Swipe({
+          parent: '.swipe-gallery',
+          content: ["&lt;img src='assets/img/swipe/1.jpg'>",
+                    "&lt;img src='assets/img/swipe/2.jpg'>",
+                    "&lt;img src='assets/img/swipe/3.jpg'>",
+                    "&lt;img src='assets/img/swipe/4.jpg'>",
+                    "&lt;img src='assets/img/swipe/5.jpg'>"],
+          speed: 400,
+          continuous: true,
+          disableScroll: false,
+          callback: function(index, elem) {},
+          transitionEnd: function(index, elem) {}
+});</pre>
+</div>
+
+            <div class='swipe hide'>
+              <pre class='prettyprint linenums'>
+class Backpack.Swipe extends Backpack.Component
+
+  id: 'slider'
+
+  config:
+    'type': 'swipe'
+    'renderType': 'append'
+    'startSlide': 0
+    'speed': 300
+    'auto': 4000
+    'continuous': true
+    'disableScroll': false
+    'callback': ->
+    'transitionEnd': ->
+
+  initialize: ->
+    super()
+    # being lazy and attaching it to window for now
+    window.s = new window.Swipe(@el, @options)
+
+  content: (slides) =>
+    for content in arguments
+        @$el.append(content)
+    @</pre>
+  </div>
+            <div class='swipe-gallery'></div>
             <div style='text-align:center;padding-top:20px;'>
               
-              <button class='round tk-league-gothic' onclick='s.prev()'>prev</button> 
-              <button class='round tk-league-gothic orange' onclick='s.next()'>next</button>
+              <button class='round tk-proxima-nova-alt-ext-cond' onclick='s.prev()'>prev</button> 
+              <button class='round tk-proxima-nova-alt-ext-cond orange' onclick='s.next()'>next</button>
 
             </div>
 
-        </section>
+          </section>
 
 
           <section class='bottom-60'>
@@ -679,31 +857,19 @@ cake watch:js       # Recompile CoffeeScript source files when
         </section>
       </section>
 
+
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+    <script src="./assets/js/prettify.js" type="text/javascript"></script>
+    <script src="./vendor/jquery.js" type="text/javascript"></script>
+    <script src="./vendor/underscore.js" type="text/javascript"></script>
+    <script src="./vendor/Backbone.js" type="text/javascript"></script>
+    <script src="./vendor/swipe.js" type="text/javascript"></script>
+    <script src="./lib/Backpack-bundle.js" type="text/javascript"></script>
+
     <script>
       $(function() {
         prettyPrint(); // thanks Google
-
-        window.mySwipe = new Backpack.Swipe({
-          parent: '.swipe-code',
-          content: ["<img width='500' src='assets/img/swipe/1.jpg'/>",
-                    "<img width='500' src='assets/img/swipe/2.jpg'/>",
-                    "<img width='500' src='assets/img/swipe/3.jpg'/>",
-                    "<img width='500' src='assets/img/swipe/4.jpg'/>",
-                    "<img width='500' src='assets/img/swipe/5.jpg'/>"],
-          speed: 400,
-          continuous: true,
-          disableScroll: false,
-          callback: function(index, elem) {},
-          transitionEnd: function(index, elem) {}
-        });
-
-        // window.mySwipe = new Swipe(document.getElementById('slider'), {
-        //   speed: 400,
-        //   continuous: true,
-        //   disableScroll: false,
-        //   callback: function(index, elem) {},
-        //   transitionEnd: function(index, elem) {}
-        // });
 
         var menu = new Backpack.Menu({
               parent: '#sidebar',
@@ -716,7 +882,7 @@ cake watch:js       # Recompile CoffeeScript source files when
                   events:  '#Overview',
                   addClass: 'sidebar-overview'
               },{
-                  content: 'How To Make a Component',
+                  content: 'Swipe.js Example Component',
                   events:  '#Make'
               },{
                   content: 'Hack on Backpack',
@@ -785,11 +951,26 @@ cake watch:js       # Recompile CoffeeScript source files when
               }]
             }),
 
+            swipeTabs = new Backpack.Tabs({
+              parent: '.swipe-code',
+              addClass: 'round-top chrome',
+              add: [{
+                  content: 'Example',
+                  tabContent: $('.gallery').html()
+              },{
+                  content: 'Swipe Component',
+                  tabContent: $('.swipe').html()
+              }]
+            }),
+
 
             components = new Backpack.Menu({
               parent: '.sidebar-overview',
               addClass: 'backpack-list',
               add: [{
+                  content: '- Backpack',
+                  events: '#BP'
+              },{
                   content: '- Backpack.Component',
                   events: '#Component'
               },{
@@ -824,6 +1005,21 @@ cake watch:js       # Recompile CoffeeScript source files when
                   events: '#Test'
               }]
             });
+
+        window.mySwipe = new Backpack.Swipe({
+          parent: '.swipe-gallery',
+          content: ["<img width='500' src='assets/img/swipe/1.jpg'/>",
+                    "<img width='500' src='assets/img/swipe/2.jpg'/>",
+                    "<img width='500' src='assets/img/swipe/3.jpg'/>",
+                    "<img width='500' src='assets/img/swipe/4.jpg'/>",
+                    "<img width='500' src='assets/img/swipe/5.jpg'/>"],
+          speed: 400,
+          continuous: true,
+          disableScroll: false,
+          callback: function(index, elem) {},
+          transitionEnd: function(index, elem) {},
+          visible: true
+        });
       });
     </script>
   </body>
