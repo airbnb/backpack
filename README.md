@@ -9,7 +9,7 @@
   
 
 
-### Visit the [Backpack.js User Guide](http://airbnb.github.com/backpack.js/)
+### Visit the [Backpack.js User Guide](http://airbnb.github.com/backpack/)
   
   
 
