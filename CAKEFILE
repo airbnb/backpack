@@ -2,19 +2,19 @@
 {exec}  = require 'child_process'
 
 
-package = "Backpack"
+pkg = "Backpack"
 
 src_path    = "./src"
 lib_path    = "./lib"
 js_path     = "#{lib_path}/js"
-bndl_path   = "#{lib_path}/#{package}-bundle.js"
-min_path    = "#{lib_path}/#{package}-bundle.min.js"
+bndl_path   = "#{lib_path}/#{pkg}-bundle.js"
+min_path    = "#{lib_path}/#{pkg}-bundle.min.js"
 nm_path     = "./node_modules"
 bin_path    = "#{nm_path}/.bin"
 spec_path   = "./spec"
 spec_lib_path = "#{spec_path}/lib"
 spec_src_path = "#{spec_path}/src"
-spec_bndl_path = "#{spec_lib_path}/#{package}Spec-bundle.js"
+spec_bndl_path = "#{spec_lib_path}/#{pkg}Spec-bundle.js"
 
 
 run = (command, callback) ->
