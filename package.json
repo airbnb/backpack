@@ -1,0 +1,21 @@
+{
+  "name": "backpack",
+  "version": "0.0.0",
+  "description": "UI Primitives - built with Backbone.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/airbnb/backpack.git"
+  },
+  "keywords": [
+    "backpack",
+    "backbone",
+    "ui",
+    "components"
+  ],
+  "author": "Harrison Shoff",
+  "license": "MIT"
+}
