@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./lib/css/Backpack.css" type="text/css" media="screen">
     <link rel="stylesheet" href="./assets/css/docs.css" type="text/css" media="screen">
     <link rel="stylesheet" href="./assets/css/prettify.css" type="text/css" media="screen">
-    
+
     <!-- Satisfy the IE Gods -->
     <!--[if gte IE 9]>
       <style type="text/css"> .gradient { filter: none; } </style>
@@ -29,31 +29,31 @@
             <h2 class='big-h2 w310'>Grab your backpack and enjoy the Views</h2>
             <h3 class='big-h3 w310'>Backpack.js is a lightweight Backbone extension for composing and structuring UI components</h3>
      <!--        <div class='github-social w310'>
-              <iframe src="http://ghbtns.com/github-btn.html?user=airbnb&repo=backpack.js&type=watch&count=true"
-                      allowtransparency="true" frameborder="0" scrolling="0" 
+              <iframe src="http://ghbtns.com/github-btn.html?user=airbnb&repo=backpack&type=watch&count=true"
+                      allowtransparency="true" frameborder="0" scrolling="0"
                       width="90px" height="30px"></iframe>
-              <iframe src="http://ghbtns.com/github-btn.html?user=airbnb&repo=backpack.js&type=fork&count=true" 
-                      allowtransparency="true" frameborder="0" scrolling="0" 
+              <iframe src="http://ghbtns.com/github-btn.html?user=airbnb&repo=backpack&type=fork&count=true"
+                      allowtransparency="true" frameborder="0" scrolling="0"
                       width="90px" height="30px"></iframe>
-              <iframe src="http://ghbtns.com/github-btn.html?user=airbnb&repo=backpack.js&type=follow" 
-                      allowtransparency="true" frameborder="0" scrolling="0" 
+              <iframe src="http://ghbtns.com/github-btn.html?user=airbnb&repo=backpack&type=follow"
+                      allowtransparency="true" frameborder="0" scrolling="0"
                       width="111px" height="30px"></iframe>
               <iframe allowtransparency="true" frameborder="0" scrolling="no"
-                      src="//platform.twitter.com/widgets/tweet_button.html?url=https://git.io/backpackjs&counturl=https://airbnb.github.com/backpack.js&text=Check out Backpack.js, lightweight Backbone extension for UI components&via=airbnb"
+                      src="//platform.twitter.com/widgets/tweet_button.html?url=https://git.io/backpackjs&counturl=https://airbnb.github.com/backpack&text=Check out Backpack.js, lightweight Backbone extension for UI components&via=airbnb"
                       style="width:90px; height:20px;"></iframe>
-              <a href="https://twitter.com/backpackjs" class="twitter-follow-button" 
+              <a href="https://twitter.com/backpackjs" class="twitter-follow-button"
                  data-show-count="false">Follow @backpackjs</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </div> -->
           </section>
 
           <section class='bottom-60 clearfix'>
-            <a href='https://github.com/airbnb/backpack.js/zipball/master' 
+            <a href='https://github.com/airbnb/backpack/zipball/master'
                class='download button round tk-proxima-nova-alt-ext-cond
  orange'>
                   Download Backpack.js
             </a>
-            <a href='https://github.com/airbnb/backpack.js' 
+            <a href='https://github.com/airbnb/backpack'
                class='fork button round tk-proxima-nova-alt-ext-cond
 '>
                   Fork on Github
@@ -65,26 +65,26 @@
               <h3 class='title-h3'>Introduction</h3>
             </a>
             <p>
-              Backpack.js is a lightweight Backbone extension for composing and 
-              structuring UI components, and was built by a couple 
+              Backpack.js is a lightweight Backbone extension for composing and
+              structuring UI components, and was built by a couple
               of <a href='http://www.airbnb.com/jobs'>Airbnb Engineers</a>.
             </p>
             <p>
               Backpack's focus is to be a helper for storing and structuring
-              decoupled, extensible UI components. Think of it as a roll-your-own 
-              YUI or jQuery UI, with components built with Backbone.Views. It's a 
+              decoupled, extensible UI components. Think of it as a roll-your-own
+              YUI or jQuery UI, with components built with Backbone.Views. It's a
               micro-library that you build on as you go.
             </p>
             <p>
               Your Backpack will come with some common UI components that you can
               easily extend. As you build out your app, you'll start throwing
-              more components in your backpack. Then you just pull out the components 
+              more components in your backpack. Then you just pull out the components
               you need when you need them.
             </p>
             <p>
-              This initial release is the result of our work abstracting 
-              components that we built for the Airbnb mobile site. 
-              We would like to open this initial release to the 
+              This initial release is the result of our work abstracting
+              components that we built for the Airbnb mobile site.
+              We would like to open this initial release to the
               community to hear your thoughts and welcome
               contributions and ideas for its future.
             </p>
@@ -95,7 +95,7 @@
               <h3 class='title-h3'>Overview</h3>
             </a>
 
-            <!-- 
+            <!--
               =======================================
                   Backpack
               =======================================
@@ -106,14 +106,14 @@
               </a>
               <p>
                 Backpack is the global namespace everything gets attached too.
-                Backpack also comes equiped with a ham radio. It extends Backbone.Events, 
+                Backpack also comes equiped with a ham radio. It extends Backbone.Events,
                 so you have a global dispatcher/observer at your disposal.
               </p>
 
             </section>
 
 
-            <!-- 
+            <!--
               =======================================
                   Backpack.Component
               =======================================
@@ -123,15 +123,15 @@
                 <h4 class='title-h4'>Backpack.Component</h4>
               </a>
               <p>
-                Component is the base View which all Backpack.js components 
-                extend. It provides convenient helper methods for manipulating 
-                the component and it’s content, many of which follow a syntax 
-                similar to jQuery in that methods can be chained, or 
-                alternatively can be passed in upon initialization of the 
+                Component is the base View which all Backpack.js components
+                extend. It provides convenient helper methods for manipulating
+                the component and it’s content, many of which follow a syntax
+                similar to jQuery in that methods can be chained, or
+                alternatively can be passed in upon initialization of the
                 component.
               </p>
               <p>
-                Component provides the following convenience methods to 
+                Component provides the following convenience methods to
                 all components:
               </p>
 
@@ -277,7 +277,7 @@
 
             </section>
 
-            <!-- 
+            <!--
               =======================================
                   Backpack.Tabs
               =======================================
@@ -287,9 +287,9 @@
                 <h4 class='title-h4'>Backpack.Tabs</h4>
               </a>
               <p>
-                Tabs are a grouping of TabItems, responsible for automatically 
-                displaying the content associated with any given tab. Clicking 
-                on a TabItem automatically displays the content, and can also 
+                Tabs are a grouping of TabItems, responsible for automatically
+                displaying the content associated with any given tab. Clicking
+                on a TabItem automatically displays the content, and can also
                 be extended to execute any number of given arbitrary functions.
               </p>
 
@@ -331,7 +331,7 @@ tabs.add({
               </div>
             </section>
 
-            <!-- 
+            <!--
               =======================================
                   Backpack.Menu
               =======================================
@@ -341,8 +341,8 @@ tabs.add({
                 <h4 class='title-h4'>Backpack.Menu</h4>
               </a>
               <p>
-                Menu is a means of displaying many MenuItem objects. A MenuItem 
-                can consist of text, or any amount of arbitrary HTML (images, 
+                Menu is a means of displaying many MenuItem objects. A MenuItem
+                can consist of text, or any amount of arbitrary HTML (images,
                 for example). When clicked, a MenuItem is capable of redirecting
                  a user to a simple URL or executing any arbitrary function.
               </p>
@@ -352,7 +352,7 @@ tabs.add({
               <div class='simple hide'>
                 <pre class="prettyprint linenums">
 var menu = new Backpack.Menu({
-      parent: this, 
+      parent: this,
       add: [{
           content: 'Menu Item 1',
           events:  '#Menu'
@@ -363,23 +363,23 @@ var menu = new Backpack.Menu({
           content: 'Menu Item 2',
           events:  function() {
                     return console.log('test');
-                   }           
+                   }
       },{
           content: 'Menu Item 3',
           events:  {
-            'click': 
+            'click':
                   function() {
-                    console.log('click'); 
+                    console.log('click');
                   },
 
             'mouseenter':
                   function() {
                     console.log('mouseenter');
                   }
-          }                       
+          }
       }]
 });</pre>
-                <button class='round tk-proxima-nova-alt-ext-cond orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange'
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                             parent: this,
@@ -396,7 +396,7 @@ var menu = new Backpack.Menu({
                                 content: 'Menu Item 2',
                                 events: function() {
                                           return console.log('test');
-                                        }           
+                                        }
                             },{
                                 content: 'Menu Item 3',
                                 events: {
@@ -405,11 +405,11 @@ var menu = new Backpack.Menu({
                                   },'click': function() {
                                       console.log('click');
                                   }
-                                }                       
+                                }
                             }]
                           }),
                           color: 'rgba(0,0,0,0.7)',
-                          lockOverlay: false, 
+                          lockOverlay: false,
                           closable: true,
                           css: {
                                 'background-color': '#eee',
@@ -425,7 +425,7 @@ var menu = new Backpack.Menu({
               <div class='press hide'>
                 <pre class="prettyprint linenums">
 var menu = new Backpack.Menu({
-      parent: this, 
+      parent: this,
       addClass: 'press',
       add: [{
           content: 'Menu Item 1',
@@ -437,28 +437,28 @@ var menu = new Backpack.Menu({
           content: 'Menu Item 2',
           events:  function() {
                     return console.log('test');
-                   }           
+                   }
       },{
           content: 'Menu Item 3',
           events:  {
-            'click': 
+            'click':
                   function() {
-                    console.log('click'); 
+                    console.log('click');
                   },
 
             'mouseenter':
                   function() {
                     console.log('mouseenter');
                   }
-          }                       
+          }
       }]
 });</pre>
-                <button class='round tk-proxima-nova-alt-ext-cond orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange'
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                                           parent: this,
                                           addClass: 'press',
-                                          add: 
+                                          add:
                                             [
                                               {
                                                 content: 'Menu Item 1',
@@ -468,7 +468,7 @@ var menu = new Backpack.Menu({
                                                 content: 'Menu Item 2',
                                                 events: function() {
                                                           return console.log('test');
-                                                        }           
+                                                        }
                                               },
                                               {
                                                 content: 'Menu Item 3',
@@ -477,12 +477,12 @@ var menu = new Backpack.Menu({
                                                     console.log('mouseenter');},
                                                   'click': function() {
                                                     console.log('click');}
-                                                }                       
+                                                }
                                               },
                                             ]
                                        }),
                           color: 'rgba(0,0,0,0.7)',
-                          lockOverlay: false, 
+                          lockOverlay: false,
                           closable: true,
                           css: {
                                 'background-color': '#eee',
@@ -498,7 +498,7 @@ var menu = new Backpack.Menu({
               <div class='list hide'>
                 <pre class="prettyprint linenums">
 var menu = new Backpack.Menu({
-      parent: this, 
+      parent: this,
       addClass: 'backpack-list',
       add: [{
           content: 'Menu Item 1',
@@ -510,28 +510,28 @@ var menu = new Backpack.Menu({
           content: 'Menu Item 2',
           events:  function() {
                     return console.log('test');
-                   }           
+                   }
       },{
           content: 'Menu Item 3',
           events:  {
-            'click': 
+            'click':
                   function() {
-                    console.log('click'); 
+                    console.log('click');
                   },
 
             'mouseenter':
                   function() {
                     console.log('mouseenter');
                   }
-          }                       
+          }
       }]
 });</pre>
-                <button class='round tk-proxima-nova-alt-ext-cond orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange'
                         onclick="javascript:eval(new Backpack.Modal({
                           content: new Backpack.Menu({
                                           parent: this,
                                           addClass: 'backpack-list',
-                                          add: 
+                                          add:
                                             [
                                               {
                                                 content: 'Menu Item 1',
@@ -543,7 +543,7 @@ var menu = new Backpack.Menu({
                                                 // events can also be a function on click
                                                 events: function() {
                                                           return console.log('test');
-                                                        }           
+                                                        }
                                               },
                                               {
                                                 content: 'Menu Item 3',
@@ -554,19 +554,19 @@ var menu = new Backpack.Menu({
                                                     console.log('mouseenter');},
                                                   'click': function() {
                                                     console.log('click');}
-                                                }                       
+                                                }
                                               },
                                             ]
                                        }),
                           color: 'rgba(0,0,0,0.7)',
-                          lockOverlay: false, 
+                          lockOverlay: false,
                           closable: true,
                           title: 'List Style Menu'
                 }))">Run</button>
               </div>
             </section>
 
-            <!-- 
+            <!--
               =======================================
                   Backpack.Modal
               =======================================
@@ -576,25 +576,25 @@ var menu = new Backpack.Menu({
                 <h4 class='title-h4'>Backpack.Modal</h4>
               </a>
               <p>
-                Depending on the properties a Modal object is initialized with, 
-                they can be easily configured to provide two different 
-                experiences - Popups are notifications presented in the center 
-                of a user’s screen, and Lightboxes are notifications presented 
-                in a similar manner, with the exception that the background 
-                content becomes dim, drawing attention to the middle Modal. 
+                Depending on the properties a Modal object is initialized with,
+                they can be easily configured to provide two different
+                experiences - Popups are notifications presented in the center
+                of a user’s screen, and Lightboxes are notifications presented
+                in a similar manner, with the exception that the background
+                content becomes dim, drawing attention to the middle Modal.
               </p>
 
               <div class='code modal-code'></div>
 
               <div class='popup hide'>
                 <pre class="prettyprint linenums">
-var popup = new Backpack.Modal({ 
+var popup = new Backpack.Modal({
       content:  'This is a simple popup modal.',
       addClass: 'padding-20',
       title:    'Simple Popup Modal'
 });</pre>
-                <button class='round tk-proxima-nova-alt-ext-cond orange' 
-                        onclick="javascript:eval(new Backpack.Modal({ 
+                <button class='round tk-proxima-nova-alt-ext-cond orange'
+                        onclick="javascript:eval(new Backpack.Modal({
                                                       content: 'This is a simple popup modal.<br/><br/>It just pops up and gets in the way.',
                                                       addClass: 'padding-20',
                                                       title: 'Simple Popup Modal'
@@ -612,11 +612,11 @@ var lightbox = new Backpack.Modal({
       lockOverlay: true,
       title: 'Lightbox Modal'
 });</pre>
-                <button class='round tk-proxima-nova-alt-ext-cond orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange'
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: 'This Modal is a bit fancier.<br/><br/>It has a classy overlay in the background. This says, hey look at me, I am a Modal.<br/><br/>Sometimes that is just want you need.',
                                                       color: 'rgba(0,0,0,0.7)',
-                                                      lockOverlay: true, 
+                                                      lockOverlay: true,
                                                       closable: true,
                                                       addClass: 'padding-20',
                                                       title: 'Lightbox Modal'
@@ -624,7 +624,7 @@ var lightbox = new Backpack.Modal({
               </div>
             </section>
 
-            <!-- 
+            <!--
               =======================================
                   Backpack.Layout
               =======================================
@@ -636,8 +636,8 @@ var lightbox = new Backpack.Modal({
               <p>
                 Layout is a simple grid helper for component placement.
                 Set the number of columns and gutter size and Layout
-                will figure out the sizing of everything. No need to 
-                worry about class names or calculating widths. 
+                will figure out the sizing of everything. No need to
+                worry about class names or calculating widths.
               </p>
 
               <div class='code layout-code'></div>
@@ -661,7 +661,7 @@ var basic = new Backpack.Layout({
             content: testComponent
       }]
 });</pre>
-                <button class='round tk-proxima-nova-alt-ext-cond orange' 
+                <button class='round tk-proxima-nova-alt-ext-cond orange'
                         onclick="javascript:eval(new Backpack.Modal({
                                                       content: new Backpack.Layout({
                                                         parent: $(this).parent(),
@@ -695,7 +695,7 @@ var basic = new Backpack.Layout({
                                                       addClass: 'padding-20',
                                                       title: '3-columns'
                                             }))">Run</button>
-                
+
               </div>
 
             </section>
@@ -706,7 +706,7 @@ var basic = new Backpack.Layout({
               <h3 class='title-h3'>Swipe.js Example Component</h3>
             </a>
             <p>
-              It's easy to create components from existing libraries. Here's 
+              It's easy to create components from existing libraries. Here's
               an example of how to create a Backpack component out of the Swipe.js library.
             </p>
 
@@ -758,8 +758,8 @@ class Backpack.Swipe extends Backpack.Component
   </div>
             <div class='swipe-gallery'></div>
             <div style='text-align:center;padding-top:20px;'>
-              
-              <button class='round tk-proxima-nova-alt-ext-cond' onclick='s.prev()'>prev</button> 
+
+              <button class='round tk-proxima-nova-alt-ext-cond' onclick='s.prev()'>prev</button>
               <button class='round tk-proxima-nova-alt-ext-cond orange' onclick='s.next()'>next</button>
 
             </div>
@@ -772,8 +772,8 @@ class Backpack.Swipe extends Backpack.Component
               <h3 class='title-h3'>Hack on Backpack</h3>
             </a>
             <p>
-              Backpack.js is still in it's early-days. We’re open-sourcing our 
-              progress thus far with the hope to continue to build Backpack.js 
+              Backpack.js is still in it's early-days. We’re open-sourcing our
+              progress thus far with the hope to continue to build Backpack.js
               with the help of the Backbone community.
             </p>
             <div class='code'>
@@ -793,20 +793,20 @@ cd backpack.js && npm install</pre>
               <pre class='prettyprint'>
 cake compile        # Compile CoffeeScript source files
 
-cake build          # Creates /lib_path/Backpack-bundle.js & 
-                    # /lib_path/Backpack-bundle.min.js & 
+cake build          # Creates /lib_path/Backpack-bundle.js &
+                    # /lib_path/Backpack-bundle.min.js &
                     # /lib_path/js/*.js
 
 cake test           # Opens Jasmine SpecRunner. Watches
                     # BackpackSpec-Bundle.js for changes
 
-cake docs           # Generate annotated source code 
+cake docs           # Generate annotated source code
                     # with Docco
 
-cake watch          # Recompile CoffeeScript source files when 
+cake watch          # Recompile CoffeeScript source files when
                     # modified to Backpack-bundle.js
 
-cake watch:js       # Recompile CoffeeScript source files when 
+cake watch:js       # Recompile CoffeeScript source files when
                     # modified to individual .js files</pre>
 
               <br/><br/>
@@ -834,12 +834,12 @@ cake watch:js       # Recompile CoffeeScript source files when
               </a> in sunny San Francisco, CA
             </p>
             <p>
-              With A Lovely Backpack Logo Design by 
+              With A Lovely Backpack Logo Design by
               <a href='http://www.dannyprew.com/'>Danny Prew</a>
             </p>
             <p>
-              Here's Backpack's 
-              <a href='https://github.com/airbnb/backpack.js/blob/master/LICENSE'>
+              Here's Backpack's
+              <a href='https://github.com/airbnb/backpack/blob/master/LICENSE'>
               Apache 2.0 License</a>
             </p>
             <br/>
